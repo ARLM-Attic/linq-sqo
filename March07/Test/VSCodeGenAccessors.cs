@@ -51,7 +51,7 @@ internal class BaseAccessor {
 [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TestTools.UnitTestGeneration", "1.0.0.0")]
 internal class BdsSoft_Query_SequenceAccessor : BaseAccessor {
     
-    protected static Microsoft.VisualStudio.TestTools.UnitTesting.PrivateType m_privateType = new Microsoft.VisualStudio.TestTools.UnitTesting.PrivateType(typeof(global::BdsSoft.Query.Sequence));
+    protected static Microsoft.VisualStudio.TestTools.UnitTesting.PrivateType m_privateType = new Microsoft.VisualStudio.TestTools.UnitTesting.PrivateType(typeof(global::BdsSoft.Linq.Enumerable));
     
     internal BdsSoft_Query_SequenceAccessor() : 
             base(m_privateType) {

@@ -3,7 +3,7 @@ using System;
 using System.Text;
 using System.Collections.Generic;
 using System.Collections;
-using BdsSoft.Query;
+using BdsSoft.Linq;
 
 namespace Test
 {
@@ -12,7 +12,7 @@ namespace Test
     ///to contain all Sequence Unit Tests
     ///</summary>
     [TestClass()]
-    public class SequenceTest
+    public class EnumerableTest
     {
         private TestContext testContextInstance;
 
@@ -81,7 +81,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Aggregate(null, seed, func);
+                Enumerable.Aggregate(null, seed, func);
             }
             catch (ArgumentNullException)
             {
@@ -91,19 +91,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Aggregate(source, seed, null);
+                Enumerable.Aggregate(source, seed, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Aggregate<T, U> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Aggregate<T, U> did not return the expected value (exceptions).");
 
             int expected = 2400;
-            int actual = Sequence.Aggregate(source, seed, func);
+            int actual = Enumerable.Aggregate(source, seed, func);
 
-            Assert.AreEqual(expected, actual, "Sequence.Aggregate<T, U> did not return the expected value.");
+            Assert.AreEqual(expected, actual, "Enumerable.Aggregate<T, U> did not return the expected value.");
         }
 
         /// <summary>
@@ -124,7 +124,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Aggregate(null, func);
+                Enumerable.Aggregate(null, func);
             }
             catch (ArgumentNullException)
             {
@@ -134,19 +134,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Aggregate(source, null);
+                Enumerable.Aggregate(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Aggregate<T, U> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Aggregate<T, U> did not return the expected value (exceptions).");
 
             string expected = "Bart Rob Scott Bill Steve";
-            string actual = Sequence.Aggregate(source, func);
+            string actual = Enumerable.Aggregate(source, func);
 
-            Assert.IsTrue(expected.Equals(actual), "Sequence.Aggregate<T, U> did not return the expected value (test 1).");
+            Assert.IsTrue(expected.Equals(actual), "Enumerable.Aggregate<T, U> did not return the expected value (test 1).");
         }
 
         private void AggregateTest_2()
@@ -157,14 +157,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Aggregate(source, func);
+                string actual = Enumerable.Aggregate(source, func);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Aggregate<T, U> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Aggregate<T, U> did not return the expected value (test 2).");
         }
 
         #endregion
@@ -192,7 +192,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.All(null, predicate);
+                Enumerable.All(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -202,21 +202,21 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.All(source, null);
+                Enumerable.All(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.All<T, U> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.All<T, U> did not return the expected value (exceptions).");
 
             bool expected = true;
             bool actual;
 
-            actual = Sequence.All(source, predicate);
+            actual = Enumerable.All(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.All<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.All<T> did not return the expected value (test 1).");
         }
 
         private void AllTest_2()
@@ -227,9 +227,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.All(source, predicate);
+            actual = Enumerable.All(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.All<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.All<T> did not return the expected value (test 2).");
         }
 
         private void AllTest_3()
@@ -240,9 +240,9 @@ namespace Test
             bool expected = true;
             bool actual;
 
-            actual = Sequence.All(source, predicate);
+            actual = Enumerable.All(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.All<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.All<T> did not return the expected value (test 3).");
         }
 
         private void AllTest_4()
@@ -253,9 +253,9 @@ namespace Test
             bool expected = true;
             bool actual;
 
-            actual = Sequence.All(source, predicate);
+            actual = Enumerable.All(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.All<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.All<T> did not return the expected value (test 4).");
         }
 
         private void AllTest_5()
@@ -266,9 +266,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.All(source, predicate);
+            actual = Enumerable.All(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.All<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.All<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -292,21 +292,21 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Any<int>(null);
+                Enumerable.Any<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Any<T, U> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Any<T, U> did not return the expected value (exceptions).");
 
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Any(source);
+            actual = Enumerable.Any(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 1).");
         }
 
         private void AnyTest_2()
@@ -316,9 +316,9 @@ namespace Test
             bool expected = true;
             bool actual;
 
-            actual = Sequence.Any(source);
+            actual = Enumerable.Any(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Any(null, predicate);
+                Enumerable.Any(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -353,21 +353,21 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Any(source, null);
+                Enumerable.Any(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Any<T, U> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Any<T, U> did not return the expected value (exceptions).");
 
             bool expected = true;
             bool actual;
 
-            actual = Sequence.Any(source, predicate);
+            actual = Enumerable.Any(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 1).");
         }
 
         private void AnyTest1_2()
@@ -379,9 +379,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Any(source, predicate);
+            actual = Enumerable.Any(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 2).");
         }
 
         private void AnyTest1_3()
@@ -393,9 +393,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Any(source, predicate);
+            actual = Enumerable.Any(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 3).");
         }
 
         private void AnyTest1_4()
@@ -407,9 +407,9 @@ namespace Test
             bool expected = true;
             bool actual;
 
-            actual = Sequence.Any(source, predicate);
+            actual = Enumerable.Any(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 4).");
         }
 
         private void AnyTest1_5()
@@ -421,9 +421,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Any(source, predicate);
+            actual = Enumerable.Any(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Any<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.Any<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -448,23 +448,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<decimal>)null);
+                Enumerable.Average((IEnumerable<decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             decimal expected = 0.0m;
             foreach (decimal d in source)
                 expected += d;
 
             expected = expected / 5;
-            decimal actual = Sequence.Average(source);
+            decimal actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest_2()
@@ -474,14 +474,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Average(source);
+                decimal actual = Enumerable.Average(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest_3()
@@ -491,14 +491,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Average(source);
+                decimal actual = Enumerable.Average(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -520,14 +520,14 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<decimal?>)null);
+                Enumerable.Average((IEnumerable<decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             decimal expected = 0.0m;
             foreach (decimal? d in source)
@@ -535,9 +535,9 @@ namespace Test
                     expected += d.Value;
 
             expected = expected / 5;
-            decimal? actual = Sequence.Average(source);
+            decimal? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest1_2()
@@ -547,36 +547,36 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal? actual = Sequence.Average(source);
+                decimal? actual = Enumerable.Average(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest1_3()
         {
             IEnumerable<decimal?> source = new decimal?[] { };
 
-            decimal? actual = Sequence.Average(source);
+            decimal? actual = Enumerable.Average(source);
 
             decimal? expected = null;
 
-            Assert.AreEqual(actual, expected, "Sequence.Average did not return the expected value (test 3).");
+            Assert.AreEqual(actual, expected, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         private void AverageTest1_4()
         {
             IEnumerable<decimal?> source = new decimal?[] { null, null, null };
 
-            decimal? actual = Sequence.Average(source);
+            decimal? actual = Enumerable.Average(source);
 
             decimal? expected = null;
 
-            Assert.AreEqual(actual, expected, "Sequence.Average did not return the expected value (test 4).");
+            Assert.AreEqual(actual, expected, "Enumerable.Average did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -597,14 +597,14 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<double?>)null);
+                Enumerable.Average((IEnumerable<double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double? expected = 0.0;
             foreach (double? d in source)
@@ -613,9 +613,9 @@ namespace Test
 
             expected = expected / 5;
 
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest2_2()
@@ -623,9 +623,9 @@ namespace Test
             IEnumerable<double?> source = new double?[] { };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest2_3()
@@ -633,9 +633,9 @@ namespace Test
             IEnumerable<double?> source = new double?[] { null, null, null };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -655,23 +655,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<double>)null);
+                Enumerable.Average((IEnumerable<double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double expected = 0.0;
             foreach (double d in source)
                 expected += d;
 
             expected = expected / 5;
-            double actual = Sequence.Average(source);
+            double actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest3_2()
@@ -681,14 +681,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source);
+                double actual = Enumerable.Average(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -709,14 +709,14 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<int?>)null);
+                Enumerable.Average((IEnumerable<int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double? expected = 0.0;
             foreach (int? i in source)
@@ -725,9 +725,9 @@ namespace Test
 
             expected = expected / 5;
 
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest4_2()
@@ -735,9 +735,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest4_3()
@@ -745,9 +745,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { null, null, null };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -768,23 +768,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<int>)null);
+                Enumerable.Average((IEnumerable<int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double expected = 0.0;
             foreach (int d in source)
                 expected += d;
 
             expected = expected / 5;
-            double actual = Sequence.Average(source);
+            double actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest5_2()
@@ -794,14 +794,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source);
+                double actual = Enumerable.Average(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest5_3()
@@ -811,14 +811,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source);
+                double actual = Enumerable.Average(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -840,14 +840,14 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<long?>)null);
+                Enumerable.Average((IEnumerable<long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double? expected = 0.0;
             foreach (int? i in source)
@@ -856,9 +856,9 @@ namespace Test
 
             expected = expected / 5;
 
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest6_2()
@@ -866,9 +866,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest6_3()
@@ -876,9 +876,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { null, null, null };
 
             double? expected = null;
-            double? actual = Sequence.Average(source);
+            double? actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         private void AverageTest6_4()
@@ -888,14 +888,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double? actual = Sequence.Average(source);
+                double? actual = Enumerable.Average(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -916,23 +916,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average((IEnumerable<long>)null);
+                Enumerable.Average((IEnumerable<long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Average did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Average did not return the expected value (exceptions).");
 
             double expected = 0.0;
             foreach (long d in source)
                 expected += d;
 
             expected = expected / 5;
-            double actual = Sequence.Average(source);
+            double actual = Enumerable.Average(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Average did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Average did not return the expected value (test 1).");
         }
 
         private void AverageTest7_2()
@@ -942,14 +942,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source);
+                double actual = Enumerable.Average(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 2).");
         }
 
         private void AverageTest7_3()
@@ -959,14 +959,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source);
+                double actual = Enumerable.Average(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average did not return the expected value (test 3).");
         }
 
         /// <Summary>
@@ -995,7 +995,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1005,19 +1005,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, decimal?>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             decimal? expected = (38.0m + 1.23m - 7.8m) / 3;
-            decimal? actual = Sequence.Average(source, selector);
+            decimal? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest8_2()
@@ -1027,9 +1027,9 @@ namespace Test
             Func<AverageTest_Helper, decimal?> selector = delegate(AverageTest_Helper s) { return s.dN; }; /* s => s.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Average(source, selector);
+            decimal? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest8_3()
@@ -1044,9 +1044,9 @@ namespace Test
             Func<AverageTest_Helper, decimal?> selector = delegate(AverageTest_Helper s) { return s.dN; }; /* s => s.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Average(source, selector);
+            decimal? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         private void AverageTest8_4()
@@ -1063,14 +1063,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal? actual = Sequence.Average(source, selector);
+                decimal? actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 4).");
         }
 
         /// <Summary>
@@ -1097,7 +1097,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1107,19 +1107,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, decimal>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             decimal expected = (38.0m + 1.23m - 7.8m) / 3;
-            decimal actual = Sequence.Average(source, selector);
+            decimal actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest9_2()
@@ -1131,14 +1131,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Average(source, selector);
+                decimal actual = Enumerable.Average(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest9_3()
@@ -1154,14 +1154,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Average(source, selector);
+                decimal actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         /// <Summary>
@@ -1190,7 +1190,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1200,19 +1200,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, double?>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double? expected = (38.0 + 1.23 - 7.8) / 3;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest10_2()
@@ -1222,9 +1222,9 @@ namespace Test
             Func<AverageTest_Helper, double?> selector = delegate(AverageTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest10_3()
@@ -1239,9 +1239,9 @@ namespace Test
             Func<AverageTest_Helper, double?> selector = delegate(AverageTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         private void AverageTest10_4()
@@ -1256,9 +1256,9 @@ namespace Test
             Func<AverageTest_Helper, double?> selector = delegate(AverageTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             //double? expected = 0;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(double.IsInfinity(actual.Value), "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(double.IsInfinity(actual.Value), "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         /// <Summary>
@@ -1285,7 +1285,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1295,19 +1295,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, double>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double expected = (38.0 + 1.23 - 7.8) / 3;
-            double actual = Sequence.Average(source, selector);
+            double actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest11_2()
@@ -1319,14 +1319,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source, selector);
+                double actual = Enumerable.Average(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest11_3()
@@ -1340,9 +1340,9 @@ namespace Test
 
             Func<AverageTest_Helper, double> selector = delegate(AverageTest_Helper s) { return s.D; }; /* s => s.D */
 
-            double actual = Sequence.Average(source, selector);
+            double actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(double.IsInfinity(actual), "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(double.IsInfinity(actual), "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         /// <Summary>
@@ -1371,7 +1371,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1381,19 +1381,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, int?>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double? expected = (38 + 123 - 78) / 3.0;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest12_2()
@@ -1403,9 +1403,9 @@ namespace Test
             Func<AverageTest_Helper, int?> selector = delegate(AverageTest_Helper s) { return s.IN; }; /* s => s.IN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest12_3()
@@ -1420,9 +1420,9 @@ namespace Test
             Func<AverageTest_Helper, int?> selector = delegate(AverageTest_Helper s) { return s.IN; }; /* s => s.IN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         private void AverageTest12_4()
@@ -1439,14 +1439,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double? actual = Sequence.Average(source, selector);
+                double? actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 4).");
         }
 
         /// <Summary>
@@ -1473,7 +1473,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1483,19 +1483,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, int>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double expected = (380 + 123 - 78) / 3.0;
-            double actual = Sequence.Average(source, selector);
+            double actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest13_2()
@@ -1507,14 +1507,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source, selector);
+                double actual = Enumerable.Average(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest13_3()
@@ -1530,14 +1530,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source, selector);
+                double actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         /// <Summary>
@@ -1566,7 +1566,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1576,19 +1576,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, long?>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double? expected = (380 + 123 - 78) / 3.0;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest14_2()
@@ -1598,9 +1598,9 @@ namespace Test
             Func<AverageTest_Helper, long?> selector = delegate(AverageTest_Helper s) { return s.LN; }; /* s => s.LN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest14_3()
@@ -1615,9 +1615,9 @@ namespace Test
             Func<AverageTest_Helper, long?> selector = delegate(AverageTest_Helper s) { return s.LN; }; /* s => s.LN */
 
             double? expected = null;
-            double? actual = Sequence.Average(source, selector);
+            double? actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         private void AverageTest14_4()
@@ -1634,14 +1634,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double? actual = Sequence.Average(source, selector);
+                double? actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 4).");
         }
 
         /// <Summary>
@@ -1668,7 +1668,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Average(null, selector);
+                Enumerable.Average(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -1678,19 +1678,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Average(source, (Func<AverageTest_Helper, long>)null);
+                Enumerable.Average(source, (Func<AverageTest_Helper, long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Average<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Average<T> did not return the expected value (exceptions).");
 
             double expected = (380 + 123 - 78) / 3.0;
-            double actual = Sequence.Average(source, selector);
+            double actual = Enumerable.Average(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Average<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Average<T> did not return the expected value (test 1).");
         }
 
         private void AverageTest15_2()
@@ -1702,14 +1702,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source, selector);
+                double actual = Enumerable.Average(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 2).");
         }
 
         private void AverageTest15_3()
@@ -1725,14 +1725,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Average(source, selector);
+                double actual = Enumerable.Average(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Average<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Average<T> did not return the expected value (test 3).");
         }
 
         private class AverageTest_Helper
@@ -1780,7 +1780,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Cast<int>(null))
+                foreach (int i in Enumerable.Cast<int>(null))
                     ;
             }
             catch (ArgumentNullException)
@@ -1788,9 +1788,9 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Cast<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Cast<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Cast<int>(source);
+            IEnumerable<int> actual = Enumerable.Cast<int>(source);
 
             long n = 0;
             foreach (object o in source)
@@ -1798,13 +1798,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Cast<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.Cast<T> did not return the expected value (test 1).");
 
             IEnumerator enumerator = source.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue((int)enumerator.Current == i, "Sequence.Cast<T> did not return the expected value (test 1).");
+                Assert.IsTrue((int)enumerator.Current == i, "Enumerable.Cast<T> did not return the expected value (test 1).");
             }
         }
 
@@ -1812,7 +1812,7 @@ namespace Test
         {
             IEnumerable source = new ArrayList(new string[] { "Bart", "Bill", "John" });
 
-            IEnumerable<string> actual = Sequence.Cast<string>(source);
+            IEnumerable<string> actual = Enumerable.Cast<string>(source);
 
             long n = 0;
             foreach (object o in source)
@@ -1820,13 +1820,13 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Cast<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Cast<T> did not return the expected value (test 2).");
 
             IEnumerator enumerator = source.GetEnumerator();
             foreach (string s in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s), "Sequence.Cast<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s), "Enumerable.Cast<T> did not return the expected value (test 2).");
             }
         }
 
@@ -1837,7 +1837,7 @@ namespace Test
             bool exception = false;
             try
             {
-                IEnumerable<string> actual = Sequence.Cast<string>(source);
+                IEnumerable<string> actual = Enumerable.Cast<string>(source);
                 foreach (string s in actual)
                     ;
             }
@@ -1846,31 +1846,31 @@ namespace Test
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Cast<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Cast<T> did not return the expected value (test 3).");
         }
 
         private void CastTest_4()
         {
             IEnumerable source = new object[] { };
 
-            IEnumerable<string> actual = Sequence.Cast<string>(source);
+            IEnumerable<string> actual = Enumerable.Cast<string>(source);
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Cast<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Cast<T> did not return the expected value (test 4).");
         }
 
         private void CastTest_5()
         {
             IEnumerable source = new object[] { };
 
-            IEnumerable<int> actual = Sequence.Cast<int>(source);
+            IEnumerable<int> actual = Enumerable.Cast<int>(source);
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Cast<T> did not return the expected value (test 5).");
+            Assert.IsTrue(n == 0, "Enumerable.Cast<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -1898,7 +1898,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Concat(null, second))
+                foreach (int i in Enumerable.Concat(null, second))
                     ;
             }
             catch (ArgumentNullException)
@@ -1909,7 +1909,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Concat(first, null))
+                foreach (int i in Enumerable.Concat(first, null))
                     ;
             }
             catch (ArgumentNullException)
@@ -1917,28 +1917,28 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Concat<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Concat<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Concat(first, second);
+            IEnumerable<int> actual = Enumerable.Concat(first, second);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 7, "Sequence.Concat<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 7, "Enumerable.Concat<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
 
             foreach (int i in first)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 1).");
             }
 
             foreach (int i in second)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 1).");
             }
         }
 
@@ -1947,26 +1947,26 @@ namespace Test
             IEnumerable<int> first = new int[] { };
             IEnumerable<int> second = new int[] { 5, -1, 2, 1 };
 
-            IEnumerable<int> actual = Sequence.Concat(first, second);
+            IEnumerable<int> actual = Enumerable.Concat(first, second);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.Concat<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 4, "Enumerable.Concat<T> did not return the expected value (test 2).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
 
             foreach (int i in first)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 2).");
             }
 
             foreach (int i in second)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 2).");
             }
         }
 
@@ -1975,26 +1975,26 @@ namespace Test
             IEnumerable<int> first = new int[] { 3, 1, 2 };
             IEnumerable<int> second = new int[] { };
 
-            IEnumerable<int> actual = Sequence.Concat(first, second);
+            IEnumerable<int> actual = Enumerable.Concat(first, second);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Concat<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 3, "Enumerable.Concat<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
 
             foreach (int i in first)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 3).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 3).");
             }
 
             foreach (int i in second)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(i == (int)enumerator.Current, "Sequence.Concat<T> did not return the expected value (test 3).");
+                Assert.IsTrue(i == (int)enumerator.Current, "Enumerable.Concat<T> did not return the expected value (test 3).");
             }
         }
 
@@ -2003,26 +2003,26 @@ namespace Test
             IEnumerable<string> first = new string[] { "Bart", "Bill", "John" };
             IEnumerable<string> second = new string[] { "Steve" };
 
-            IEnumerable<string> actual = Sequence.Concat(first, second);
+            IEnumerable<string> actual = Enumerable.Concat(first, second);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.Concat<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 4, "Enumerable.Concat<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
 
             foreach (string s in first)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(object.ReferenceEquals(s, (string)enumerator.Current), "Sequence.Concat<T> did not return the expected value (test 4).");
+                Assert.IsTrue(object.ReferenceEquals(s, (string)enumerator.Current), "Enumerable.Concat<T> did not return the expected value (test 4).");
             }
 
             foreach (string s in second)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(object.ReferenceEquals(s, (string)enumerator.Current), "Sequence.Concat<T> did not return the expected value (test 4).");
+                Assert.IsTrue(object.ReferenceEquals(s, (string)enumerator.Current), "Enumerable.Concat<T> did not return the expected value (test 4).");
             }
         }
 
@@ -2031,13 +2031,13 @@ namespace Test
             IEnumerable<object> first = new string[] { };
             IEnumerable<object> second = new object[] { };
 
-            IEnumerable<object> actual = Sequence.Concat(first, second);
+            IEnumerable<object> actual = Enumerable.Concat(first, second);
 
             long n = 0;
             foreach (object o in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Concat<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Concat<T> did not return the expected value (test 4).");
         }
 
         #endregion
@@ -2069,21 +2069,21 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Contains<int>(null, value);
+                Enumerable.Contains<int>(null, value);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Contains<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Contains<T> did not return the expected value (exceptions).");
 
             bool expected = true;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 1).");
         }
 
         private void ContainsTest_2()
@@ -2095,9 +2095,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 2).");
         }
 
         private void ContainsTest_3()
@@ -2109,9 +2109,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 3).");
         }
 
         private void ContainsTest_4()
@@ -2123,9 +2123,9 @@ namespace Test
             bool expected = true;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 4).");
         }
 
         private void ContainsTest_5()
@@ -2137,9 +2137,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 5).");
         }
 
         private void ContainsTest_6()
@@ -2151,9 +2151,9 @@ namespace Test
             bool expected = false;
             bool actual;
 
-            actual = Sequence.Contains(source, value);
+            actual = Enumerable.Contains(source, value);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 6).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 6).");
         }
 
         private void ContainsTest_7()
@@ -2161,9 +2161,9 @@ namespace Test
             ContainsTest_Helper h = new ContainsTest_Helper();
 
             bool expected = true;
-            bool actual = Sequence.Contains(h, 0);
+            bool actual = Enumerable.Contains(h, 0);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 7).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 7).");
         }
 
         private void ContainsTest_8()
@@ -2171,9 +2171,9 @@ namespace Test
             ContainsTest_Helper h = new ContainsTest_Helper();
 
             bool expected = false;
-            bool actual = Sequence.Contains(h, 3);
+            bool actual = Enumerable.Contains(h, 3);
 
-            Assert.AreEqual(expected, actual, "Sequence.Contains<T> did not return the expected value (test 8).");
+            Assert.AreEqual(expected, actual, "Enumerable.Contains<T> did not return the expected value (test 8).");
         }
 
         private class ContainsTest_Helper : IEnumerable<int>
@@ -2217,21 +2217,21 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Count<int>(null);
+                Enumerable.Count<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Count<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Count<T> did not return the expected value (exceptions).");
 
             int expected = 0;
             int actual;
 
-            actual = Sequence.Count(source);
+            actual = Enumerable.Count(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 1).");
         }
 
         private void CountTest_2()
@@ -2241,9 +2241,9 @@ namespace Test
             int expected = ((ICollection<int>)source).Count;
             int actual;
 
-            actual = Sequence.Count(source);
+            actual = Enumerable.Count(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 2).");
         }
 
         private void CountTest_3()
@@ -2254,9 +2254,9 @@ namespace Test
             int expected = n;
             int actual;
 
-            actual = Sequence.Count(source);
+            actual = Enumerable.Count(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 3).");
         }
 
         private void CountTest_4()
@@ -2267,9 +2267,9 @@ namespace Test
             int expected = n;
             int actual;
 
-            actual = Sequence.Count(source);
+            actual = Enumerable.Count(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 4).");
         }
 
         private void CountTest_5()
@@ -2279,7 +2279,7 @@ namespace Test
 
             try
             {
-                int actual = Sequence.Count(source);
+                int actual = Enumerable.Count(source);
             }
             catch (OverflowException)
             {
@@ -2287,7 +2287,7 @@ namespace Test
             }
             catch
             {
-                Assert.IsTrue(false, "Sequence.Count<T> did not return the expected value (test 5).");
+                Assert.IsTrue(false, "Enumerable.Count<T> did not return the expected value (test 5).");
             }
         }
 
@@ -2333,7 +2333,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Count<int>(null, predicate);
+                Enumerable.Count<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -2343,21 +2343,21 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Count<int>(source, null);
+                Enumerable.Count<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Count<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Count<T> did not return the expected value (exceptions).");
 
             int expected = 3;
             int actual;
 
-            actual = Sequence.Count(source, predicate);
+            actual = Enumerable.Count(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 1).");
         }
 
         private void CountTest1_2()
@@ -2368,9 +2368,9 @@ namespace Test
             int expected = 0;
             int actual;
 
-            actual = Sequence.Count(source, predicate);
+            actual = Enumerable.Count(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 2).");
         }
 
         private void CountTest1_3()
@@ -2381,9 +2381,9 @@ namespace Test
             int expected = 3;
             int actual;
 
-            actual = Sequence.Count(source, predicate);
+            actual = Enumerable.Count(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 3).");
         }
 
         private void CountTest1_4()
@@ -2394,9 +2394,9 @@ namespace Test
             int expected = 0;
             int actual;
 
-            actual = Sequence.Count(source, predicate);
+            actual = Enumerable.Count(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 4).");
         }
 
         private void CountTest1_5()
@@ -2407,9 +2407,9 @@ namespace Test
             int expected = 0;
             int actual;
 
-            actual = Sequence.Count(source, predicate);
+            actual = Enumerable.Count(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Count<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.Count<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -2435,7 +2435,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.DefaultIfEmpty((IEnumerable<int>)null))
+                foreach (int i in Enumerable.DefaultIfEmpty((IEnumerable<int>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -2443,9 +2443,9 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.DefaultIfEmpty<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.DefaultIfEmpty<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.DefaultIfEmpty(source);
+            IEnumerable<int> actual = Enumerable.DefaultIfEmpty(source);
 
             long n = 0;
             foreach (int i in source)
@@ -2453,20 +2453,20 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumSource = source.GetEnumerator();
             IEnumerator<int> enumActual = actual.GetEnumerator();
 
             while (enumSource.MoveNext() && enumActual.MoveNext())
-                Assert.IsTrue(enumSource.Current == enumActual.Current, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 1).");
+                Assert.IsTrue(enumSource.Current == enumActual.Current, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 1).");
         }
 
         private void DefaultIfEmptyTest_2()
         {
             IEnumerable<string> source = new string[] { "Bart", "Bill", "John" };
 
-            IEnumerable<string> actual = Sequence.DefaultIfEmpty(source);
+            IEnumerable<string> actual = Enumerable.DefaultIfEmpty(source);
 
             long n = 0;
             foreach (string s in source)
@@ -2474,49 +2474,49 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 2).");
 
             IEnumerator<string> enumSource = source.GetEnumerator();
             IEnumerator<string> enumActual = actual.GetEnumerator();
 
             while (enumSource.MoveNext() && enumActual.MoveNext())
-                Assert.IsTrue(object.ReferenceEquals(enumSource.Current, enumActual.Current), "Sequence.DefaultIfEmpty<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(enumSource.Current, enumActual.Current), "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 2).");
         }
 
         private void DefaultIfEmptyTest_3()
         {
             IEnumerable<int> source = new int[] { };
 
-            IEnumerable<int> actual = Sequence.DefaultIfEmpty(source);
+            IEnumerable<int> actual = Enumerable.DefaultIfEmpty(source);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 1, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 1, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumActual = actual.GetEnumerator();
             enumActual.MoveNext();
 
-            Assert.IsTrue(enumActual.Current == default(int), "Sequence.DefaultIfEmpty<T> did not return the expected value (test 3).");
+            Assert.IsTrue(enumActual.Current == default(int), "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 3).");
         }
 
         private void DefaultIfEmptyTest_4()
         {
             IEnumerable<string> source = new string[] { };
 
-            IEnumerable<string> actual = Sequence.DefaultIfEmpty(source);
+            IEnumerable<string> actual = Enumerable.DefaultIfEmpty(source);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 1, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 1, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumActual = actual.GetEnumerator();
             enumActual.MoveNext();
 
-            Assert.IsTrue(enumActual.Current == default(string), "Sequence.DefaultIfEmpty<T> did not return the expected value (test 4).");
+            Assert.IsTrue(enumActual.Current == default(string), "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -2536,7 +2536,7 @@ namespace Test
             IEnumerable<int> source = new int[] { 1, 2, 3 };
             int defaultValue = 5;
 
-            IEnumerable<int> actual = Sequence.DefaultIfEmpty(source, defaultValue);
+            IEnumerable<int> actual = Enumerable.DefaultIfEmpty(source, defaultValue);
 
             long n = 0;
             foreach (int i in source)
@@ -2544,13 +2544,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumSource = source.GetEnumerator();
             IEnumerator<int> enumActual = actual.GetEnumerator();
 
             while (enumSource.MoveNext() && enumActual.MoveNext())
-                Assert.IsTrue(enumSource.Current == enumActual.Current, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 1).");
+                Assert.IsTrue(enumSource.Current == enumActual.Current, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 1).");
         }
 
         private void DefaultIfEmptyTest1_2()
@@ -2558,7 +2558,7 @@ namespace Test
             IEnumerable<string> source = new string[] { "Bart", "Bill", "John" };
             string defaultValue = "Foo";
 
-            IEnumerable<string> actual = Sequence.DefaultIfEmpty(source, defaultValue);
+            IEnumerable<string> actual = Enumerable.DefaultIfEmpty(source, defaultValue);
 
             long n = 0;
             foreach (string s in source)
@@ -2566,13 +2566,13 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 2).");
 
             IEnumerator<string> enumSource = source.GetEnumerator();
             IEnumerator<string> enumActual = actual.GetEnumerator();
 
             while (enumSource.MoveNext() && enumActual.MoveNext())
-                Assert.IsTrue(object.ReferenceEquals(enumSource.Current, enumActual.Current), "Sequence.DefaultIfEmpty<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(enumSource.Current, enumActual.Current), "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 2).");
         }
 
         private void DefaultIfEmptyTest1_3()
@@ -2580,18 +2580,18 @@ namespace Test
             IEnumerable<int> source = new int[] { };
             int defaultValue = 5;
 
-            IEnumerable<int> actual = Sequence.DefaultIfEmpty(source, defaultValue);
+            IEnumerable<int> actual = Enumerable.DefaultIfEmpty(source, defaultValue);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 1, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 1, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumActual = actual.GetEnumerator();
             enumActual.MoveNext();
 
-            Assert.IsTrue(enumActual.Current == defaultValue, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 3).");
+            Assert.IsTrue(enumActual.Current == defaultValue, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 3).");
         }
 
         private void DefaultIfEmptyTest1_4()
@@ -2599,18 +2599,18 @@ namespace Test
             IEnumerable<string> source = new string[] { };
             string defaultValue = "Foo";
 
-            IEnumerable<string> actual = Sequence.DefaultIfEmpty(source, defaultValue);
+            IEnumerable<string> actual = Enumerable.DefaultIfEmpty(source, defaultValue);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 1, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 1, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumActual = actual.GetEnumerator();
             enumActual.MoveNext();
 
-            Assert.IsTrue(enumActual.Current == defaultValue, "Sequence.DefaultIfEmpty<T> did not return the expected value (test 4).");
+            Assert.IsTrue(enumActual.Current == defaultValue, "Enumerable.DefaultIfEmpty<T> did not return the expected value (test 4).");
         }
 
         #endregion
@@ -2636,7 +2636,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Distinct((IEnumerable<int>)null))
+                foreach (int i in Enumerable.Distinct((IEnumerable<int>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -2644,10 +2644,10 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Distinct<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Distinct<T> did not return the expected value (exceptions).");
 
             IEnumerable<int> expected = new int[] { 1, 2, 8, 4, 9, 7 };
-            IEnumerable<int> actual = Sequence.Distinct(source);
+            IEnumerable<int> actual = Enumerable.Distinct(source);
 
             long n = 0;
             foreach (int i in expected)
@@ -2655,13 +2655,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Distinct<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.Distinct<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Distinct<T> did not return the expected value (test 1).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Distinct<T> did not return the expected value (test 1).");
             }
         }
 
@@ -2670,7 +2670,7 @@ namespace Test
             IEnumerable<int> source = new int[] { 1, 1, 1, 1, 1, 1, 1, 1 };
 
             IEnumerable<int> expected = new int[] { 1 };
-            IEnumerable<int> actual = Sequence.Distinct(source);
+            IEnumerable<int> actual = Enumerable.Distinct(source);
 
             long n = 0;
             foreach (int i in expected)
@@ -2678,13 +2678,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Distinct<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Distinct<T> did not return the expected value (test 2).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Distinct<T> did not return the expected value (test 2).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Distinct<T> did not return the expected value (test 2).");
             }
         }
 
@@ -2692,9 +2692,9 @@ namespace Test
         {
             IEnumerable<int> source = new int[] { };
 
-            IEnumerable<int> actual = Sequence.Distinct(source);
+            IEnumerable<int> actual = Enumerable.Distinct(source);
 
-            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Sequence.Distinct<T> did not return the expected value (test 3).");
+            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Enumerable.Distinct<T> did not return the expected value (test 3).");
         }
 
         private void DistinctTest_4()
@@ -2709,7 +2709,7 @@ namespace Test
             IEnumerable<DateTime> source = new DateTime[] { d1, d3, d5, d4, d2, d6 };
 
             IEnumerable<DateTime> expected = new DateTime[] { d1, d3, d5 };
-            IEnumerable<DateTime> actual = Sequence.Distinct(source);
+            IEnumerable<DateTime> actual = Enumerable.Distinct(source);
 
             long n = 0;
             foreach (DateTime d in expected)
@@ -2717,13 +2717,13 @@ namespace Test
             foreach (DateTime d in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Distinct<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Distinct<T> did not return the expected value (test 4).");
 
             IEnumerator<DateTime> enumerator = actual.GetEnumerator();
             foreach (DateTime d in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(d.Equals(enumerator.Current), "Sequence.Distinct<T> did not return the expected value (test 4).");
+                Assert.IsTrue(d.Equals(enumerator.Current), "Enumerable.Distinct<T> did not return the expected value (test 4).");
             }
         }
 
@@ -2756,19 +2756,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ElementAt<int>(null, index);
+                Enumerable.ElementAt<int>(null, index);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.ElementAt<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.ElementAt<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.ElementAt(source, index);
+            int actual = Enumerable.ElementAt(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAt<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAt<T> did not return the expected value (test 1).");
         }
 
         private void ElementAtTest_2()
@@ -2780,14 +2780,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.ElementAt(source, index);
+                int actual = Enumerable.ElementAt(source, index);
             }
             catch (ArgumentOutOfRangeException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ElementAt<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.ElementAt<T> did not return the expected value (test 2).");
         }
 
         private void ElementAtTest_3()
@@ -2799,14 +2799,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.ElementAt(source, index);
+                int actual = Enumerable.ElementAt(source, index);
             }
             catch (ArgumentOutOfRangeException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ElementAt<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.ElementAt<T> did not return the expected value (test 3).");
         }
 
         private void ElementAtTest_4()
@@ -2816,9 +2816,9 @@ namespace Test
             int index = 3;
 
             int expected = 2;
-            int actual = Sequence.ElementAt(source, index);
+            int actual = Enumerable.ElementAt(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAt<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAt<T> did not return the expected value (test 4).");
         }
 
         private void ElementAtTest_5()
@@ -2830,14 +2830,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.ElementAt(source, index);
+                int actual = Enumerable.ElementAt(source, index);
             }
             catch (ArgumentOutOfRangeException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ElementAt<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.ElementAt<T> did not return the expected value (test 5).");
         }
 
         private void ElementAtTest_6()
@@ -2849,14 +2849,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.ElementAt(source, index);
+                int actual = Enumerable.ElementAt(source, index);
             }
             catch (ArgumentOutOfRangeException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ElementAt<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.ElementAt<T> did not return the expected value (test 6).");
         }
 
         private void ElementAtTest_7()
@@ -2867,9 +2867,9 @@ namespace Test
             int index = 3;
 
             string expected = s;
-            string actual = Sequence.ElementAt(source, index);
+            string actual = Enumerable.ElementAt(source, index);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.ElementAt<T> did not return the expected value (test 7).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.ElementAt<T> did not return the expected value (test 7).");
         }
 
         private void ElementAtTest_8()
@@ -2880,9 +2880,9 @@ namespace Test
             int index = 3;
 
             string expected = s;
-            string actual = Sequence.ElementAt(source, index);
+            string actual = Enumerable.ElementAt(source, index);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.ElementAt<T> did not return the expected value (test 8).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.ElementAt<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -2914,19 +2914,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ElementAtOrDefault<int>(null, index);
+                Enumerable.ElementAtOrDefault<int>(null, index);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.ElementAtOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.ElementAtOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void ElementAtOrDefaultTest_2()
@@ -2936,9 +2936,9 @@ namespace Test
             int index = -1;
 
             int expected = default(int);
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void ElementAtOrDefaultTest_3()
@@ -2948,9 +2948,9 @@ namespace Test
             int index = 5;
 
             int expected = default(int);
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void ElementAtOrDefaultTest_4()
@@ -2960,9 +2960,9 @@ namespace Test
             int index = 3;
 
             int expected = 2;
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 4).");
         }
 
         private void ElementAtOrDefaultTest_5()
@@ -2972,9 +2972,9 @@ namespace Test
             int index = -1;
 
             int expected = default(int);
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 5).");
         }
 
         private void ElementAtOrDefaultTest_6()
@@ -2984,9 +2984,9 @@ namespace Test
             int index = 5;
 
             int expected = default(int);
-            int actual = Sequence.ElementAtOrDefault(source, index);
+            int actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.AreEqual(expected, actual, "Sequence.ElementAtOrDefault<T> did not return the expected value (test 6).");
+            Assert.AreEqual(expected, actual, "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 6).");
         }
 
         private void ElementAtOrDefaultTest_7()
@@ -2997,9 +2997,9 @@ namespace Test
             int index = 3;
 
             string expected = s;
-            string actual = Sequence.ElementAtOrDefault(source, index);
+            string actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.ElementAtOrDefault<T> did not return the expected value (test 7).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 7).");
         }
 
         private void ElementAtOrDefaultTest_8()
@@ -3010,9 +3010,9 @@ namespace Test
             int index = 3;
 
             string expected = s;
-            string actual = Sequence.ElementAtOrDefault(source, index);
+            string actual = Enumerable.ElementAtOrDefault(source, index);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.ElementAtOrDefault<T> did not return the expected value (test 8).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.ElementAtOrDefault<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -3031,16 +3031,16 @@ namespace Test
 
         private void EmptyTest_1()
         {
-            IEnumerable<int> actual = Sequence.Empty<int>();
+            IEnumerable<int> actual = Enumerable.Empty<int>();
 
-            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Sequence.Empty<T> did not return the expected value.");
+            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Enumerable.Empty<T> did not return the expected value.");
         }
 
         private void EmptyTest_2()
         {
-            IEnumerable<string> actual = Sequence.Empty<string>();
+            IEnumerable<string> actual = Enumerable.Empty<string>();
 
-            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Sequence.Empty<T> did not return the expected value.");
+            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Enumerable.Empty<T> did not return the expected value.");
         }
 
         #endregion
@@ -3070,7 +3070,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.EqualAll<int>(null, second);
+                Enumerable.EqualAll<int>(null, second);
             }
             catch (ArgumentNullException)
             {
@@ -3080,19 +3080,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.EqualAll<int>(first, null);
+                Enumerable.EqualAll<int>(first, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.EqualAll<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.EqualAll<T> did not return the expected value (exceptions).");
 
             bool expected = true;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 1).");
         }
 
         private void EqualAllTest_2()
@@ -3101,9 +3101,9 @@ namespace Test
             IEnumerable<int> second = new int[] { 1, 2, 3 };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 2).");
         }
 
         private void EqualAllTest_3()
@@ -3112,9 +3112,9 @@ namespace Test
             IEnumerable<int> second = new int[] { 1, 3 };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 3).");
         }
 
         private void EqualAllTest_4()
@@ -3123,9 +3123,9 @@ namespace Test
             IEnumerable<int> second = new int[] { 7, 8 };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 4).");
         }
 
         private void EqualAllTest_5()
@@ -3134,9 +3134,9 @@ namespace Test
             IEnumerable<int> second = new int[] { 1, 3, 2 };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 5).");
         }
 
         private void EqualAllTest_6()
@@ -3145,9 +3145,9 @@ namespace Test
             IEnumerable<int> second = new int[] { 1, 3, 2 };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 6).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 6).");
         }
 
         private void EqualAllTest_7()
@@ -3156,9 +3156,9 @@ namespace Test
             IEnumerable<string> second = new string[] { "Bart", "Steve", "Bill" };
 
             bool expected = true;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 7).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 7).");
         }
 
         private void EqualAllTest_8()
@@ -3167,9 +3167,9 @@ namespace Test
             IEnumerable<string> second = new string[] { "Bart", "Bill", "Steve" };
 
             bool expected = false;
-            bool actual = Sequence.EqualAll(first, second);
+            bool actual = Enumerable.EqualAll(first, second);
 
-            Assert.AreEqual(expected, actual, "Sequence.EqualAll<T> did not return the expected value (test 8).");
+            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -3196,7 +3196,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Except(first, null))
+                foreach (int i in Enumerable.Except(first, null))
                     ;
             }
             catch (ArgumentNullException)
@@ -3207,7 +3207,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Except(null, second))
+                foreach (int i in Enumerable.Except(null, second))
                     ;
             }
             catch (ArgumentNullException)
@@ -3215,10 +3215,10 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Except<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Except<T> did not return the expected value (exceptions).");
 
             IEnumerable<int> expected = new int[] { 2, 9 };
-            IEnumerable<int> actual = Sequence.Except(first, second);
+            IEnumerable<int> actual = Enumerable.Except(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -3226,13 +3226,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Except<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.Except<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Except<T> did not return the expected value (test 1).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Except<T> did not return the expected value (test 1).");
             }
         }
 
@@ -3242,7 +3242,7 @@ namespace Test
             IEnumerable<int> second = new int[] { };
 
             IEnumerable<int> expected = new int[] { 1, 5, 2, 9 };
-            IEnumerable<int> actual = Sequence.Except(first, second);
+            IEnumerable<int> actual = Enumerable.Except(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -3250,13 +3250,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Except<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Except<T> did not return the expected value (test 2).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Except<T> did not return the expected value (test 2).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Except<T> did not return the expected value (test 2).");
             }
         }
 
@@ -3266,7 +3266,7 @@ namespace Test
             IEnumerable<int> second = new int[] { 3, 4, 5, 1, 7 };
 
             IEnumerable<int> expected = new int[] { };
-            IEnumerable<int> actual = Sequence.Except(first, second);
+            IEnumerable<int> actual = Enumerable.Except(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -3274,13 +3274,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Except<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Except<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Except<T> did not return the expected value (test 3).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Except<T> did not return the expected value (test 3).");
             }
         }
 
@@ -3291,7 +3291,7 @@ namespace Test
             IEnumerable<string> second = new string[] { "Steve", "Bart", "Rob", "Steve", j1 };
 
             IEnumerable<string> expected = new string[] { "Bill", "Scott" };
-            IEnumerable<string> actual = Sequence.Except(first, second);
+            IEnumerable<string> actual = Enumerable.Except(first, second);
 
             long n = 0;
             foreach (string s in expected)
@@ -3299,13 +3299,13 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Except<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Except<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             foreach (string s in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(s.Equals(enumerator.Current), "Sequence.Except<T> did not return the expected value (test 4).");
+                Assert.IsTrue(s.Equals(enumerator.Current), "Enumerable.Except<T> did not return the expected value (test 4).");
             }
         }
 
@@ -3332,19 +3332,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.First<int>(null);
+                Enumerable.First<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.First<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.First<T> did not return the expected value (exceptions).");
 
             int expected = 1;
-            int actual = Sequence.First(source);
+            int actual = Enumerable.First(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.First<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.First<T> did not return the expected value (test 1).");
         }
 
         private void FirstTest_2()
@@ -3353,9 +3353,9 @@ namespace Test
             IEnumerable<string> source = new string[] { s, "John", "Bart", "Rob" };
 
             string expected = s;
-            string actual = Sequence.First(source);
+            string actual = Enumerable.First(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.First<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.First<T> did not return the expected value (test 2).");
         }
 
         private void FirstTest_3()
@@ -3365,14 +3365,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.First(source);
+                int actual = Enumerable.First(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 3).");
         }
 
         private void FirstTest_4()
@@ -3382,14 +3382,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.First(source);
+                string actual = Enumerable.First(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -3414,7 +3414,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.First<int>(null, predicate);
+                Enumerable.First<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -3424,19 +3424,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.First<int>(source, null);
+                Enumerable.First<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.First<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.First<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.First(source, predicate);
+            int actual = Enumerable.First(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.First<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.First<T> did not return the expected value (test 1).");
         }
 
         private void FirstTest1_2()
@@ -3446,9 +3446,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.First(source, predicate);
+            string actual = Enumerable.First(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.First<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.First<T> did not return the expected value (test 2).");
         }
 
         private void FirstTest1_3()
@@ -3459,14 +3459,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.First(source, predicate);
+                int actual = Enumerable.First(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 3).");
         }
 
         private void FirstTest1_4()
@@ -3477,14 +3477,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.First(source, predicate);
+                string actual = Enumerable.First(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 4).");
         }
 
         private void FirstTest1_5()
@@ -3495,14 +3495,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.First(source, predicate);
+                int actual = Enumerable.First(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 5).");
         }
 
         private void FirstTest1_6()
@@ -3513,14 +3513,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.First(source, predicate);
+                string actual = Enumerable.First(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.First<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.First<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -3546,19 +3546,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.FirstOrDefault<int>(null);
+                Enumerable.FirstOrDefault<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.FirstOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.FirstOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 1;
-            int actual = Sequence.FirstOrDefault(source);
+            int actual = Enumerable.FirstOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.FirstOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.FirstOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void FirstOrDefaultTest_2()
@@ -3567,9 +3567,9 @@ namespace Test
             IEnumerable<string> source = new string[] { s, "John", "Bart", "Rob" };
 
             string expected = s;
-            string actual = Sequence.FirstOrDefault(source);
+            string actual = Enumerable.FirstOrDefault(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.FirstOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.FirstOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void FirstOrDefaultTest_3()
@@ -3577,9 +3577,9 @@ namespace Test
             IEnumerable<int> source = new int[] { };
 
             int expected = default(int);
-            int actual = Sequence.FirstOrDefault(source);
+            int actual = Enumerable.FirstOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.FirstOrDefault<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.FirstOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void FirstOrDefaultTest_4()
@@ -3587,9 +3587,9 @@ namespace Test
             IEnumerable<string> source = new string[] { };
 
             string expected = default(string);
-            string actual = Sequence.FirstOrDefault(source);
+            string actual = Enumerable.FirstOrDefault(source);
 
-            Assert.IsTrue(object.Equals(actual, expected), "Sequence.FirstOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(actual, expected), "Enumerable.FirstOrDefault<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -3614,7 +3614,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.FirstOrDefault<int>(null, predicate);
+                Enumerable.FirstOrDefault<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -3624,19 +3624,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.FirstOrDefault<int>(source, null);
+                Enumerable.FirstOrDefault<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.FirstOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.FirstOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.FirstOrDefault(source, predicate);
+            int actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.FirstOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.FirstOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void FirstOrDefaultTest1_2()
@@ -3646,9 +3646,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.FirstOrDefault(source, predicate);
+            string actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.FirstOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.FirstOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void FirstOrDefaultTest1_3()
@@ -3657,9 +3657,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.FirstOrDefault(source, predicate);
+            int actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.FirstOrDefault<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.FirstOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void FirstOrDefaultTest1_4()
@@ -3668,9 +3668,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.FirstOrDefault(source, predicate);
+            string actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.FirstOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.FirstOrDefault<T> did not return the expected value (test 4).");
         }
 
         private void FirstOrDefaultTest1_5()
@@ -3679,9 +3679,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.FirstOrDefault(source, predicate);
+            int actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.FirstOrDefault<T> did not return the expected value (test 5).");
+            Assert.IsTrue(expected == actual, "Enumerable.FirstOrDefault<T> did not return the expected value (test 5).");
         }
 
         private void FirstOrDefaultTest1_6()
@@ -3690,9 +3690,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.FirstOrDefault(source, predicate);
+            string actual = Enumerable.FirstOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.FirstOrDefault<T> did not return the expected value (test 6).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.FirstOrDefault<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -3726,7 +3726,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (IGrouping<int, string> i in Sequence.GroupBy((IEnumerable<GroupBy_Helper>)null, keySelector, elementSelector))
+                foreach (IGrouping<int, string> i in Enumerable.GroupBy((IEnumerable<GroupBy_Helper>)null, keySelector, elementSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -3737,7 +3737,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (IGrouping<int, string> i in Sequence.GroupBy(source, (Func<GroupBy_Helper, int>)null, elementSelector))
+                foreach (IGrouping<int, string> i in Enumerable.GroupBy(source, (Func<GroupBy_Helper, int>)null, elementSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -3748,7 +3748,7 @@ namespace Test
             bool exception3 = false;
             try
             {
-                foreach (IGrouping<int, string> i in Sequence.GroupBy(source, keySelector, (Func<GroupBy_Helper, string>)null))
+                foreach (IGrouping<int, string> i in Enumerable.GroupBy(source, keySelector, (Func<GroupBy_Helper, string>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -3756,27 +3756,27 @@ namespace Test
                 exception3 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2 && exception3, "Sequence.GroupBy<T, K, E> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2 && exception3, "Enumerable.GroupBy<T, K, E> did not return the expected value (exceptions).");
 
             int[] expectedKeys = new int[] { 4, 3, 5 };
             string[][] expectedValues = new string[][] { new string[] { bart, bill, john }, new string[] { rob }, new string[] { scott, steve } };
 
-            IEnumerable<IGrouping<int, string>> actual = Sequence.GroupBy(source, keySelector, elementSelector);
+            IEnumerable<IGrouping<int, string>> actual = Enumerable.GroupBy(source, keySelector, elementSelector);
 
             long n = 0;
             foreach (IGrouping<int, string> g in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.GroupBy<T, K, E> did not return the expected value.");
+            Assert.IsTrue(n == 3, "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
             int j = 0;
             foreach (IGrouping<int, string> g in actual)
             {
-                Assert.IsTrue(expectedKeys[j] == g.Key, "Sequence.GroupBy<T, K, E> did not return the expected value.");
+                Assert.IsTrue(expectedKeys[j] == g.Key, "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
                 int k = 0;
                 foreach (string s in g)
-                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], s), "Sequence.GroupBy<T, K, E> did not return the expected value.");
+                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], s), "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
                 j++;
             }
@@ -3809,22 +3809,22 @@ namespace Test
             int[] expectedKeys = new int[] { -4, 3, 5 };
             string[][] expectedValues = new string[][] { new string[] { bart, bill, john }, new string[] { rob }, new string[] { scott, steve } };
 
-            IEnumerable<IGrouping<int, string>> actual = Sequence.GroupBy(source, keySelector, elementSelector, new GroupByComparer_Helper<int>());
+            IEnumerable<IGrouping<int, string>> actual = Enumerable.GroupBy(source, keySelector, elementSelector, new GroupByComparer_Helper<int>());
 
             long n = 0;
             foreach (IGrouping<int, string> g in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.GroupBy<T, K, E> did not return the expected value.");
+            Assert.IsTrue(n == 3, "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
             int j = 0;
             foreach (IGrouping<int, string> g in actual)
             {
-                Assert.IsTrue(expectedKeys[j] == g.Key, "Sequence.GroupBy<T, K, E> did not return the expected value.");
+                Assert.IsTrue(expectedKeys[j] == g.Key, "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
                 int k = 0;
                 foreach (string s in g)
-                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], s), "Sequence.GroupBy<T, K, E> did not return the expected value.");
+                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], s), "Enumerable.GroupBy<T, K, E> did not return the expected value.");
 
                 j++;
             }
@@ -3856,22 +3856,22 @@ namespace Test
             int[] expectedKeys = new int[] { 4, 3, 5 };
             GroupBy_Helper[][] expectedValues = new GroupBy_Helper[][] { new GroupBy_Helper[] { g1, g4, g5 }, new GroupBy_Helper[] { g2 }, new GroupBy_Helper[] { g3, g6 } };
 
-            IEnumerable<IGrouping<int, GroupBy_Helper>> actual = Sequence.GroupBy(source, keySelector);
+            IEnumerable<IGrouping<int, GroupBy_Helper>> actual = Enumerable.GroupBy(source, keySelector);
 
             long n = 0;
             foreach (IGrouping<int, GroupBy_Helper> g in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.GroupBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 3, "Enumerable.GroupBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (IGrouping<int, GroupBy_Helper> g in actual)
             {
-                Assert.IsTrue(expectedKeys[j] == g.Key, "Sequence.GroupBy<T, K> did not return the expected value.");
+                Assert.IsTrue(expectedKeys[j] == g.Key, "Enumerable.GroupBy<T, K> did not return the expected value.");
 
                 int k = 0;
                 foreach (GroupBy_Helper item in g)
-                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], item), "Sequence.GroupBy<T, K> did not return the expected value.");
+                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], item), "Enumerable.GroupBy<T, K> did not return the expected value.");
 
                 j++;
             }
@@ -3903,22 +3903,22 @@ namespace Test
             int[] expectedKeys = new int[] { -4, 3, 5 };
             GroupBy_Helper[][] expectedValues = new GroupBy_Helper[][] { new GroupBy_Helper[] { g1, g4, g5 }, new GroupBy_Helper[] { g2 }, new GroupBy_Helper[] { g3, g6 } };
 
-            IEnumerable<IGrouping<int, GroupBy_Helper>> actual = Sequence.GroupBy(source, keySelector, new GroupByComparer_Helper<int>());
+            IEnumerable<IGrouping<int, GroupBy_Helper>> actual = Enumerable.GroupBy(source, keySelector, new GroupByComparer_Helper<int>());
 
             long n = 0;
             foreach (IGrouping<int, GroupBy_Helper> g in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.GroupBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 3, "Enumerable.GroupBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (IGrouping<int, GroupBy_Helper> g in actual)
             {
-                Assert.IsTrue(expectedKeys[j] == g.Key, "Sequence.GroupBy<T, K> did not return the expected value.");
+                Assert.IsTrue(expectedKeys[j] == g.Key, "Enumerable.GroupBy<T, K> did not return the expected value.");
 
                 int k = 0;
                 foreach (GroupBy_Helper item in g)
-                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], item), "Sequence.GroupBy<T, K> did not return the expected value.");
+                    Assert.IsTrue(object.ReferenceEquals(expectedValues[j][k++], item), "Enumerable.GroupBy<T, K> did not return the expected value.");
 
                 j++;
             }
@@ -4033,7 +4033,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (GroupJoin_CustomerOrder i in Sequence.GroupJoin((IEnumerable<GroupJoin_Customer>)null, inner, outerKeySelector, innerKeySelector, resultSelector))
+                foreach (GroupJoin_CustomerOrder i in Enumerable.GroupJoin((IEnumerable<GroupJoin_Customer>)null, inner, outerKeySelector, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4044,7 +4044,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (GroupJoin_CustomerOrder i in Sequence.GroupJoin(outer, (IEnumerable<GroupJoin_Order>)null, outerKeySelector, innerKeySelector, resultSelector))
+                foreach (GroupJoin_CustomerOrder i in Enumerable.GroupJoin(outer, (IEnumerable<GroupJoin_Order>)null, outerKeySelector, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4055,7 +4055,7 @@ namespace Test
             bool exception3 = false;
             try
             {
-                foreach (GroupJoin_CustomerOrder i in Sequence.GroupJoin(outer, inner, (Func<GroupJoin_Customer, int>)null, innerKeySelector, resultSelector))
+                foreach (GroupJoin_CustomerOrder i in Enumerable.GroupJoin(outer, inner, (Func<GroupJoin_Customer, int>)null, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4066,7 +4066,7 @@ namespace Test
             bool exception4 = false;
             try
             {
-                foreach (GroupJoin_CustomerOrder i in Sequence.GroupJoin(outer, inner, outerKeySelector, (Func<GroupJoin_Order, int>)null, resultSelector))
+                foreach (GroupJoin_CustomerOrder i in Enumerable.GroupJoin(outer, inner, outerKeySelector, (Func<GroupJoin_Order, int>)null, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4077,7 +4077,7 @@ namespace Test
             bool exception5 = false;
             try
             {
-                foreach (GroupJoin_CustomerOrder i in Sequence.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, (Func<GroupJoin_Customer, IEnumerable<GroupJoin_Order>, GroupJoin_CustomerOrder>)null))
+                foreach (GroupJoin_CustomerOrder i in Enumerable.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, (Func<GroupJoin_Customer, IEnumerable<GroupJoin_Order>, GroupJoin_CustomerOrder>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -4085,7 +4085,7 @@ namespace Test
                 exception5 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2 && exception3 && exception4 && exception5, "Sequence.GroupJoin<T, U, K, V> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2 && exception3 && exception4 && exception5, "Enumerable.GroupJoin<T, U, K, V> did not return the expected value (exceptions).");
 
             GroupJoin_CustomerOrder[] expected = new GroupJoin_CustomerOrder[] {
                 new GroupJoin_CustomerOrder ( 1, bart, 12.34m + 56.78m + 67.89m ),
@@ -4095,17 +4095,17 @@ namespace Test
                 new GroupJoin_CustomerOrder ( 5, rob, 0.0m )
             };
 
-            IEnumerable<GroupJoin_CustomerOrder> actual = Sequence.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
+            IEnumerable<GroupJoin_CustomerOrder> actual = Enumerable.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
             long n = 0;
             foreach (GroupJoin_CustomerOrder co in actual)
                 n++;
 
-            Assert.IsTrue(n == expected.Length, "Sequence.GroupJoin<T, U, K, V> did not return the expected value (test 1).");
+            Assert.IsTrue(n == expected.Length, "Enumerable.GroupJoin<T, U, K, V> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (GroupJoin_CustomerOrder co in actual)
-                Assert.IsTrue(co.Equals(expected[j++]), "Sequence.GroupJoin<T, U, K, V> did not return the expected value (test 1).");
+                Assert.IsTrue(co.Equals(expected[j++]), "Enumerable.GroupJoin<T, U, K, V> did not return the expected value (test 1).");
         }
 
         private class GroupJoin_Customer
@@ -4198,17 +4198,17 @@ namespace Test
                 new GroupJoin_CustomerOrder2 ( c4, steve, 23.45m )
             };
 
-            IEnumerable<GroupJoin_CustomerOrder2> actual = Sequence.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
+            IEnumerable<GroupJoin_CustomerOrder2> actual = Enumerable.GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
             long n = 0;
             foreach (GroupJoin_CustomerOrder2 co in actual)
                 n++;
 
-            Assert.IsTrue(n == expected.Length, "Sequence.GroupJoin<T, U, K, V> did not return the expected value (test 2).");
+            Assert.IsTrue(n == expected.Length, "Enumerable.GroupJoin<T, U, K, V> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (GroupJoin_CustomerOrder2 co in actual)
-                Assert.IsTrue(co.Equals(expected[j++]), "Sequence.GroupJoin<T, U, K, V> did not return the expected value (test 2).");
+                Assert.IsTrue(co.Equals(expected[j++]), "Enumerable.GroupJoin<T, U, K, V> did not return the expected value (test 2).");
         }
 
         private class GroupJoin_Customer2
@@ -4297,7 +4297,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Intersect(first, null))
+                foreach (int i in Enumerable.Intersect(first, null))
                     ;
             }
             catch (ArgumentNullException)
@@ -4308,7 +4308,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Intersect(null, second))
+                foreach (int i in Enumerable.Intersect(null, second))
                     ;
             }
             catch (ArgumentNullException)
@@ -4316,10 +4316,10 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Intersect<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Intersect<T> did not return the expected value (exceptions).");
 
             IEnumerable<int> expected = new int[] { 1, 5 };
-            IEnumerable<int> actual = Sequence.Intersect(first, second);
+            IEnumerable<int> actual = Enumerable.Intersect(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -4327,13 +4327,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Intersect<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.Intersect<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Intersect<T> did not return the expected value (test 1).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Intersect<T> did not return the expected value (test 1).");
             }
         }
 
@@ -4343,7 +4343,7 @@ namespace Test
             IEnumerable<int> second = new int[] { };
 
             IEnumerable<int> expected = new int[] { };
-            IEnumerable<int> actual = Sequence.Intersect(first, second);
+            IEnumerable<int> actual = Enumerable.Intersect(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -4351,13 +4351,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Intersect<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Intersect<T> did not return the expected value (test 2).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Intersect<T> did not return the expected value (test 2).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Intersect<T> did not return the expected value (test 2).");
             }
         }
 
@@ -4367,7 +4367,7 @@ namespace Test
             IEnumerable<int> second = new int[] { 3, 4, 5, 1, 7 };
 
             IEnumerable<int> expected = new int[] { };
-            IEnumerable<int> actual = Sequence.Intersect(first, second);
+            IEnumerable<int> actual = Enumerable.Intersect(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -4375,13 +4375,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Intersect<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Intersect<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Intersect<T> did not return the expected value (test 3).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Intersect<T> did not return the expected value (test 3).");
             }
         }
 
@@ -4392,7 +4392,7 @@ namespace Test
             IEnumerable<string> second = new string[] { "Steve", "Bart", "Rob", "Steve", j1 };
 
             IEnumerable<string> expected = new string[] { "John", "Bart" };
-            IEnumerable<string> actual = Sequence.Intersect(first, second);
+            IEnumerable<string> actual = Enumerable.Intersect(first, second);
 
             long n = 0;
             foreach (string s in expected)
@@ -4400,13 +4400,13 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Intersect<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Intersect<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             foreach (string s in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(s.Equals(enumerator.Current), "Sequence.Intersect<T> did not return the expected value (test 4).");
+                Assert.IsTrue(s.Equals(enumerator.Current), "Enumerable.Intersect<T> did not return the expected value (test 4).");
             }
         }
 
@@ -4456,7 +4456,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (Join_CustomerOrder i in Sequence.Join((IEnumerable<Join_Customer>)null, inner, outerKeySelector, innerKeySelector, resultSelector))
+                foreach (Join_CustomerOrder i in Enumerable.Join((IEnumerable<Join_Customer>)null, inner, outerKeySelector, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4467,7 +4467,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (Join_CustomerOrder i in Sequence.Join(outer, (IEnumerable<Join_Order>)null, outerKeySelector, innerKeySelector, resultSelector))
+                foreach (Join_CustomerOrder i in Enumerable.Join(outer, (IEnumerable<Join_Order>)null, outerKeySelector, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4478,7 +4478,7 @@ namespace Test
             bool exception3 = false;
             try
             {
-                foreach (Join_CustomerOrder i in Sequence.Join(outer, inner, (Func<Join_Customer, int>)null, innerKeySelector, resultSelector))
+                foreach (Join_CustomerOrder i in Enumerable.Join(outer, inner, (Func<Join_Customer, int>)null, innerKeySelector, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4489,7 +4489,7 @@ namespace Test
             bool exception4 = false;
             try
             {
-                foreach (Join_CustomerOrder i in Sequence.Join(outer, inner, outerKeySelector, (Func<Join_Order, int>)null, resultSelector))
+                foreach (Join_CustomerOrder i in Enumerable.Join(outer, inner, outerKeySelector, (Func<Join_Order, int>)null, resultSelector))
                     ;
             }
             catch (ArgumentNullException)
@@ -4500,7 +4500,7 @@ namespace Test
             bool exception5 = false;
             try
             {
-                foreach (Join_CustomerOrder i in Sequence.Join(outer, inner, outerKeySelector, innerKeySelector, (Func<Join_Customer, Join_Order, Join_CustomerOrder>)null))
+                foreach (Join_CustomerOrder i in Enumerable.Join(outer, inner, outerKeySelector, innerKeySelector, (Func<Join_Customer, Join_Order, Join_CustomerOrder>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -4508,7 +4508,7 @@ namespace Test
                 exception5 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2 && exception3 && exception4 && exception5, "Sequence.Join<T, U, K, V> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2 && exception3 && exception4 && exception5, "Enumerable.Join<T, U, K, V> did not return the expected value (exceptions).");
 
             Join_CustomerOrder[] expected = new Join_CustomerOrder[] {
                 new Join_CustomerOrder ( 1, bart, 12.34m ),
@@ -4520,17 +4520,17 @@ namespace Test
                 new Join_CustomerOrder ( 4, steve, 23.45m )
             };
 
-            IEnumerable<Join_CustomerOrder> actual = Sequence.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
+            IEnumerable<Join_CustomerOrder> actual = Enumerable.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
             long n = 0;
             foreach (Join_CustomerOrder co in actual)
                 n++;
 
-            Assert.IsTrue(n == expected.Length, "Sequence.Join<T, U, K, V> did not return the expected value (test 1).");
+            Assert.IsTrue(n == expected.Length, "Enumerable.Join<T, U, K, V> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (Join_CustomerOrder co in actual)
-                Assert.IsTrue(co.Equals(expected[j++]), "Sequence.Join<T, U, K, V> did not return the expected value (test 1).");
+                Assert.IsTrue(co.Equals(expected[j++]), "Enumerable.Join<T, U, K, V> did not return the expected value (test 1).");
         }
 
         private class Join_Customer
@@ -4617,17 +4617,17 @@ namespace Test
                 new Join_CustomerOrder2 ( c4, steve, 23.45m )
             };
 
-            IEnumerable<Join_CustomerOrder2> actual = Sequence.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
+            IEnumerable<Join_CustomerOrder2> actual = Enumerable.Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector);
 
             long n = 0;
             foreach (Join_CustomerOrder2 co in actual)
                 n++;
 
-            Assert.IsTrue(n == expected.Length, "Sequence.Join<T, U, K, V> did not return the expected value (test 2).");
+            Assert.IsTrue(n == expected.Length, "Enumerable.Join<T, U, K, V> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (Join_CustomerOrder2 co in actual)
-                Assert.IsTrue(co.Equals(expected[j++]), "Sequence.Join<T, U, K, V> did not return the expected value (test 2).");
+                Assert.IsTrue(co.Equals(expected[j++]), "Enumerable.Join<T, U, K, V> did not return the expected value (test 2).");
         }
 
         private class Join_Customer2
@@ -4715,19 +4715,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Last<int>(null);
+                Enumerable.Last<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Last<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Last<T> did not return the expected value (exceptions).");
 
             int expected = 3;
-            int actual = Sequence.Last(source);
+            int actual = Enumerable.Last(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Last<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Last<T> did not return the expected value (test 1).");
         }
 
         private void LastTest_2()
@@ -4736,9 +4736,9 @@ namespace Test
             IEnumerable<string> source = new string[] { "John", "Bart", "Rob", s };
 
             string expected = s;
-            string actual = Sequence.Last(source);
+            string actual = Enumerable.Last(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.Last<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.Last<T> did not return the expected value (test 2).");
         }
 
         private void LastTest_3()
@@ -4748,14 +4748,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Last(source);
+                int actual = Enumerable.Last(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 3).");
         }
 
         private void LastTest_4()
@@ -4765,14 +4765,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Last(source);
+                string actual = Enumerable.Last(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -4797,7 +4797,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Last<int>(null, predicate);
+                Enumerable.Last<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -4807,19 +4807,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Last<int>(source, null);
+                Enumerable.Last<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Last<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Last<T> did not return the expected value (exceptions).");
 
             int expected = 4;
-            int actual = Sequence.Last(source, predicate);
+            int actual = Enumerable.Last(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Last<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Last<T> did not return the expected value (test 1).");
         }
 
         private void LastTest1_2()
@@ -4829,9 +4829,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.Last(source, predicate);
+            string actual = Enumerable.Last(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.Last<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.Last<T> did not return the expected value (test 2).");
         }
 
         private void LastTest1_3()
@@ -4842,14 +4842,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Last(source, predicate);
+                int actual = Enumerable.Last(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 3).");
         }
 
         private void LastTest1_4()
@@ -4860,14 +4860,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Last(source, predicate);
+                string actual = Enumerable.Last(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 4).");
         }
 
         private void LastTest1_5()
@@ -4878,14 +4878,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Last(source, predicate);
+                int actual = Enumerable.Last(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 5).");
         }
 
         private void LastTest1_6()
@@ -4896,14 +4896,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Last(source, predicate);
+                string actual = Enumerable.Last(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Last<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.Last<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -4929,19 +4929,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.LastOrDefault<int>(null);
+                Enumerable.LastOrDefault<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.LastOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.LastOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 3;
-            int actual = Sequence.LastOrDefault(source);
+            int actual = Enumerable.LastOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.LastOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.LastOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void LastOrDefaultTest_2()
@@ -4950,9 +4950,9 @@ namespace Test
             IEnumerable<string> source = new string[] { "John", "Bart", "Rob", s };
 
             string expected = s;
-            string actual = Sequence.LastOrDefault(source);
+            string actual = Enumerable.LastOrDefault(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.LastOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.LastOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void LastOrDefaultTest_3()
@@ -4960,9 +4960,9 @@ namespace Test
             IEnumerable<int> source = new int[] { };
 
             int expected = default(int);
-            int actual = Sequence.LastOrDefault(source);
+            int actual = Enumerable.LastOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.LastOrDefault<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.LastOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void LastOrDefaultTest_4()
@@ -4970,9 +4970,9 @@ namespace Test
             IEnumerable<string> source = new string[] { };
 
             string expected = default(string);
-            string actual = Sequence.LastOrDefault(source);
+            string actual = Enumerable.LastOrDefault(source);
 
-            Assert.IsTrue(object.Equals(actual, expected), "Sequence.LastOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(actual, expected), "Enumerable.LastOrDefault<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -4997,7 +4997,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.LastOrDefault<int>(null, predicate);
+                Enumerable.LastOrDefault<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -5007,19 +5007,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.LastOrDefault<int>(source, null);
+                Enumerable.LastOrDefault<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.LastOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.LastOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 4;
-            int actual = Sequence.LastOrDefault(source, predicate);
+            int actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LastOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.LastOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void LastOrDefaultTest1_2()
@@ -5029,9 +5029,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.LastOrDefault(source, predicate);
+            string actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.LastOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.LastOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void LastOrDefaultTest1_3()
@@ -5040,9 +5040,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.LastOrDefault(source, predicate);
+            int actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.LastOrDefault<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.LastOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void LastOrDefaultTest1_4()
@@ -5051,9 +5051,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.LastOrDefault(source, predicate);
+            string actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.LastOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.LastOrDefault<T> did not return the expected value (test 4).");
         }
 
         private void LastOrDefaultTest1_5()
@@ -5062,9 +5062,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.LastOrDefault(source, predicate);
+            int actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.LastOrDefault<T> did not return the expected value (test 5).");
+            Assert.IsTrue(expected == actual, "Enumerable.LastOrDefault<T> did not return the expected value (test 5).");
         }
 
         private void LastOrDefaultTest1_6()
@@ -5073,9 +5073,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.LastOrDefault(source, predicate);
+            string actual = Enumerable.LastOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.LastOrDefault<T> did not return the expected value (test 6).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.LastOrDefault<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -5100,21 +5100,21 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.LongCount<int>(null);
+                Enumerable.LongCount<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.LongCount<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.LongCount<T> did not return the expected value (exceptions).");
 
             long expected = 0;
             long actual;
 
-            actual = Sequence.LongCount(source);
+            actual = Enumerable.LongCount(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 1).");
         }
 
         private void LongCountTest_2()
@@ -5124,9 +5124,9 @@ namespace Test
             long expected = ((ICollection<int>)source).Count;
             long actual;
 
-            actual = Sequence.LongCount(source);
+            actual = Enumerable.LongCount(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 2).");
         }
 
         private void LongCountTest_3()
@@ -5137,9 +5137,9 @@ namespace Test
             long expected = n;
             long actual;
 
-            actual = Sequence.LongCount(source);
+            actual = Enumerable.LongCount(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 3).");
         }
 
         private class LongCountTest_Helper<T> : IEnumerable<T>
@@ -5184,7 +5184,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.LongCount<int>(null, predicate);
+                Enumerable.LongCount<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -5194,21 +5194,21 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.LongCount<int>(source, null);
+                Enumerable.LongCount<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.LongCount<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.LongCount<T> did not return the expected value (exceptions).");
 
             long expected = 3;
             long actual;
 
-            actual = Sequence.LongCount(source, predicate);
+            actual = Enumerable.LongCount(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 1).");
         }
 
         private void LongCountTest1_2()
@@ -5219,9 +5219,9 @@ namespace Test
             long expected = 0;
             long actual;
 
-            actual = Sequence.LongCount(source, predicate);
+            actual = Enumerable.LongCount(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 2).");
         }
 
         private void LongCountTest1_3()
@@ -5232,9 +5232,9 @@ namespace Test
             long expected = 3;
             long actual;
 
-            actual = Sequence.LongCount(source, predicate);
+            actual = Enumerable.LongCount(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 3).");
         }
 
         private void LongCountTest1_4()
@@ -5245,9 +5245,9 @@ namespace Test
             long expected = 0;
             long actual;
 
-            actual = Sequence.LongCount(source, predicate);
+            actual = Enumerable.LongCount(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 4).");
         }
 
         private void LongCountTest1_5()
@@ -5258,9 +5258,9 @@ namespace Test
             long expected = 0;
             long actual;
 
-            actual = Sequence.LongCount(source, predicate);
+            actual = Enumerable.LongCount(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.LongCount<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.LongCount<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -5285,27 +5285,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<decimal?>)null);
+                Enumerable.Max((IEnumerable<decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
-            decimal? actual = Sequence.Max(source);
+            decimal? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest_2()
         {
             IEnumerable<decimal?> source = new decimal?[] { null, null, null };
 
-            decimal? actual = Sequence.Max(source);
+            decimal? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         private void MaxTest_3()
@@ -5313,9 +5313,9 @@ namespace Test
             IEnumerable<decimal?> source = new decimal?[] { 30.5m, null, 18.2m, 22.9m, null, 46.3m, 38.0m };
 
             decimal? expected = 46.3m;
-            decimal? actual = Sequence.Max(source);
+            decimal? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Max did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Max did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -5335,19 +5335,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<decimal>)null);
+                Enumerable.Max((IEnumerable<decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
             decimal expected = 46.3m;
-            decimal actual = Sequence.Max(source);
+            decimal actual = Enumerable.Max(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest1_2()
@@ -5357,14 +5357,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Sequence.Max(source);
+                Enumerable.Max(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -5385,27 +5385,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<double?>)null);
+                Enumerable.Max((IEnumerable<double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
-            double? actual = Sequence.Max(source);
+            double? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest2_2()
         {
             IEnumerable<double?> source = new double?[] { null, null, null };
 
-            double? actual = Sequence.Max(source);
+            double? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         private void MaxTest2_3()
@@ -5413,9 +5413,9 @@ namespace Test
             IEnumerable<double?> source = new double?[] { 3.0, null, 1.0, 4.0, 12.0, null, 5.0, 8.0 };
 
             double? expected = 12.0;
-            double? actual = Sequence.Max(source);
+            double? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Max did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Max did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -5435,19 +5435,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<double>)null);
+                Enumerable.Max((IEnumerable<double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
             double expected = 12.0;
-            double actual = Sequence.Max(source);
+            double actual = Enumerable.Max(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest3_2()
@@ -5457,14 +5457,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Max(source);
+                double actual = Enumerable.Max(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -5485,27 +5485,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<int?>)null);
+                Enumerable.Max((IEnumerable<int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
-            int? actual = Sequence.Max(source);
+            int? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest4_2()
         {
             IEnumerable<int?> source = new int?[] { null, null, null };
 
-            int? actual = Sequence.Max(source);
+            int? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         private void MaxTest4_3()
@@ -5513,9 +5513,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { 3, null, 8, 7, null, 2, 4 };
 
             int? expected = 8;
-            int? actual = Sequence.Max(source);
+            int? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Max did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Max did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -5535,19 +5535,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<int>)null);
+                Enumerable.Max((IEnumerable<int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
             int expected = 8;
-            int actual = Sequence.Max(source);
+            int actual = Enumerable.Max(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest5_2()
@@ -5557,14 +5557,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Max(source);
+                int actual = Enumerable.Max(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -5585,27 +5585,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<long?>)null);
+                Enumerable.Max((IEnumerable<long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
-            long? actual = Sequence.Max(source);
+            long? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest6_2()
         {
             IEnumerable<long?> source = new long?[] { null, null, null };
 
-            long? actual = Sequence.Max(source);
+            long? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         private void MaxTest6_3()
@@ -5613,9 +5613,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { 1234, null, 6789, 4567, null, 2345 };
 
             long? expected = 6789;
-            long? actual = Sequence.Max(source);
+            long? actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Max did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Max did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -5633,9 +5633,9 @@ namespace Test
             IEnumerable<long> source = new long[] { 1234, 6789, 4567, 2345 };
 
             long expected = 6789;
-            long actual = Sequence.Max(source);
+            long actual = Enumerable.Max(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max did not return the expected value (test 1).");
         }
 
         private void MaxTest7_2()
@@ -5645,26 +5645,26 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<long>)null);
+                Enumerable.Max((IEnumerable<long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max did not return the expected value (exceptions).");
 
             bool exception = false;
             try
             {
-                long actual = Sequence.Max(source);
+                long actual = Enumerable.Max(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -5688,7 +5688,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max<string, int>(null, selector);
+                Enumerable.Max<string, int>(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -5698,19 +5698,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max<string, int>(source, null);
+                Enumerable.Max<string, int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             int expected = 5;
-            int actual = Sequence.Max<string, int>(source, selector);
+            int actual = Enumerable.Max<string, int>(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest8_2()
@@ -5725,9 +5725,9 @@ namespace Test
 
             Func<MaxTest8_Helper, MaxTest9_Helper> selector = delegate(MaxTest8_Helper h) { return h.H; }; /* h => h.H */
 
-            MaxTest9_Helper actual = Sequence.Max<MaxTest8_Helper, MaxTest9_Helper>(source, selector);
+            MaxTest9_Helper actual = Enumerable.Max<MaxTest8_Helper, MaxTest9_Helper>(source, selector);
 
-            Assert.IsTrue(object.ReferenceEquals(max, actual), "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(max, actual), "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest8_3()
@@ -5739,9 +5739,9 @@ namespace Test
 
             Func<MaxTest8_Helper2, MaxTest9_Helper2> selector = delegate(MaxTest8_Helper2 h) { return h.H; }; /* h => h.H */
 
-            MaxTest9_Helper2 actual = Sequence.Max<MaxTest8_Helper2, MaxTest9_Helper2>(source, selector);
+            MaxTest9_Helper2 actual = Enumerable.Max<MaxTest8_Helper2, MaxTest9_Helper2>(source, selector);
 
-            Assert.IsTrue(actual == default(MaxTest9_Helper2), "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.IsTrue(actual == default(MaxTest9_Helper2), "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         private void MaxTest8_4()
@@ -5753,14 +5753,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Sequence.Max<string, int>(source, selector);
+                Enumerable.Max<string, int>(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 4).");
         }
 
         private class MaxTest8_Helper
@@ -5802,19 +5802,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max((IEnumerable<string>)null);
+                Enumerable.Max((IEnumerable<string>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             string expected = source[3];
-            string actual = Sequence.Max(source);
+            string actual = Enumerable.Max(source);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest9_2()
@@ -5824,14 +5824,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Max(source);
+                string actual = Enumerable.Max(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest9_3()
@@ -5839,18 +5839,18 @@ namespace Test
             MaxTest9_Helper max = new MaxTest9_Helper(5);
             MaxTest9_Helper[] source = new MaxTest9_Helper[] { new MaxTest9_Helper(3), max, new MaxTest9_Helper(2) };
 
-            MaxTest9_Helper actual = Sequence.Max(source);
+            MaxTest9_Helper actual = Enumerable.Max(source);
 
-            Assert.IsTrue(object.ReferenceEquals(max, actual), "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.IsTrue(object.ReferenceEquals(max, actual), "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         private void MaxTest9_4()
         {
             MaxTest9_Helper2[] source = new MaxTest9_Helper2[] { new MaxTest9_Helper2(), new MaxTest9_Helper2() };
 
-            MaxTest9_Helper2 actual = Sequence.Max(source);
+            MaxTest9_Helper2 actual = Enumerable.Max(source);
 
-            Assert.IsTrue(actual == default(MaxTest9_Helper2), "Sequence.Max<T> did not return the expected value (test 4).");
+            Assert.IsTrue(actual == default(MaxTest9_Helper2), "Enumerable.Max<T> did not return the expected value (test 4).");
         }
 
         private class MaxTest9_Helper : IComparable
@@ -5901,7 +5901,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -5911,19 +5911,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, decimal?>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             decimal? expected = 56.78m;
-            decimal? actual = Sequence.Max(source, selector);
+            decimal? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest10_2()
@@ -5933,9 +5933,9 @@ namespace Test
             Func<MaxTest_Helper, decimal?> selector = delegate(MaxTest_Helper m) { return m.dN; }; /* m => m.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Max(source, selector);
+            decimal? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest10_3()
@@ -5949,9 +5949,9 @@ namespace Test
             Func<MaxTest_Helper, decimal?> selector = delegate(MaxTest_Helper m) { return m.dN; }; /* m => m.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Max(source, selector);
+            decimal? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -5978,7 +5978,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -5988,19 +5988,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, decimal>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             decimal expected = 56.78m;
-            decimal actual = Sequence.Max(source, selector);
+            decimal actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest11_2()
@@ -6012,14 +6012,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Max(source, selector);
+                decimal actual = Enumerable.Max(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6048,7 +6048,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6058,19 +6058,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, double?>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             double? expected = 56.78;
-            double? actual = Sequence.Max(source, selector);
+            double? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest12_2()
@@ -6080,9 +6080,9 @@ namespace Test
             Func<MaxTest_Helper, double?> selector = delegate(MaxTest_Helper m) { return m.DN; }; /* m => m.DN */
 
             double? expected = null;
-            double? actual = Sequence.Max(source, selector);
+            double? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest12_3()
@@ -6096,9 +6096,9 @@ namespace Test
             Func<MaxTest_Helper, double?> selector = delegate(MaxTest_Helper m) { return m.DN; }; /* m => m.DN */
 
             double? expected = null;
-            double? actual = Sequence.Max(source, selector);
+            double? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6125,7 +6125,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6135,19 +6135,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, double>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             double expected = 56.78;
-            double actual = Sequence.Max(source, selector);
+            double actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest13_2()
@@ -6159,14 +6159,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Max(source, selector);
+                double actual = Enumerable.Max(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6195,7 +6195,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6205,19 +6205,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, int?>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             int? expected = 56;
-            int? actual = Sequence.Max(source, selector);
+            int? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest14_2()
@@ -6227,9 +6227,9 @@ namespace Test
             Func<MaxTest_Helper, int?> selector = delegate(MaxTest_Helper m) { return m.IN; }; /* m => m.IN */
 
             int? expected = null;
-            int? actual = Sequence.Max(source, selector);
+            int? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest14_3()
@@ -6243,9 +6243,9 @@ namespace Test
             Func<MaxTest_Helper, int?> selector = delegate(MaxTest_Helper m) { return m.IN; }; /* m => m.IN */
 
             int? expected = null;
-            int? actual = Sequence.Max(source, selector);
+            int? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6272,7 +6272,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6282,19 +6282,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, int>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             int expected = 56;
-            int actual = Sequence.Max(source, selector);
+            int actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest15_2()
@@ -6306,14 +6306,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Max(source, selector);
+                int actual = Enumerable.Max(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6342,7 +6342,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6352,19 +6352,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, long?>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             long? expected = 5678;
-            long? actual = Sequence.Max(source, selector);
+            long? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest16_2()
@@ -6374,9 +6374,9 @@ namespace Test
             Func<MaxTest_Helper, long?> selector = delegate(MaxTest_Helper m) { return m.LN; }; /* m => m.LN */
 
             long? expected = null;
-            long? actual = Sequence.Max(source, selector);
+            long? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private void MaxTest16_3()
@@ -6390,9 +6390,9 @@ namespace Test
             Func<MaxTest_Helper, long?> selector = delegate(MaxTest_Helper m) { return m.LN; }; /* m => m.LN */
 
             long? expected = null;
-            long? actual = Sequence.Max(source, selector);
+            long? actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6419,7 +6419,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Max(null, selector);
+                Enumerable.Max(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6429,19 +6429,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Max(source, (Func<MaxTest_Helper, long>)null);
+                Enumerable.Max(source, (Func<MaxTest_Helper, long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Max<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Max<T> did not return the expected value (exceptions).");
 
             long expected = 5678;
-            long actual = Sequence.Max(source, selector);
+            long actual = Enumerable.Max(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Max<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Max<T> did not return the expected value (test 1).");
         }
 
         private void MaxTest17_2()
@@ -6453,14 +6453,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long actual = Sequence.Max(source, selector);
+                long actual = Enumerable.Max(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Max<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Max<T> did not return the expected value (test 2).");
         }
 
         private class MaxTest_Helper
@@ -6506,27 +6506,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<decimal?>)null);
+                Enumerable.Min((IEnumerable<decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
-            decimal? actual = Sequence.Min(source);
+            decimal? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest_2()
         {
             IEnumerable<decimal?> source = new decimal?[] { null, null, null };
 
-            decimal? actual = Sequence.Min(source);
+            decimal? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         private void MinTest_3()
@@ -6534,9 +6534,9 @@ namespace Test
             IEnumerable<decimal?> source = new decimal?[] { 30.5m, null, 18.2m, 22.9m, null, 46.3m, 38.0m };
 
             decimal? expected = 18.2m;
-            decimal? actual = Sequence.Min(source);
+            decimal? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Min did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Min did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6556,19 +6556,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<decimal>)null);
+                Enumerable.Min((IEnumerable<decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
             decimal expected = 18.2m;
-            decimal actual = Sequence.Min(source);
+            decimal actual = Enumerable.Min(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest1_2()
@@ -6578,14 +6578,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Min(source);
+                decimal actual = Enumerable.Min(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6606,27 +6606,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<double?>)null);
+                Enumerable.Min((IEnumerable<double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
-            double? actual = Sequence.Min(source);
+            double? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest2_2()
         {
             IEnumerable<double?> source = new double?[] { null, null, null };
 
-            double? actual = Sequence.Min(source);
+            double? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         private void MinTest2_3()
@@ -6634,9 +6634,9 @@ namespace Test
             IEnumerable<double?> source = new double?[] { 3.0, null, 1.0, 4.0, 12.0, null, 5.0, 8.0 };
 
             double? expected = 1.0;
-            double? actual = Sequence.Min(source);
+            double? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Min did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Min did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6656,19 +6656,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<double>)null);
+                Enumerable.Min((IEnumerable<double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
             double expected = 1.0;
-            double actual = Sequence.Min(source);
+            double actual = Enumerable.Min(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest3_2()
@@ -6678,14 +6678,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Min(source);
+                double actual = Enumerable.Min(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6706,27 +6706,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<int?>)null);
+                Enumerable.Min((IEnumerable<int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
-            int? actual = Sequence.Min(source);
+            int? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest4_2()
         {
             IEnumerable<int?> source = new int?[] { null, null, null };
 
-            int? actual = Sequence.Min(source);
+            int? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         private void MinTest4_3()
@@ -6734,9 +6734,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { 3, null, 8, 7, null, 2, 4 };
 
             int? expected = 2;
-            int? actual = Sequence.Min(source);
+            int? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Min did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Min did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6756,19 +6756,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<int>)null);
+                Enumerable.Min((IEnumerable<int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.Min(source);
+            int actual = Enumerable.Min(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest5_2()
@@ -6778,14 +6778,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Min(source);
+                int actual = Enumerable.Min(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6806,27 +6806,27 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<long?>)null);
+                Enumerable.Min((IEnumerable<long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
-            long? actual = Sequence.Min(source);
+            long? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 1).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest6_2()
         {
             IEnumerable<long?> source = new long?[] { null, null, null };
 
-            long? actual = Sequence.Min(source);
+            long? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == null, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(actual == null, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         private void MinTest6_3()
@@ -6834,9 +6834,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { 6789, null, 1234, 4567, null, 2345 };
 
             long? expected = 1234;
-            long? actual = Sequence.Min(source);
+            long? actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == expected, "Sequence.Min did not return the expected value (test 3).");
+            Assert.IsTrue(actual == expected, "Enumerable.Min did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -6856,19 +6856,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<long>)null);
+                Enumerable.Min((IEnumerable<long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min did not return the expected value (exceptions).");
 
             long expected = 1234;
-            long actual = Sequence.Min(source);
+            long actual = Enumerable.Min(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min did not return the expected value (test 1).");
         }
 
         private void MinTest7_2()
@@ -6878,14 +6878,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long actual = Sequence.Min(source);
+                long actual = Enumerable.Min(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -6909,7 +6909,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min<string, int>(null, selector);
+                Enumerable.Min<string, int>(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -6919,19 +6919,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min<string, int>(source, null);
+                Enumerable.Min<string, int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             int expected = 3;
-            int actual = Sequence.Min<string, int>(source, selector);
+            int actual = Enumerable.Min<string, int>(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest8_2()
@@ -6946,9 +6946,9 @@ namespace Test
 
             Func<MinTest8_Helper, MinTest9_Helper> selector = delegate(MinTest8_Helper h) { return h.H; }; /* h => h.H */
 
-            MinTest9_Helper actual = Sequence.Min<MinTest8_Helper, MinTest9_Helper>(source, selector);
+            MinTest9_Helper actual = Enumerable.Min<MinTest8_Helper, MinTest9_Helper>(source, selector);
 
-            Assert.IsTrue(object.ReferenceEquals(min, actual), "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(min, actual), "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest8_3()
@@ -6960,9 +6960,9 @@ namespace Test
 
             Func<MinTest8_Helper2, MinTest9_Helper2> selector = delegate(MinTest8_Helper2 h) { return h.H; }; /* h => h.H */
 
-            MinTest9_Helper2 actual = Sequence.Min<MinTest8_Helper2, MinTest9_Helper2>(source, selector);
+            MinTest9_Helper2 actual = Enumerable.Min<MinTest8_Helper2, MinTest9_Helper2>(source, selector);
 
-            Assert.IsTrue(actual == default(MinTest9_Helper2), "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.IsTrue(actual == default(MinTest9_Helper2), "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         private void MinTest8_4()
@@ -6974,14 +6974,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Sequence.Min<string, int>(source, selector);
+                Enumerable.Min<string, int>(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 4).");
         }
 
         private class MinTest8_Helper
@@ -7023,19 +7023,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min((IEnumerable<string>)null);
+                Enumerable.Min((IEnumerable<string>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             string expected = source[1];
-            string actual = Sequence.Min(source);
+            string actual = Enumerable.Min(source);
 
-            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(expected, actual), "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest9_2()
@@ -7045,14 +7045,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Min(source);
+                string actual = Enumerable.Min(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest9_3()
@@ -7060,18 +7060,18 @@ namespace Test
             MinTest9_Helper min = new MinTest9_Helper(1);
             MinTest9_Helper[] source = new MinTest9_Helper[] { new MinTest9_Helper(3), min, new MinTest9_Helper(2) };
 
-            MinTest9_Helper actual = Sequence.Min(source);
+            MinTest9_Helper actual = Enumerable.Min(source);
 
-            Assert.IsTrue(object.ReferenceEquals(min, actual), "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.IsTrue(object.ReferenceEquals(min, actual), "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         private void MinTest9_4()
         {
             MinTest9_Helper2[] source = new MinTest9_Helper2[] { new MinTest9_Helper2(), new MinTest9_Helper2() };
 
-            MinTest9_Helper2 actual = Sequence.Min(source);
+            MinTest9_Helper2 actual = Enumerable.Min(source);
 
-            Assert.IsTrue(actual == default(MinTest9_Helper2), "Sequence.Min<T> did not return the expected value (test 4).");
+            Assert.IsTrue(actual == default(MinTest9_Helper2), "Enumerable.Min<T> did not return the expected value (test 4).");
         }
 
         private class MinTest9_Helper : IComparable
@@ -7122,7 +7122,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7132,19 +7132,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, decimal?>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             decimal? expected = -45.67m;
-            decimal? actual = Sequence.Min(source, selector);
+            decimal? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest10_2()
@@ -7154,9 +7154,9 @@ namespace Test
             Func<MinTest_Helper, decimal?> selector = delegate(MinTest_Helper m) { return m.dN; }; /* m => m.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Min(source, selector);
+            decimal? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest10_3()
@@ -7170,9 +7170,9 @@ namespace Test
             Func<MinTest_Helper, decimal?> selector = delegate(MinTest_Helper m) { return m.dN; }; /* m => m.dN */
 
             decimal? expected = null;
-            decimal? actual = Sequence.Min(source, selector);
+            decimal? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -7199,7 +7199,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7209,19 +7209,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, decimal>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             decimal expected = -45.67m;
-            decimal actual = Sequence.Min(source, selector);
+            decimal actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest11_2()
@@ -7233,14 +7233,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Min(source, selector);
+                decimal actual = Enumerable.Min(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -7269,7 +7269,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7279,19 +7279,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, double?>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             double? expected = -45.67;
-            double? actual = Sequence.Min(source, selector);
+            double? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest12_2()
@@ -7301,9 +7301,9 @@ namespace Test
             Func<MinTest_Helper, double?> selector = delegate(MinTest_Helper m) { return m.DN; }; /* m => m.DN */
 
             double? expected = null;
-            double? actual = Sequence.Min(source, selector);
+            double? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest12_3()
@@ -7317,9 +7317,9 @@ namespace Test
             Func<MinTest_Helper, double?> selector = delegate(MinTest_Helper m) { return m.DN; }; /* m => m.DN */
 
             double? expected = null;
-            double? actual = Sequence.Min(source, selector);
+            double? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -7346,7 +7346,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7356,19 +7356,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, double>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             double expected = -45.67;
-            double actual = Sequence.Min(source, selector);
+            double actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest13_2()
@@ -7380,14 +7380,14 @@ namespace Test
             bool exception = false;
             try
             {
-                double actual = Sequence.Min(source, selector);
+                double actual = Enumerable.Min(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -7416,7 +7416,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7426,19 +7426,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, int?>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             int? expected = -45;
-            int? actual = Sequence.Min(source, selector);
+            int? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest14_2()
@@ -7448,9 +7448,9 @@ namespace Test
             Func<MinTest_Helper, int?> selector = delegate(MinTest_Helper m) { return m.IN; }; /* m => m.IN */
 
             int? expected = null;
-            int? actual = Sequence.Min(source, selector);
+            int? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest14_3()
@@ -7464,9 +7464,9 @@ namespace Test
             Func<MinTest_Helper, int?> selector = delegate(MinTest_Helper m) { return m.IN; }; /* m => m.IN */
 
             int? expected = null;
-            int? actual = Sequence.Min(source, selector);
+            int? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -7493,7 +7493,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7503,19 +7503,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, int>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             int expected = -45;
-            int actual = Sequence.Min(source, selector);
+            int actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest15_2()
@@ -7527,14 +7527,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Min(source, selector);
+                int actual = Enumerable.Min(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -7563,7 +7563,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7573,19 +7573,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, long?>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             long? expected = -4567;
-            long? actual = Sequence.Min(source, selector);
+            long? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest16_2()
@@ -7595,9 +7595,9 @@ namespace Test
             Func<MinTest_Helper, long?> selector = delegate(MinTest_Helper m) { return m.LN; }; /* m => m.LN */
 
             long? expected = null;
-            long? actual = Sequence.Min(source, selector);
+            long? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private void MinTest16_3()
@@ -7611,9 +7611,9 @@ namespace Test
             Func<MinTest_Helper, long?> selector = delegate(MinTest_Helper m) { return m.LN; }; /* m => m.LN */
 
             long? expected = null;
-            long? actual = Sequence.Min(source, selector);
+            long? actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -7640,7 +7640,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Min(null, selector);
+                Enumerable.Min(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -7650,19 +7650,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Min(source, (Func<MinTest_Helper, long>)null);
+                Enumerable.Min(source, (Func<MinTest_Helper, long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Min<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Min<T> did not return the expected value (exceptions).");
 
             long expected = -4567;
-            long actual = Sequence.Min(source, selector);
+            long actual = Enumerable.Min(source, selector);
 
-            Assert.AreEqual(expected, actual, "Sequence.Min<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Min<T> did not return the expected value (test 1).");
         }
 
         private void MinTest17_2()
@@ -7674,14 +7674,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long actual = Sequence.Min(source, selector);
+                long actual = Enumerable.Min(source, selector);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Min<T> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Min<T> did not return the expected value (test 2).");
         }
 
         private class MinTest_Helper
@@ -7723,7 +7723,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.OfType<int>((IEnumerable)null))
+                foreach (int i in Enumerable.OfType<int>((IEnumerable)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -7731,20 +7731,20 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.OfType<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.OfType<T> did not return the expected value (exceptions).");
 
             string[] expected = new string[] { s1, s2 };
-            IEnumerable<string> actual = Sequence.OfType<string>(source);
+            IEnumerable<string> actual = Enumerable.OfType<string>(source);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.OfType<T> did not return the expected value.");
+            Assert.IsTrue(n == 2, "Enumerable.OfType<T> did not return the expected value.");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Sequence.OfType<T> did not return the expected value.");
+                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Enumerable.OfType<T> did not return the expected value.");
         }
 
         #endregion
@@ -7768,7 +7768,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.OrderBy<OrderBy_Helper, int>(null, keySelector);
+                Enumerable.OrderBy<OrderBy_Helper, int>(null, keySelector);
             }
             catch (ArgumentNullException)
             {
@@ -7778,27 +7778,27 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.OrderBy<OrderBy_Helper, int>(source, null);
+                Enumerable.OrderBy<OrderBy_Helper, int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.OrderBy<T, K> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.OrderBy<T, K> did not return the expected value (exceptions).");
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o4, o3, o1, o2 };
-            OrderedSequence<OrderBy_Helper> actual = Sequence.OrderBy(source, keySelector);
+            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy(source, keySelector);
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.OrderBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 4, "Enumerable.OrderBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (OrderBy_Helper o in actual)
-                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Sequence.OrderBy<T, K> did not return the expected value.");
+                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Enumerable.OrderBy<T, K> did not return the expected value.");
         }
 
         /// <summary>
@@ -7816,17 +7816,17 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o4, o3, o1, o2 };
-            OrderedSequence<OrderBy_Helper> actual = Sequence.OrderBy<OrderBy_Helper, int>(source, keySelector, new OrderByComparer_Helper<int>());
+            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy<OrderBy_Helper, int>(source, keySelector, new OrderByComparer_Helper<int>());
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.OrderBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 4, "Enumerable.OrderBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (OrderBy_Helper o in actual)
-                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Sequence.OrderBy<T, K> did not return the expected value.");
+                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Enumerable.OrderBy<T, K> did not return the expected value.");
         }
 
         /// <summary>
@@ -7844,17 +7844,17 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o2, o1, o3, o4 };
-            OrderedSequence<OrderBy_Helper> actual = Sequence.OrderByDescending(source, keySelector);
+            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector);
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.OrderBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 4, "Enumerable.OrderBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (OrderBy_Helper o in actual)
-                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Sequence.OrderBy<T, K> did not return the expected value.");
+                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Enumerable.OrderBy<T, K> did not return the expected value.");
         }
 
         /// <summary>
@@ -7872,17 +7872,17 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o2, o1, o3, o4 };
-            OrderedSequence<OrderBy_Helper> actual = Sequence.OrderByDescending(source, keySelector, new OrderByComparer_Helper<int>());
+            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector, new OrderByComparer_Helper<int>());
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.OrderBy<T, K> did not return the expected value.");
+            Assert.IsTrue(n == 4, "Enumerable.OrderBy<T, K> did not return the expected value.");
 
             int j = 0;
             foreach (OrderBy_Helper o in actual)
-                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Sequence.OrderBy<T, K> did not return the expected value.");
+                Assert.IsTrue(object.ReferenceEquals(o, expected[j++]), "Enumerable.OrderBy<T, K> did not return the expected value.");
         }
 
         private class OrderBy_Helper
@@ -7951,13 +7951,13 @@ namespace Test
             int start = 1234;
             int count = 5;
 
-            IEnumerable<int> actual = Sequence.Range(start, count);
+            IEnumerable<int> actual = Enumerable.Range(start, count);
 
             int n = 0;
             foreach (int i in actual)
-                Assert.AreEqual(i, start + n++, "Sequence.Range did not return the expected value (test 1).");
+                Assert.AreEqual(i, start + n++, "Enumerable.Range did not return the expected value (test 1).");
 
-            Assert.IsTrue(n == count, "Sequence.Range did not return the expected value (test 1).");
+            Assert.IsTrue(n == count, "Enumerable.Range did not return the expected value (test 1).");
         }
 
         private void RangeTest_2()
@@ -7968,7 +7968,7 @@ namespace Test
             bool exception = false;
             try
             {
-                IEnumerable<int> actual = Sequence.Range(start, count);
+                IEnumerable<int> actual = Enumerable.Range(start, count);
                 foreach (int i in actual)
                     ;
             }
@@ -7977,7 +7977,7 @@ namespace Test
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Range did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Range did not return the expected value (test 2).");
         }
 
         private void RangeTest_3()
@@ -7985,13 +7985,13 @@ namespace Test
             int start = 1234;
             int count = 0;
 
-            IEnumerable<int> actual = Sequence.Range(start, count);
+            IEnumerable<int> actual = Enumerable.Range(start, count);
 
             int n = 0;
             foreach (int i in actual)
-                Assert.AreEqual(i, start + n++, "Sequence.Range did not return the expected value (test 3).");
+                Assert.AreEqual(i, start + n++, "Enumerable.Range did not return the expected value (test 3).");
 
-            Assert.IsTrue(n == count, "Sequence.Range did not return the expected value (test 3).");
+            Assert.IsTrue(n == count, "Enumerable.Range did not return the expected value (test 3).");
         }
 
         private void RangeTest_4()
@@ -8002,7 +8002,7 @@ namespace Test
             bool exception = false;
             try
             {
-                IEnumerable<int> actual = Sequence.Range(start, count);
+                IEnumerable<int> actual = Enumerable.Range(start, count);
                 foreach (int i in actual)
                     ;
             }
@@ -8011,7 +8011,7 @@ namespace Test
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Range did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Range did not return the expected value (test 4).");
         }
 
         #endregion
@@ -8035,16 +8035,16 @@ namespace Test
             int element = 1234;
             int count = 10;
 
-            IEnumerable<int> actual = Sequence.Repeat(element, count);
+            IEnumerable<int> actual = Enumerable.Repeat(element, count);
 
             int j = 0;
             foreach (int i in actual)
             {
-                Assert.AreEqual(i, element, "Sequence.Repeat<T> did not return the expected value (test 1).");
+                Assert.AreEqual(i, element, "Enumerable.Repeat<T> did not return the expected value (test 1).");
                 j++;
             }
 
-            Assert.AreEqual(j, count, "Sequence.Repeat<T> did not return the expected value (test 1).");
+            Assert.AreEqual(j, count, "Enumerable.Repeat<T> did not return the expected value (test 1).");
         }
 
         private void RepeatTest_2()
@@ -8052,16 +8052,16 @@ namespace Test
             string element = "Bart";
             int count = 10;
 
-            IEnumerable<string> actual = Sequence.Repeat(element, count);
+            IEnumerable<string> actual = Enumerable.Repeat(element, count);
 
             int j = 0;
             foreach (string s in actual)
             {
-                Assert.IsTrue(object.ReferenceEquals(s, element), "Sequence.Repeat<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(s, element), "Enumerable.Repeat<T> did not return the expected value (test 2).");
                 j++;
             }
 
-            Assert.AreEqual(j, count, "Sequence.Repeat<T> did not return the expected value (test 2).");
+            Assert.AreEqual(j, count, "Enumerable.Repeat<T> did not return the expected value (test 2).");
         }
 
         private void RepeatTest_3()
@@ -8072,7 +8072,7 @@ namespace Test
             bool exception = false;
             try
             {
-                IEnumerable<int> actual = Sequence.Repeat(element, count);
+                IEnumerable<int> actual = Enumerable.Repeat(element, count);
                 foreach (int i in actual)
                     ;
             }
@@ -8081,7 +8081,7 @@ namespace Test
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Repeat<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Repeat<T> did not return the expected value (test 3).");
         }
 
         private void RepeatTest_4()
@@ -8089,13 +8089,13 @@ namespace Test
             DateTime element = DateTime.Now;
             int count = 0;
 
-            IEnumerable<DateTime> actual = Sequence.Repeat(element, count);
+            IEnumerable<DateTime> actual = Enumerable.Repeat(element, count);
 
             int j = 0;
             foreach (DateTime i in actual)
                 j++;
 
-            Assert.AreEqual(j, count, "Sequence.Repeat<T> did not return the expected value (test 4).");
+            Assert.AreEqual(j, count, "Enumerable.Repeat<T> did not return the expected value (test 4).");
         }
 
         #endregion
@@ -8121,7 +8121,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Reverse((IEnumerable<int>)null))
+                foreach (int i in Enumerable.Reverse((IEnumerable<int>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -8129,20 +8129,20 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Reverse<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Reverse<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Reverse(source);
+            IEnumerable<int> actual = Enumerable.Reverse(source);
 
             int n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.AreEqual(n, src.Length, "Sequence.Reverse<T> did not return the expected value (test 1).");
+            Assert.AreEqual(n, src.Length, "Enumerable.Reverse<T> did not return the expected value (test 1).");
 
             int j = src.Length - 1;
 
             foreach (int i in actual)
-                Assert.AreEqual(i, src[j--], "Sequence.Reverse<T> did not return the expected value (test 1).");
+                Assert.AreEqual(i, src[j--], "Enumerable.Reverse<T> did not return the expected value (test 1).");
         }
 
         private void ReverseTest_2()
@@ -8150,27 +8150,27 @@ namespace Test
             string[] src = new string[] { "Bart", "Bill", "John", "Steve" };
             IEnumerable<string> source = src;
 
-            IEnumerable<string> actual = Sequence.Reverse(source);
+            IEnumerable<string> actual = Enumerable.Reverse(source);
 
             int n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.AreEqual(n, src.Length, "Sequence.Reverse<T> did not return the expected value (test 2).");
+            Assert.AreEqual(n, src.Length, "Enumerable.Reverse<T> did not return the expected value (test 2).");
 
             int j = src.Length - 1;
 
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, src[j--]), "Sequence.Reverse<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(s, src[j--]), "Enumerable.Reverse<T> did not return the expected value (test 2).");
         }
 
         private void ReverseTest_3()
         {
             IEnumerable<DateTime> source = new DateTime[] { };
 
-            IEnumerable<DateTime> actual = Sequence.Reverse(source);
+            IEnumerable<DateTime> actual = Enumerable.Reverse(source);
 
-            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Sequence.Reverse<T> did not return the expected value (test 3).");
+            Assert.IsTrue(!actual.GetEnumerator().MoveNext(), "Enumerable.Reverse<T> did not return the expected value (test 3).");
         }
 
         #endregion
@@ -8204,7 +8204,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Select(null, selector))
+                foreach (int i in Enumerable.Select(null, selector))
                     ;
             }
             catch (ArgumentNullException)
@@ -8215,7 +8215,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Select(source, (Func<SelectTest_Helper, int, int>)null))
+                foreach (int i in Enumerable.Select(source, (Func<SelectTest_Helper, int, int>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -8223,20 +8223,20 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Select<T, S> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Select<T, S> did not return the expected value (exceptions).");
 
             int[] expected = new int[] { 0, 1955, 1948 * 2 };
-            IEnumerable<int> actual = Sequence.Select(source, selector);
+            IEnumerable<int> actual = Enumerable.Select(source, selector);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Select<T, S> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 3, "Enumerable.Select<T, S> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.AreEqual(i, expected[j++], "Sequence.Select<T, S> did not return the expected value (test 1).");
+                Assert.AreEqual(i, expected[j++], "Enumerable.Select<T, S> did not return the expected value (test 1).");
         }
 
         private void SelectTest_2()
@@ -8254,17 +8254,17 @@ namespace Test
             Func<SelectTest_Helper, int, string> selector = delegate(SelectTest_Helper h, int i) { return h.S.PadRight(h.S.Length + i, '*'); }; /* ( h, i) => h.S.PadRight(h.S.Length + i, '*') */
 
             string[] expected = new string[] { "Bart", "Bill*", "John**" };
-            IEnumerable<string> actual = Sequence.Select(source, selector);
+            IEnumerable<string> actual = Enumerable.Select(source, selector);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Select<T, S> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 3, "Enumerable.Select<T, S> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(s.Equals(expected[j++]), "Sequence.Select<T, S> did not return the expected value (test 2).");
+                Assert.IsTrue(s.Equals(expected[j++]), "Enumerable.Select<T, S> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -8294,7 +8294,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Select(null, selector))
+                foreach (int i in Enumerable.Select(null, selector))
                     ;
             }
             catch (ArgumentNullException)
@@ -8305,7 +8305,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Select(source, (Func<SelectTest_Helper, int>)null))
+                foreach (int i in Enumerable.Select(source, (Func<SelectTest_Helper, int>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -8313,20 +8313,20 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Select<T, S> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Select<T, S> did not return the expected value (exceptions).");
 
             int[] expected = new int[] { 1983, 1955, 1948 };
-            IEnumerable<int> actual = Sequence.Select(source, selector);
+            IEnumerable<int> actual = Enumerable.Select(source, selector);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Select<T, S> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 3, "Enumerable.Select<T, S> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.AreEqual(i, expected[j++], "Sequence.Select<T, S> did not return the expected value (test 1).");
+                Assert.AreEqual(i, expected[j++], "Enumerable.Select<T, S> did not return the expected value (test 1).");
         }
 
         private void SelectTest1_2()
@@ -8344,17 +8344,17 @@ namespace Test
             Func<SelectTest_Helper, string> selector = delegate(SelectTest_Helper h) { return h.S; }; /* h => h.S */
 
             string[] expected = new string[] { s1, s2, s3 };
-            IEnumerable<string> actual = Sequence.Select(source, selector);
+            IEnumerable<string> actual = Enumerable.Select(source, selector);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Select<T, S> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 3, "Enumerable.Select<T, S> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Sequence.Select<T, S> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Enumerable.Select<T, S> did not return the expected value (test 2).");
         }
 
         private class SelectTest_Helper
@@ -8392,7 +8392,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.SelectMany(null, selector))
+                foreach (int i in Enumerable.SelectMany(null, selector))
                     ;
             }
             catch (ArgumentNullException)
@@ -8403,7 +8403,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.SelectMany(source, (Func<SelectMany_Helper, IEnumerable<int>>)null))
+                foreach (int i in Enumerable.SelectMany(source, (Func<SelectMany_Helper, IEnumerable<int>>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -8411,20 +8411,20 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.SelectMany<T, S> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SelectMany<T, S> did not return the expected value (exceptions).");
 
             int[] expected = new int[] { 1, 2, 3, 4, 5 };
-            IEnumerable<int> actual = Sequence.SelectMany(source, selector);
+            IEnumerable<int> actual = Enumerable.SelectMany(source, selector);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.SelectMany<T, S> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 5, "Enumerable.SelectMany<T, S> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(expected[j++] == i, "Sequence.SelectMany<T, S> did not return the expected value (test 1).");
+                Assert.IsTrue(expected[j++] == i, "Enumerable.SelectMany<T, S> did not return the expected value (test 1).");
         }
 
         private void SelectManyTest_2()
@@ -8444,17 +8444,17 @@ namespace Test
             Func<SelectMany_Helper, IEnumerable<string>> selector = delegate(SelectMany_Helper h) { return h.S; }; /* h => h.S */
 
             string[] expected = new string[] { a, b, c, d, e };
-            IEnumerable<string> actual = Sequence.SelectMany(source, selector);
+            IEnumerable<string> actual = Enumerable.SelectMany(source, selector);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.SelectMany<T, S> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 5, "Enumerable.SelectMany<T, S> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(expected[j++], s), "Sequence.SelectMany<T, S> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(expected[j++], s), "Enumerable.SelectMany<T, S> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -8480,7 +8480,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.SelectMany(null, selector))
+                foreach (int i in Enumerable.SelectMany(null, selector))
                     ;
             }
             catch (ArgumentNullException)
@@ -8491,7 +8491,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.SelectMany(source, (Func<SelectMany_Helper, int, IEnumerable<int>>)null))
+                foreach (int i in Enumerable.SelectMany(source, (Func<SelectMany_Helper, int, IEnumerable<int>>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -8499,20 +8499,20 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.SelectMany<T, S> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SelectMany<T, S> did not return the expected value (exceptions).");
 
             int[] expected = new int[] { 1, 2, 3, 4, 5, 3, 4, 5 };
-            IEnumerable<int> actual = Sequence.SelectMany(source, selector);
+            IEnumerable<int> actual = Enumerable.SelectMany(source, selector);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 8, "Sequence.SelectMany<T, S> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 8, "Enumerable.SelectMany<T, S> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(expected[j++] == i, "Sequence.SelectMany<T, S> did not return the expected value (test 1).");
+                Assert.IsTrue(expected[j++] == i, "Enumerable.SelectMany<T, S> did not return the expected value (test 1).");
         }
 
         private void SelectManyTest1_2()
@@ -8532,17 +8532,17 @@ namespace Test
             Func<SelectMany_Helper, int, IEnumerable<string>> selector = delegate(SelectMany_Helper h, int i) { string[] res = new string[h.S.Length * i]; for (int k = 0; k < i; k++) Array.Copy(h.S, 0, res, k * h.S.Length, h.S.Length); return res; };
 
             string[] expected = new string[] { b, c, d, e, d, e };
-            IEnumerable<string> actual = Sequence.SelectMany(source, selector);
+            IEnumerable<string> actual = Enumerable.SelectMany(source, selector);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 6, "Sequence.SelectMany<T, S> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 6, "Enumerable.SelectMany<T, S> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(expected[j++], s), "Sequence.SelectMany<T, S> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(expected[j++], s), "Enumerable.SelectMany<T, S> did not return the expected value (test 2).");
         }
 
         private class SelectMany_Helper
@@ -8578,19 +8578,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Single<int>(null);
+                Enumerable.Single<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Single<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Single<T> did not return the expected value (exceptions).");
 
             int expected = 1;
-            int actual = Sequence.Single(source);
+            int actual = Enumerable.Single(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Single<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Single<T> did not return the expected value (test 1).");
         }
 
         private void SingleTest_2()
@@ -8599,9 +8599,9 @@ namespace Test
             IEnumerable<string> source = new string[] { s };
 
             string expected = s;
-            string actual = Sequence.Single(source);
+            string actual = Enumerable.Single(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.Single<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.Single<T> did not return the expected value (test 2).");
         }
 
         private void SingleTest_3()
@@ -8611,14 +8611,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Single(source);
+                int actual = Enumerable.Single(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 3).");
         }
 
         private void SingleTest_4()
@@ -8628,14 +8628,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Single(source);
+                string actual = Enumerable.Single(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 4).");
         }
 
         private void SingleTest_5()
@@ -8645,14 +8645,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Single(source);
+                int actual = Enumerable.Single(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 5).");
         }
 
         private void SingleTest_6()
@@ -8662,14 +8662,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Single(source);
+                string actual = Enumerable.Single(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 6).");
         }
 
         /// <summary>
@@ -8696,7 +8696,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Single<int>(null, predicate);
+                Enumerable.Single<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -8706,19 +8706,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Single<int>(source, null);
+                Enumerable.Single<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Single<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Single<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.Single(source, predicate);
+            int actual = Enumerable.Single(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.Single<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Single<T> did not return the expected value (test 1).");
         }
 
         private void SingleTest1_2()
@@ -8728,9 +8728,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.Single(source, predicate);
+            string actual = Enumerable.Single(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.Single<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.Single<T> did not return the expected value (test 2).");
         }
 
         private void SingleTest1_3()
@@ -8741,14 +8741,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Single(source, predicate);
+                int actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 3).");
         }
 
         private void SingleTest1_4()
@@ -8759,14 +8759,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Single(source, predicate);
+                string actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 4).");
         }
 
         private void SingleTest1_5()
@@ -8777,14 +8777,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Single(source, predicate);
+                int actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 5).");
         }
 
         private void SingleTest1_6()
@@ -8795,14 +8795,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Single(source, predicate);
+                string actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 6).");
         }
 
         private void SingleTest1_7()
@@ -8813,14 +8813,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Single(source, predicate);
+                int actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 7).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 7).");
         }
 
         private void SingleTest1_8()
@@ -8831,14 +8831,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.Single(source, predicate);
+                string actual = Enumerable.Single(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Single<T> did not return the expected value (test 8).");
+            Assert.IsTrue(exception, "Enumerable.Single<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -8866,19 +8866,19 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.SingleOrDefault<int>(null);
+                Enumerable.SingleOrDefault<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.SingleOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.SingleOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 1;
-            int actual = Sequence.SingleOrDefault(source);
+            int actual = Enumerable.SingleOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.SingleOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.SingleOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void SingleOrDefaultTest_2()
@@ -8887,9 +8887,9 @@ namespace Test
             IEnumerable<string> source = new string[] { s };
 
             string expected = s;
-            string actual = Sequence.SingleOrDefault(source);
+            string actual = Enumerable.SingleOrDefault(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.SingleOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.SingleOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void SingleOrDefaultTest_3()
@@ -8897,9 +8897,9 @@ namespace Test
             IEnumerable<int> source = new int[] { };
 
             int expected = default(int);
-            int actual = Sequence.SingleOrDefault(source);
+            int actual = Enumerable.SingleOrDefault(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.SingleOrDefault<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.SingleOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void SingleOrDefaultTest_4()
@@ -8907,9 +8907,9 @@ namespace Test
             IEnumerable<string> source = new string[] { };
 
             string expected = default(string);
-            string actual = Sequence.SingleOrDefault(source);
+            string actual = Enumerable.SingleOrDefault(source);
 
-            Assert.IsTrue(object.Equals(actual, expected), "Sequence.SingleOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(actual, expected), "Enumerable.SingleOrDefault<T> did not return the expected value (test 4).");
         }
 
         private void SingleOrDefaultTest_5()
@@ -8919,14 +8919,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.SingleOrDefault(source);
+                int actual = Enumerable.SingleOrDefault(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.SingleOrDefault<T> did not return the expected value (test 5).");
+            Assert.IsTrue(exception, "Enumerable.SingleOrDefault<T> did not return the expected value (test 5).");
         }
 
         private void SingleOrDefaultTest_6()
@@ -8936,14 +8936,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.SingleOrDefault(source);
+                string actual = Enumerable.SingleOrDefault(source);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.SingleOrDefault<T> did not return the expected value (test 6).");
+            Assert.IsTrue(exception, "Enumerable.SingleOrDefault<T> did not return the expected value (test 6).");
         }
 
         /// <summary>
@@ -8970,7 +8970,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.SingleOrDefault<int>(null, predicate);
+                Enumerable.SingleOrDefault<int>(null, predicate);
             }
             catch (ArgumentNullException)
             {
@@ -8980,19 +8980,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.SingleOrDefault<int>(source, null);
+                Enumerable.SingleOrDefault<int>(source, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.SingleOrDefault<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SingleOrDefault<T> did not return the expected value (exceptions).");
 
             int expected = 2;
-            int actual = Sequence.SingleOrDefault(source, predicate);
+            int actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.AreEqual(expected, actual, "Sequence.SingleOrDefault<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.SingleOrDefault<T> did not return the expected value (test 1).");
         }
 
         private void SingleOrDefaultTest1_2()
@@ -9002,9 +9002,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string ss) { return ss.StartsWith("B"); }; /* ss => ss.StartsWith("B") */
 
             string expected = s;
-            string actual = Sequence.SingleOrDefault(source, predicate);
+            string actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Sequence.SingleOrDefault<T> did not return the expected value (test 2).");
+            Assert.IsTrue(object.ReferenceEquals(actual, expected), "Enumerable.SingleOrDefault<T> did not return the expected value (test 2).");
         }
 
         private void SingleOrDefaultTest1_3()
@@ -9013,9 +9013,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.SingleOrDefault(source, predicate);
+            int actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.SingleOrDefault<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.SingleOrDefault<T> did not return the expected value (test 3).");
         }
 
         private void SingleOrDefaultTest1_4()
@@ -9024,9 +9024,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.SingleOrDefault(source, predicate);
+            string actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.SingleOrDefault<T> did not return the expected value (test 4).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.SingleOrDefault<T> did not return the expected value (test 4).");
         }
 
         private void SingleOrDefaultTest1_5()
@@ -9035,9 +9035,9 @@ namespace Test
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
             int expected = default(int);
-            int actual = Sequence.SingleOrDefault(source, predicate);
+            int actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.IsTrue(expected == actual, "Sequence.SingleOrDefault<T> did not return the expected value (test 5).");
+            Assert.IsTrue(expected == actual, "Enumerable.SingleOrDefault<T> did not return the expected value (test 5).");
         }
 
         private void SingleOrDefaultTest1_6()
@@ -9046,9 +9046,9 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.StartsWith("B"); }; /* s => s.StartsWith("B") */
 
             string expected = default(string);
-            string actual = Sequence.SingleOrDefault(source, predicate);
+            string actual = Enumerable.SingleOrDefault(source, predicate);
 
-            Assert.IsTrue(object.Equals(expected, actual), "Sequence.SingleOrDefault<T> did not return the expected value (test 6).");
+            Assert.IsTrue(object.Equals(expected, actual), "Enumerable.SingleOrDefault<T> did not return the expected value (test 6).");
         }
 
         private void SingleOrDefaultTest1_7()
@@ -9059,14 +9059,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.SingleOrDefault(source, predicate);
+                int actual = Enumerable.SingleOrDefault(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.SingleOrDefault<T> did not return the expected value (test 7).");
+            Assert.IsTrue(exception, "Enumerable.SingleOrDefault<T> did not return the expected value (test 7).");
         }
 
         private void SingleOrDefaultTest1_8()
@@ -9077,14 +9077,14 @@ namespace Test
             bool exception = false;
             try
             {
-                string actual = Sequence.SingleOrDefault(source, predicate);
+                string actual = Enumerable.SingleOrDefault(source, predicate);
             }
             catch (InvalidOperationException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.SingleOrDefault<T> did not return the expected value (test 8).");
+            Assert.IsTrue(exception, "Enumerable.SingleOrDefault<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -9114,7 +9114,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Skip((IEnumerable<int>)null, count))
+                foreach (int i in Enumerable.Skip((IEnumerable<int>)null, count))
                     ;
             }
             catch (ArgumentNullException)
@@ -9122,19 +9122,19 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Skip<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Skip<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Skip(source, count);
+            IEnumerable<int> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.Skip<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 2, "Enumerable.Skip<T> did not return the expected value (test 1).");
 
             int j = 2;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Skip<T> did not return the expected value (test 1).");
+                Assert.IsTrue(j-- == i, "Enumerable.Skip<T> did not return the expected value (test 1).");
         }
 
         private void SkipTest_2()
@@ -9143,17 +9143,17 @@ namespace Test
 
             int count = -1;
 
-            IEnumerable<int> actual = Sequence.Skip(source, count);
+            IEnumerable<int> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Skip<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 5, "Enumerable.Skip<T> did not return the expected value (test 2).");
 
             int j = 5;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Skip<T> did not return the expected value (test 2).");
+                Assert.IsTrue(j-- == i, "Enumerable.Skip<T> did not return the expected value (test 2).");
         }
 
         private void SkipTest_3()
@@ -9162,17 +9162,17 @@ namespace Test
 
             int count = 0;
 
-            IEnumerable<int> actual = Sequence.Skip(source, count);
+            IEnumerable<int> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Skip<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 5, "Enumerable.Skip<T> did not return the expected value (test 3).");
 
             int j = 5;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Skip<T> did not return the expected value (test 3).");
+                Assert.IsTrue(j-- == i, "Enumerable.Skip<T> did not return the expected value (test 3).");
         }
 
         private void SkipTest_4()
@@ -9181,13 +9181,13 @@ namespace Test
 
             int count = 6;
 
-            IEnumerable<int> actual = Sequence.Skip(source, count);
+            IEnumerable<int> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Skip<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Skip<T> did not return the expected value (test 4).");
         }
 
         private void SkipTest_5()
@@ -9196,13 +9196,13 @@ namespace Test
 
             int count = 5;
 
-            IEnumerable<int> actual = Sequence.Skip(source, count);
+            IEnumerable<int> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Skip<T> did not return the expected value (test 5).");
+            Assert.IsTrue(n == 0, "Enumerable.Skip<T> did not return the expected value (test 5).");
         }
 
         private void SkipTest_6()
@@ -9214,18 +9214,18 @@ namespace Test
 
             int count = 2;
 
-            IEnumerable<string> actual = Sequence.Skip(source, count);
+            IEnumerable<string> actual = Enumerable.Skip(source, count);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 1, "Sequence.Skip<T> did not return the expected value (test 6).");
+            Assert.IsTrue(n == 1, "Enumerable.Skip<T> did not return the expected value (test 6).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             enumerator.MoveNext();
 
-            Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s3), "Sequence.Skip<T> did not return the expected value (test 6).");
+            Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s3), "Enumerable.Skip<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -9253,7 +9253,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.SkipWhile((IEnumerable<int>)null, predicate))
+                foreach (int i in Enumerable.SkipWhile((IEnumerable<int>)null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -9264,7 +9264,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.SkipWhile(source, (Func<int, bool>)null))
+                foreach (int i in Enumerable.SkipWhile(source, (Func<int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -9272,19 +9272,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.SkipWhile<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SkipWhile<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.SkipWhile<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 3, "Enumerable.SkipWhile<T> did not return the expected value (test 1).");
 
             int j = 3;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.SkipWhile<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == source[j++], "Enumerable.SkipWhile<T> did not return the expected value (test 1).");
         }
 
         private void SkipWhileTest_2()
@@ -9292,17 +9292,17 @@ namespace Test
             int[] source = new int[] { 1, 2, 4, 8, 3, 7, 6 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 7, "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 7, "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == source[j++], "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
         }
 
         private void SkipWhileTest_3()
@@ -9310,13 +9310,13 @@ namespace Test
             int[] source = new int[] { 2, 4, 8, 6 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.SkipWhile<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.SkipWhile<T> did not return the expected value (test 3).");
         }
 
         private void SkipWhileTest_4()
@@ -9324,13 +9324,13 @@ namespace Test
             int[] source = new int[] { };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.SkipWhile<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.SkipWhile<T> did not return the expected value (test 4).");
         }
 
         private void SkipWhileTest_5()
@@ -9340,17 +9340,17 @@ namespace Test
             string[] source = new string[] { "Bart", "Bill", s1, s2 };
             Func<string, bool> predicate = delegate(string s) { return s.Length == 4; }; /* s => s.Length == 4; */
 
-            IEnumerable<string> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<string> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 2, "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
 
             int j = 2;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Sequence.SkipWhile<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Enumerable.SkipWhile<T> did not return the expected value (test 5).");
         }
 
         /// <summary>
@@ -9374,7 +9374,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.SkipWhile((IEnumerable<int>)null, predicate))
+                foreach (int i in Enumerable.SkipWhile((IEnumerable<int>)null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -9385,7 +9385,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.SkipWhile(source, (Func<int, int, bool>)null))
+                foreach (int i in Enumerable.SkipWhile(source, (Func<int, int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -9393,19 +9393,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.SkipWhile<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SkipWhile<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.SkipWhile<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 4, "Enumerable.SkipWhile<T> did not return the expected value (test 1).");
 
             int j = 2;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.SkipWhile<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == source[j++], "Enumerable.SkipWhile<T> did not return the expected value (test 1).");
         }
 
         private void SkipWhileTest1_2()
@@ -9413,17 +9413,17 @@ namespace Test
             int[] source = new int[] { 1, 2, 4, 8, 3, 7, 6 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k < 0; }; /* ( i, k) => k < 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 7, "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 7, "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == source[j++], "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
         }
 
         private void SkipWhileTest1_3()
@@ -9431,13 +9431,13 @@ namespace Test
             int[] source = new int[] { 2, 4, 8, 6 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k >= 0; }; /* ( i, k) => k >= 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.SkipWhile<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.SkipWhile<T> did not return the expected value (test 3).");
         }
 
         private void SkipWhileTest1_4()
@@ -9445,13 +9445,13 @@ namespace Test
             int[] source = new int[] { };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k < 0; }; /* ( i, k) => k < 0 */
 
-            IEnumerable<int> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.SkipWhile<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.SkipWhile<T> did not return the expected value (test 4).");
         }
 
         private void SkipWhileTest1_5()
@@ -9461,17 +9461,17 @@ namespace Test
             string[] source = new string[] { "Bart", "Bill", s1, s2 };
             Func<string, int, bool> predicate = delegate(string s, int k) { return k < 1 && s.Length == 4; }; /* ( s, k) => k < 1 && s.Length == 4 */
 
-            IEnumerable<string> actual = Sequence.SkipWhile(source, predicate);
+            IEnumerable<string> actual = Enumerable.SkipWhile(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.SkipWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 3, "Enumerable.SkipWhile<T> did not return the expected value (test 2).");
 
             int j = 1;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Sequence.SkipWhile<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Enumerable.SkipWhile<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -9496,22 +9496,22 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<decimal>)null);
+                Enumerable.Sum((IEnumerable<decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             decimal expected = 0.0m;
             foreach (decimal d in source)
                 expected += d;
 
-            decimal actual = Sequence.Sum(source);
+            decimal actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest_2()
@@ -9521,14 +9521,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Sum(source);
+                decimal actual = Enumerable.Sum(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest_3()
@@ -9537,9 +9537,9 @@ namespace Test
 
             decimal expected = 0.0m;
 
-            decimal actual = Sequence.Sum(source);
+            decimal actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -9561,23 +9561,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<decimal?>)null);
+                Enumerable.Sum((IEnumerable<decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             decimal expected = 0.0m;
             foreach (decimal? d in source)
                 if (d != null)
                     expected += d.Value;
 
-            decimal? actual = Sequence.Sum(source);
+            decimal? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest1_2()
@@ -9587,36 +9587,36 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal? actual = Sequence.Sum(source);
+                decimal? actual = Enumerable.Sum(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest1_3()
         {
             IEnumerable<decimal?> source = new decimal?[] { };
 
-            decimal? actual = Sequence.Sum(source);
+            decimal? actual = Enumerable.Sum(source);
 
             decimal? expected = 0.0m;
 
-            Assert.AreEqual(actual, expected, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(actual, expected, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         private void SumTest1_4()
         {
             IEnumerable<decimal?> source = new decimal?[] { null, null, null };
 
-            decimal? actual = Sequence.Sum(source);
+            decimal? actual = Enumerable.Sum(source);
 
             decimal? expected = 0.0m;
 
-            Assert.AreEqual(actual, expected, "Sequence.Sum did not return the expected value (test 4).");
+            Assert.AreEqual(actual, expected, "Enumerable.Sum did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -9638,23 +9638,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<double?>)null);
+                Enumerable.Sum((IEnumerable<double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             double? expected = 0.0;
             foreach (double? d in source)
                 if (d != null)
                     expected += d.Value;
 
-            double? actual = Sequence.Sum(source);
+            double? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest2_2()
@@ -9662,9 +9662,9 @@ namespace Test
             IEnumerable<double?> source = new double?[] { };
 
             double? expected = 0;
-            double? actual = Sequence.Sum(source);
+            double? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest2_3()
@@ -9672,18 +9672,18 @@ namespace Test
             IEnumerable<double?> source = new double?[] { null, null, null };
 
             double? expected = 0;
-            double? actual = Sequence.Sum(source);
+            double? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         private void SumTest2_4()
         {
             IEnumerable<double?> source = new double?[] { double.MaxValue, double.MaxValue, null, null };
 
-            double? actual = Sequence.Sum(source);
+            double? actual = Enumerable.Sum(source);
 
-            Assert.IsTrue(double.IsInfinity(actual.Value), "Sequence.Sum did not return the expected value (test 4).");
+            Assert.IsTrue(double.IsInfinity(actual.Value), "Enumerable.Sum did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -9704,22 +9704,22 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<double>)null);
+                Enumerable.Sum((IEnumerable<double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             double expected = 0.0;
             foreach (double d in source)
                 expected += d;
 
-            double actual = Sequence.Sum(source);
+            double actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest3_2()
@@ -9728,18 +9728,18 @@ namespace Test
 
             double expected = 0.0;
 
-            double actual = Sequence.Sum(source);
+            double actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest3_3()
         {
             IEnumerable<double> source = new double[] { double.MaxValue, double.MaxValue };
 
-            double actual = Sequence.Sum(source);
+            double actual = Enumerable.Sum(source);
 
-            Assert.IsTrue(double.IsInfinity(actual), "Sequence.Sum did not return the expected value (test 3).");
+            Assert.IsTrue(double.IsInfinity(actual), "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -9760,23 +9760,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<int?>)null);
+                Enumerable.Sum((IEnumerable<int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             int? expected = 0;
             foreach (int? i in source)
                 if (i != null)
                     expected += i.Value;
 
-            int? actual = Sequence.Sum(source);
+            int? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest4_2()
@@ -9784,9 +9784,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { };
 
             int? expected = 0;
-            int? actual = Sequence.Sum(source);
+            int? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest4_3()
@@ -9794,9 +9794,9 @@ namespace Test
             IEnumerable<int?> source = new int?[] { null, null, null };
 
             int? expected = 0;
-            int? actual = Sequence.Sum(source);
+            int? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -9817,22 +9817,22 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<int>)null);
+                Enumerable.Sum((IEnumerable<int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             int expected = 0;
             foreach (int d in source)
                 expected += d;
 
-            int actual = Sequence.Sum(source);
+            int actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest5_2()
@@ -9842,14 +9842,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Sum(source);
+                int actual = Enumerable.Sum(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest5_3()
@@ -9858,9 +9858,9 @@ namespace Test
 
             int expected = 0;
 
-            int actual = Sequence.Sum(source);
+            int actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -9882,23 +9882,23 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<long?>)null);
+                Enumerable.Sum((IEnumerable<long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             long? expected = 0;
             foreach (long? i in source)
                 if (i != null)
                     expected += i.Value;
 
-            long? actual = Sequence.Sum(source);
+            long? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest6_2()
@@ -9906,9 +9906,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { };
 
             long? expected = 0;
-            long? actual = Sequence.Sum(source);
+            long? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest6_3()
@@ -9916,9 +9916,9 @@ namespace Test
             IEnumerable<long?> source = new long?[] { null, null, null };
 
             long? expected = 0;
-            long? actual = Sequence.Sum(source);
+            long? actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         private void SumTest6_4()
@@ -9928,14 +9928,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long? actual = Sequence.Sum(source);
+                long? actual = Enumerable.Sum(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Sum did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -9956,22 +9956,22 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum((IEnumerable<long>)null);
+                Enumerable.Sum((IEnumerable<long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Sum did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Sum did not return the expected value (exceptions).");
 
             double expected = 0.0;
             foreach (long d in source)
                 expected += d;
 
-            double actual = Sequence.Sum(source);
+            double actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 1).");
         }
 
         private void SumTest7_2()
@@ -9981,14 +9981,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long actual = Sequence.Sum(source);
+                long actual = Enumerable.Sum(source);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.Sum did not return the expected value (test 2).");
         }
 
         private void SumTest7_3()
@@ -9997,9 +9997,9 @@ namespace Test
 
             long expected = 0;
 
-            long actual = Sequence.Sum(source);
+            long actual = Enumerable.Sum(source);
 
-            Assert.AreEqual(expected, actual, "Sequence.Sum did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.Sum did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -10028,7 +10028,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10038,19 +10038,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, decimal?>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, decimal?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             decimal? expected = 38.0m + 1.23m - 7.8m;
-            decimal? actual = Sequence.Sum(source, selector);
+            decimal? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest8_2()
@@ -10060,9 +10060,9 @@ namespace Test
             Func<SumTest_Helper, decimal?> selector = delegate(SumTest_Helper s) { return s.dN; }; /* s => s.dN */
 
             decimal? expected = 0;
-            decimal? actual = Sequence.Sum(source, selector);
+            decimal? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest8_3()
@@ -10077,9 +10077,9 @@ namespace Test
             Func<SumTest_Helper, decimal?> selector = delegate(SumTest_Helper s) { return s.dN; }; /* s => s.dN */
 
             decimal? expected = 0;
-            decimal? actual = Sequence.Sum(source, selector);
+            decimal? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         private void SumTest8_4()
@@ -10096,14 +10096,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal? actual = Sequence.Sum(source, selector);
+                decimal? actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -10130,7 +10130,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10140,19 +10140,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, decimal>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, decimal>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             decimal expected = 38.0m + 1.23m - 7.8m;
-            decimal actual = Sequence.Sum(source, selector);
+            decimal actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest9_2()
@@ -10162,9 +10162,9 @@ namespace Test
             Func<SumTest_Helper, decimal> selector = delegate(SumTest_Helper s) { return s.d; }; /* s => s.d */
 
             decimal expected = 0;
-            decimal actual = Sequence.Sum(source, selector);
+            decimal actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest9_3()
@@ -10180,14 +10180,14 @@ namespace Test
             bool exception = false;
             try
             {
-                decimal actual = Sequence.Sum(source, selector);
+                decimal actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -10216,7 +10216,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10226,19 +10226,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, double?>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, double?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             double? expected = 38.0 + 1.23 - 7.8;
-            double? actual = Sequence.Sum(source, selector);
+            double? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest10_2()
@@ -10248,9 +10248,9 @@ namespace Test
             Func<SumTest_Helper, double?> selector = delegate(SumTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             double? expected = 0;
-            double? actual = Sequence.Sum(source, selector);
+            double? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest10_3()
@@ -10265,9 +10265,9 @@ namespace Test
             Func<SumTest_Helper, double?> selector = delegate(SumTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             double? expected = 0;
-            double? actual = Sequence.Sum(source, selector);
+            double? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         private void SumTest10_4()
@@ -10282,9 +10282,9 @@ namespace Test
             Func<SumTest_Helper, double?> selector = delegate(SumTest_Helper s) { return s.DN; }; /* s => s.DN */
 
             //double? expected = 0;
-            double? actual = Sequence.Sum(source, selector);
+            double? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(double.IsInfinity(actual.Value), "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(double.IsInfinity(actual.Value), "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -10311,7 +10311,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10321,19 +10321,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, double>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, double>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             double expected = 38.0 + 1.23 - 7.8;
-            double actual = Sequence.Sum(source, selector);
+            double actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest11_2()
@@ -10343,9 +10343,9 @@ namespace Test
             Func<SumTest_Helper, double> selector = delegate(SumTest_Helper s) { return s.D; }; /* s => s.D */
 
             double expected = 0;
-            double actual = Sequence.Sum(source, selector);
+            double actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest11_3()
@@ -10359,9 +10359,9 @@ namespace Test
 
             Func<SumTest_Helper, double> selector = delegate(SumTest_Helper s) { return s.D; }; /* s => s.D */
 
-            double actual = Sequence.Sum(source, selector);
+            double actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(double.IsInfinity(actual), "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(double.IsInfinity(actual), "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -10390,7 +10390,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10400,19 +10400,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, int?>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, int?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             int? expected = 38 + 123 - 78;
-            int? actual = Sequence.Sum(source, selector);
+            int? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest12_2()
@@ -10422,9 +10422,9 @@ namespace Test
             Func<SumTest_Helper, int?> selector = delegate(SumTest_Helper s) { return s.IN; }; /* s => s.IN */
 
             int? expected = 0;
-            int? actual = Sequence.Sum(source, selector);
+            int? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest12_3()
@@ -10439,9 +10439,9 @@ namespace Test
             Func<SumTest_Helper, int?> selector = delegate(SumTest_Helper s) { return s.IN; }; /* s => s.IN */
 
             int? expected = 0;
-            int? actual = Sequence.Sum(source, selector);
+            int? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         private void SumTest12_4()
@@ -10458,14 +10458,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int? actual = Sequence.Sum(source, selector);
+                int? actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -10492,7 +10492,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10502,19 +10502,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, int>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, int>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             int expected = 380 + 123 - 78;
-            int actual = Sequence.Sum(source, selector);
+            int actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest13_2()
@@ -10524,9 +10524,9 @@ namespace Test
             Func<SumTest_Helper, int> selector = delegate(SumTest_Helper s) { return s.I; }; /* s => s.I */
 
             int expected = 0;
-            int actual = Sequence.Sum(source, selector);
+            int actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest13_3()
@@ -10542,14 +10542,14 @@ namespace Test
             bool exception = false;
             try
             {
-                int actual = Sequence.Sum(source, selector);
+                int actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -10578,7 +10578,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10588,19 +10588,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, long?>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, long?>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             long? expected = 380 + 123 - 78;
-            long? actual = Sequence.Sum(source, selector);
+            long? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest14_2()
@@ -10610,9 +10610,9 @@ namespace Test
             Func<SumTest_Helper, long?> selector = delegate(SumTest_Helper s) { return s.LN; }; /* s => s.LN */
 
             long? expected = 0;
-            long? actual = Sequence.Sum(source, selector);
+            long? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest14_3()
@@ -10627,9 +10627,9 @@ namespace Test
             Func<SumTest_Helper, long?> selector = delegate(SumTest_Helper s) { return s.LN; }; /* s => s.LN */
 
             long? expected = 0;
-            long? actual = Sequence.Sum(source, selector);
+            long? actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         private void SumTest14_4()
@@ -10646,14 +10646,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long? actual = Sequence.Sum(source, selector);
+                long? actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 4).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 4).");
         }
 
         /// <summary>
@@ -10680,7 +10680,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.Sum(null, selector);
+                Enumerable.Sum(null, selector);
             }
             catch (ArgumentNullException)
             {
@@ -10690,19 +10690,19 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.Sum(source, (Func<SumTest_Helper, long>)null);
+                Enumerable.Sum(source, (Func<SumTest_Helper, long>)null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Sum<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Sum<T> did not return the expected value (exceptions).");
 
             long expected = 380 + 123 - 78;
-            long actual = Sequence.Sum(source, selector);
+            long actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 1).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 1).");
         }
 
         private void SumTest15_2()
@@ -10712,9 +10712,9 @@ namespace Test
             Func<SumTest_Helper, long> selector = delegate(SumTest_Helper s) { return s.L; }; /* s => s.L */
 
             long expected = 0;
-            long actual = Sequence.Sum(source, selector);
+            long actual = Enumerable.Sum(source, selector);
 
-            Assert.IsTrue(expected == actual, "Sequence.Sum<T> did not return the expected value (test 2).");
+            Assert.IsTrue(expected == actual, "Enumerable.Sum<T> did not return the expected value (test 2).");
         }
 
         private void SumTest15_3()
@@ -10730,14 +10730,14 @@ namespace Test
             bool exception = false;
             try
             {
-                long actual = Sequence.Sum(source, selector);
+                long actual = Enumerable.Sum(source, selector);
             }
             catch (OverflowException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.Sum<T> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.Sum<T> did not return the expected value (test 3).");
         }
 
         private class SumTest_Helper
@@ -10788,7 +10788,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Take((IEnumerable<int>)null, count))
+                foreach (int i in Enumerable.Take((IEnumerable<int>)null, count))
                     ;
             }
             catch (ArgumentNullException)
@@ -10796,19 +10796,19 @@ namespace Test
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.Take<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.Take<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Take(source, count);
+            IEnumerable<int> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == count, "Sequence.Take<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == count, "Enumerable.Take<T> did not return the expected value (test 1).");
 
             int j = 5;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Take<T> did not return the expected value (test 1).");
+                Assert.IsTrue(j-- == i, "Enumerable.Take<T> did not return the expected value (test 1).");
         }
 
         private void TakeTest_2()
@@ -10817,13 +10817,13 @@ namespace Test
 
             int count = -1;
 
-            IEnumerable<int> actual = Sequence.Take(source, count);
+            IEnumerable<int> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Take<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Take<T> did not return the expected value (test 2).");
         }
 
         private void TakeTest_3()
@@ -10832,13 +10832,13 @@ namespace Test
 
             int count = 0;
 
-            IEnumerable<int> actual = Sequence.Take(source, count);
+            IEnumerable<int> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Take<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Take<T> did not return the expected value (test 3).");
         }
 
         private void TakeTest_4()
@@ -10847,17 +10847,17 @@ namespace Test
 
             int count = 6;
 
-            IEnumerable<int> actual = Sequence.Take(source, count);
+            IEnumerable<int> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Take<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 5, "Enumerable.Take<T> did not return the expected value (test 4).");
 
             int j = 5;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Take<T> did not return the expected value (test 4).");
+                Assert.IsTrue(j-- == i, "Enumerable.Take<T> did not return the expected value (test 4).");
         }
 
         private void TakeTest_5()
@@ -10866,17 +10866,17 @@ namespace Test
 
             int count = 5;
 
-            IEnumerable<int> actual = Sequence.Take(source, count);
+            IEnumerable<int> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Take<T> did not return the expected value (test 5).");
+            Assert.IsTrue(n == 5, "Enumerable.Take<T> did not return the expected value (test 5).");
 
             int j = 5;
             foreach (int i in actual)
-                Assert.IsTrue(j-- == i, "Sequence.Take<T> did not return the expected value (test 5).");
+                Assert.IsTrue(j-- == i, "Enumerable.Take<T> did not return the expected value (test 5).");
         }
 
         private void TakeTest_6()
@@ -10888,18 +10888,18 @@ namespace Test
 
             int count = 1;
 
-            IEnumerable<string> actual = Sequence.Take(source, count);
+            IEnumerable<string> actual = Enumerable.Take(source, count);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == count, "Sequence.Take<T> did not return the expected value (test 6).");
+            Assert.IsTrue(n == count, "Enumerable.Take<T> did not return the expected value (test 6).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             enumerator.MoveNext();
 
-            Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s1), "Sequence.Take<T> did not return the expected value (test 6).");
+            Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s1), "Enumerable.Take<T> did not return the expected value (test 6).");
         }
 
         #endregion
@@ -10927,7 +10927,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.TakeWhile((IEnumerable<int>)null, predicate))
+                foreach (int i in Enumerable.TakeWhile((IEnumerable<int>)null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -10938,7 +10938,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.TakeWhile(source, (Func<int, bool>)null))
+                foreach (int i in Enumerable.TakeWhile(source, (Func<int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -10946,19 +10946,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.TakeWhile<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.TakeWhile<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.TakeWhile<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 3, "Enumerable.TakeWhile<T> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.TakeWhile<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == source[j++], "Enumerable.TakeWhile<T> did not return the expected value (test 1).");
         }
 
         private void TakeWhileTest_2()
@@ -10966,13 +10966,13 @@ namespace Test
             int[] source = new int[] { 1, 2, 4, 8, 3, 7, 6 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
         }
 
         private void TakeWhileTest_3()
@@ -10980,17 +10980,17 @@ namespace Test
             int[] source = new int[] { 2, 4, 8, 6 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.TakeWhile<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 4, "Enumerable.TakeWhile<T> did not return the expected value (test 3).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == source[j++], "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
         }
 
         private void TakeWhileTest_4()
@@ -10998,13 +10998,13 @@ namespace Test
             int[] source = new int[] { };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.TakeWhile<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.TakeWhile<T> did not return the expected value (test 4).");
         }
 
         private void TakeWhileTest_5()
@@ -11014,17 +11014,17 @@ namespace Test
             string[] source = new string[] { s1, s2, "Steve", "John" };
             Func<string, bool> predicate = delegate(string s) { return s.Length == 4; }; /* s => s.Length == 4; */
 
-            IEnumerable<string> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<string> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 2, "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Sequence.TakeWhile<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Enumerable.TakeWhile<T> did not return the expected value (test 5).");
         }
 
         /// <summary>
@@ -11048,7 +11048,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.TakeWhile((IEnumerable<int>)null, predicate))
+                foreach (int i in Enumerable.TakeWhile((IEnumerable<int>)null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -11059,7 +11059,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.TakeWhile(source, (Func<int, int, bool>)null))
+                foreach (int i in Enumerable.TakeWhile(source, (Func<int, int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -11067,19 +11067,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.TakeWhile<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.TakeWhile<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.TakeWhile<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 2, "Enumerable.TakeWhile<T> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.TakeWhile<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == source[j++], "Enumerable.TakeWhile<T> did not return the expected value (test 1).");
         }
 
         private void TakeWhileTest1_2()
@@ -11087,13 +11087,13 @@ namespace Test
             int[] source = new int[] { 1, 2, 4, 8, 3, 7, 6 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k < 0; }; /* ( i, k) => k < 0 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
         }
 
         private void TakeWhileTest1_3()
@@ -11101,17 +11101,17 @@ namespace Test
             int[] source = new int[] { 2, 4, 8, 6 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k <= 3; }; /* ( i, k) => k <= 3 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.TakeWhile<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 4, "Enumerable.TakeWhile<T> did not return the expected value (test 3).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == source[j++], "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+                Assert.IsTrue(i == source[j++], "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
         }
 
         private void TakeWhileTest1_4()
@@ -11119,13 +11119,13 @@ namespace Test
             int[] source = new int[] { };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k >= 0; }; /* ( i, k) => k >= 0 */
 
-            IEnumerable<int> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<int> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.TakeWhile<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.TakeWhile<T> did not return the expected value (test 4).");
         }
 
         private void TakeWhileTest1_5()
@@ -11135,17 +11135,17 @@ namespace Test
             string[] source = new string[] { s1, s2, "John", "Steve" };
             Func<string, int, bool> predicate = delegate(string s, int k) { return s.Length == 4 && k < 2; }; /* ( s, k) => s.Length == 4 && k < 2 */
 
-            IEnumerable<string> actual = Sequence.TakeWhile(source, predicate);
+            IEnumerable<string> actual = Enumerable.TakeWhile(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.TakeWhile<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 2, "Enumerable.TakeWhile<T> did not return the expected value (test 2).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Sequence.TakeWhile<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, source[j++]), "Enumerable.TakeWhile<T> did not return the expected value (test 5).");
         }
 
         #endregion
@@ -11207,12 +11207,12 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Sequence.OrderBy(source, keySelector1);
+            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
 
             bool exception1 = false;
             try
             {
-                Sequence.ThenBy<ThenBy_Helper, string>(null, keySelector2);
+                Enumerable.ThenBy<ThenBy_Helper, string>(null, keySelector2);
             }
             catch (ArgumentNullException)
             {
@@ -11222,26 +11222,26 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.ThenBy<ThenBy_Helper, string>(o, null);
+                Enumerable.ThenBy<ThenBy_Helper, string>(o, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.ThenBy<T, K> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.ThenBy<T, K> did not return the expected value (exceptions).");
 
-            OrderedSequence<ThenBy_Helper> actual1 = Sequence.ThenBy(o, keySelector2);
+            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2);
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
-                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Sequence.ThenBy<T, K> did not return the expected value (order 1).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Sequence.ThenBy(actual1, keySelector3);
+            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3);
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
-                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Sequence.ThenBy<T, K> did not return the expected value (order 2).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 2).");
         }
 
         /// <summary>
@@ -11299,18 +11299,18 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Sequence.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
-            OrderedSequence<ThenBy_Helper> actual1 = Sequence.ThenBy(o, keySelector2, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2, new ThenByComparer_Helper<string>());
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
-                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Sequence.ThenBy<T, K> did not return the expected value (order 1).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Sequence.ThenBy(actual1, keySelector3, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3, new ThenByComparer_Helper<string>());
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
-                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Sequence.ThenBy<T, K> did not return the expected value (order 2).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 2).");
         }
 
         /// <summary>
@@ -11368,18 +11368,18 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Sequence.OrderBy(source, keySelector1);
-            OrderedSequence<ThenBy_Helper> actual1 = Sequence.ThenByDescending(o, keySelector2);
+            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
+            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2);
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
-                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Sequence.ThenByDescending<T, K> did not return the expected value (order 1).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Sequence.ThenByDescending(actual1, keySelector3);
+            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3);
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
-                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Sequence.ThenByDescending<T, K> did not return the expected value (order 2).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 2).");
         }
 
         /// <summary>
@@ -11437,18 +11437,18 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Sequence.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
-            OrderedSequence<ThenBy_Helper> actual1 = Sequence.ThenByDescending(o, keySelector2, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2, new ThenByComparer_Helper<string>());
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
-                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Sequence.ThenByDescending<T, K> did not return the expected value (order 1).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Sequence.ThenByDescending(actual1, keySelector3, new ThenByComparer_Helper<string>());
+            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3, new ThenByComparer_Helper<string>());
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
-                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Sequence.ThenByDescending<T, K> did not return the expected value (order 2).");
+                Assert.IsTrue(object.ReferenceEquals(h, expected2[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 2).");
         }
 
         private class ThenBy_Helper
@@ -11512,22 +11512,22 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ToArray<int>(null);
+                Enumerable.ToArray<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.ToArray<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.ToArray<T> did not return the expected value (exceptions).");
 
 
             int[] expected = new int[] { 1, 3, 2 };
-            int[] actual = Sequence.ToArray(source);
+            int[] actual = Enumerable.ToArray(source);
 
             int j = 0;
             foreach (int i in source)
-                Assert.IsTrue(i == actual[j++], "Sequence.ToArray<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == actual[j++], "Enumerable.ToArray<T> did not return the expected value (test 1).");
         }
 
         private void ToArrayTest_2()
@@ -11537,11 +11537,11 @@ namespace Test
             IEnumerable<string> source = new string[] { s1, "John", "Bill", s1, "Rob" };
 
             string[] expected = new string[] { s1, "John", "Bill", s1, "Rob" };
-            string[] actual = Sequence.ToArray(source);
+            string[] actual = Enumerable.ToArray(source);
 
             int j = 0;
             foreach (string s in source)
-                Assert.IsTrue(object.ReferenceEquals(s, actual[j++]), "Sequence.ToArray<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(s, actual[j++]), "Enumerable.ToArray<T> did not return the expected value (test 2).");
         }
 
         #endregion
@@ -11576,7 +11576,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ToDictionary<ToDictionary_Helper, int, string>(null, keySelector, elementSelector);
+                Enumerable.ToDictionary<ToDictionary_Helper, int, string>(null, keySelector, elementSelector);
             }
             catch (ArgumentNullException)
             {
@@ -11586,7 +11586,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.ToDictionary<ToDictionary_Helper, int, string>(source, null, elementSelector);
+                Enumerable.ToDictionary<ToDictionary_Helper, int, string>(source, null, elementSelector);
             }
             catch (ArgumentNullException)
             {
@@ -11596,19 +11596,19 @@ namespace Test
             bool exception3 = false;
             try
             {
-                Sequence.ToDictionary<ToDictionary_Helper, int, string>(source, keySelector, null);
+                Enumerable.ToDictionary<ToDictionary_Helper, int, string>(source, keySelector, null);
             }
             catch (ArgumentNullException)
             {
                 exception3 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2 && exception3, "Sequence.ToDictionary<T, K, E> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2 && exception3, "Enumerable.ToDictionary<T, K, E> did not return the expected value (exceptions).");
 
-            Dictionary<int, string> actual = Sequence.ToDictionary(source, keySelector, elementSelector);
+            Dictionary<int, string> actual = Enumerable.ToDictionary(source, keySelector, elementSelector);
 
-            Assert.IsTrue(actual.Keys.Count == 3, "Sequence.ToDictionary<T, K, E> did not return the expected value (test 1).");
-            Assert.IsTrue(object.ReferenceEquals(actual[1], s1) && object.ReferenceEquals(actual[2], s2) && object.ReferenceEquals(actual[3], s3), "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Keys.Count == 3, "Enumerable.ToDictionary<T, K, E> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(actual[1], s1) && object.ReferenceEquals(actual[2], s2) && object.ReferenceEquals(actual[3], s3), "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
         }
 
         private void ToDictionaryTest_2()
@@ -11624,14 +11624,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<int, string> actual = Sequence.ToDictionary(source, keySelector, elementSelector);
+                Dictionary<int, string> actual = Enumerable.ToDictionary(source, keySelector, elementSelector);
             }
             catch (ArgumentException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K, E> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K, E> did not return the expected value (test 2).");
         }
 
         private void ToDictionaryTest_3()
@@ -11647,14 +11647,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<string, int> actual = Sequence.ToDictionary(source, keySelector, elementSelector);
+                Dictionary<string, int> actual = Enumerable.ToDictionary(source, keySelector, elementSelector);
             }
             catch (ArgumentNullException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K, E> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K, E> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -11681,10 +11681,10 @@ namespace Test
             Func<ToDictionary_Helper, int> keySelector = delegate(ToDictionary_Helper d) { return d.I; }; /* d => d.I */
             Func<ToDictionary_Helper, string> elementSelector = delegate(ToDictionary_Helper d) { return d.S; }; /* d => d.S */
 
-            Dictionary<int, string> actual = Sequence.ToDictionary(source, keySelector, elementSelector, new ToDirectoryComparer_Helper<int>());
+            Dictionary<int, string> actual = Enumerable.ToDictionary(source, keySelector, elementSelector, new ToDirectoryComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Keys.Count == 3, "Sequence.ToDictionary<T, K, E> did not return the expected value (test 1).");
-            Assert.IsTrue(object.ReferenceEquals(actual[1], s1) && object.ReferenceEquals(actual[2], s2) && object.ReferenceEquals(actual[3], s3), "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Keys.Count == 3, "Enumerable.ToDictionary<T, K, E> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(actual[1], s1) && object.ReferenceEquals(actual[2], s2) && object.ReferenceEquals(actual[3], s3), "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
         }
 
         private void ToDictionaryTest1_2()
@@ -11700,14 +11700,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<int, string> actual = Sequence.ToDictionary(source, keySelector, elementSelector, new ToDirectoryComparer_Helper<int>());
+                Dictionary<int, string> actual = Enumerable.ToDictionary(source, keySelector, elementSelector, new ToDirectoryComparer_Helper<int>());
             }
             catch (ArgumentException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K, E> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K, E> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -11730,10 +11730,10 @@ namespace Test
             IEnumerable<ToDictionary_Helper> source = new ToDictionary_Helper[] { d1, d2, d3 };
             Func<ToDictionary_Helper, int> keySelector = delegate(ToDictionary_Helper d) { return d.I; }; /* d => d.I */
 
-            Dictionary<int, ToDictionary_Helper> actual = Sequence.ToDictionary(source, keySelector);
+            Dictionary<int, ToDictionary_Helper> actual = Enumerable.ToDictionary(source, keySelector);
 
-            Assert.IsTrue(actual.Keys.Count == 3, "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
-            Assert.IsTrue(object.ReferenceEquals(actual[1], d1) && object.ReferenceEquals(actual[2], d2) && object.ReferenceEquals(actual[3], d3), "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Keys.Count == 3, "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(actual[1], d1) && object.ReferenceEquals(actual[2], d2) && object.ReferenceEquals(actual[3], d3), "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
         }
 
         private void ToDictionaryTest2_2()
@@ -11748,14 +11748,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<int, ToDictionary_Helper> actual = Sequence.ToDictionary(source, keySelector);
+                Dictionary<int, ToDictionary_Helper> actual = Enumerable.ToDictionary(source, keySelector);
             }
             catch (ArgumentException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K> did not return the expected value (test 2).");
         }
 
         private void ToDictionaryTest2_3()
@@ -11770,14 +11770,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<string, ToDictionary_Helper> actual = Sequence.ToDictionary(source, keySelector);
+                Dictionary<string, ToDictionary_Helper> actual = Enumerable.ToDictionary(source, keySelector);
             }
             catch (ArgumentNullException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -11799,10 +11799,10 @@ namespace Test
             IEnumerable<ToDictionary_Helper> source = new ToDictionary_Helper[] { d1, d2, d3 };
             Func<ToDictionary_Helper, int> keySelector = delegate(ToDictionary_Helper d) { return d.I; }; /* d => d.I */
 
-            Dictionary<int, ToDictionary_Helper> actual = Sequence.ToDictionary(source, keySelector, new ToDirectoryComparer_Helper<int>());
+            Dictionary<int, ToDictionary_Helper> actual = Enumerable.ToDictionary(source, keySelector, new ToDirectoryComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Keys.Count == 3, "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
-            Assert.IsTrue(object.ReferenceEquals(actual[1], d1) && object.ReferenceEquals(actual[2], d2) && object.ReferenceEquals(actual[3], d3), "Sequence.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Keys.Count == 3, "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(object.ReferenceEquals(actual[1], d1) && object.ReferenceEquals(actual[2], d2) && object.ReferenceEquals(actual[3], d3), "Enumerable.ToDictionary<T, K> did not return the expected value (test 1).");
         }
 
         private void ToDictionaryTest3_2()
@@ -11817,14 +11817,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Dictionary<int, ToDictionary_Helper> actual = Sequence.ToDictionary(source, keySelector, new ToDirectoryComparer_Helper<int>());
+                Dictionary<int, ToDictionary_Helper> actual = Enumerable.ToDictionary(source, keySelector, new ToDirectoryComparer_Helper<int>());
             }
             catch (ArgumentException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToDictionary<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(exception, "Enumerable.ToDictionary<T, K> did not return the expected value (test 2).");
         }
 
         private class ToDictionary_Helper
@@ -11900,24 +11900,24 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ToList<int>(null);
+                Enumerable.ToList<int>(null);
             }
             catch (ArgumentNullException)
             {
                 exception1 = true;
             }
 
-            Assert.IsTrue(exception1, "Sequence.ToList<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1, "Enumerable.ToList<T> did not return the expected value (exceptions).");
 
             int[] expected = new int[] { 1, 3, 2 };
-            List<int> actual = Sequence.ToList(source);
+            List<int> actual = Enumerable.ToList(source);
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in source)
             {
                 enumerator.MoveNext();
 
-                Assert.IsTrue(enumerator.Current == i, "Sequence.ToList<T> did not return the expected value (test 1).");
+                Assert.IsTrue(enumerator.Current == i, "Enumerable.ToList<T> did not return the expected value (test 1).");
             }
         }
 
@@ -11928,14 +11928,14 @@ namespace Test
             IEnumerable<string> source = new string[] { s1, "John", "Bill", s1, "Rob" };
 
             string[] expected = new string[] { s1, "John", "Bill", s1, "Rob" };
-            List<string> actual = Sequence.ToList(source);
+            List<string> actual = Enumerable.ToList(source);
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             foreach (string s in source)
             {
                 enumerator.MoveNext();
 
-                Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s), "Sequence.ToList<T> did not return the expected value (test 2).");
+                Assert.IsTrue(object.ReferenceEquals(enumerator.Current, s), "Enumerable.ToList<T> did not return the expected value (test 2).");
             }
         }
 
@@ -11971,7 +11971,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Sequence.ToLookup<ToLookup_Helper, int, string>(null, keySelector, elementSelector);
+                Enumerable.ToLookup<ToLookup_Helper, int, string>(null, keySelector, elementSelector);
             }
             catch (ArgumentNullException)
             {
@@ -11981,7 +11981,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Sequence.ToLookup<ToLookup_Helper, int, string>(source, null, elementSelector);
+                Enumerable.ToLookup<ToLookup_Helper, int, string>(source, null, elementSelector);
             }
             catch (ArgumentNullException)
             {
@@ -11991,18 +11991,18 @@ namespace Test
             bool exception3 = false;
             try
             {
-                Sequence.ToLookup<ToLookup_Helper, int, string>(source, keySelector, null);
+                Enumerable.ToLookup<ToLookup_Helper, int, string>(source, keySelector, null);
             }
             catch (ArgumentNullException)
             {
                 exception3 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2 && exception3, "Sequence.ToLookup<T, K, E> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2 && exception3, "Enumerable.ToLookup<T, K, E> did not return the expected value (exceptions).");
 
-            Lookup<int, string> actual = Sequence.ToLookup(source, keySelector, elementSelector);
+            Lookup<int, string> actual = Enumerable.ToLookup(source, keySelector, elementSelector);
 
-            Assert.IsTrue(actual.Count == 3, "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Count == 3, "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
 
             IEnumerator<string> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<string> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12012,7 +12012,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, s1) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, s2) && !enum2.MoveNext()
                 && object.ReferenceEquals(enum3.Current, s3) && !enum3.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
         }
 
         private void ToLookupTest_2()
@@ -12029,9 +12029,9 @@ namespace Test
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
             Func<ToLookup_Helper, string> elementSelector = delegate(ToLookup_Helper d) { return d.S; }; /* d => d.S */
 
-            Lookup<int, string> actual = Sequence.ToLookup(source, keySelector, elementSelector);
+            Lookup<int, string> actual = Enumerable.ToLookup(source, keySelector, elementSelector);
 
-            Assert.IsTrue(actual.Count == 2, "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(actual.Count == 2, "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
 
             IEnumerator<string> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<string> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12040,7 +12040,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, s1) && enum1.MoveNext()
                 && object.ReferenceEquals(enum1.Current, s3) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, s2) && !enum2.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
         }
 
         private void ToLookupTest_3()
@@ -12056,14 +12056,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Lookup<string, int> actual = Sequence.ToLookup(source, keySelector, elementSelector);
+                Lookup<string, int> actual = Enumerable.ToLookup(source, keySelector, elementSelector);
             }
             catch (ArgumentNullException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToLookup<T, K> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.ToLookup<T, K> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -12090,9 +12090,9 @@ namespace Test
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
             Func<ToLookup_Helper, string> elementSelector = delegate(ToLookup_Helper d) { return d.S; }; /* d => d.S */
 
-            Lookup<int, string> actual = Sequence.ToLookup(source, keySelector, elementSelector, new ToLookupComparer_Helper<int>());
+            Lookup<int, string> actual = Enumerable.ToLookup(source, keySelector, elementSelector, new ToLookupComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Count == 3, "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Count == 3, "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
 
             IEnumerator<string> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<string> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12102,7 +12102,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, s1) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, s2) && !enum2.MoveNext()
                 && object.ReferenceEquals(enum3.Current, s3) && !enum3.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
         }
 
         private void ToLookupTest1_2()
@@ -12119,9 +12119,9 @@ namespace Test
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
             Func<ToLookup_Helper, string> elementSelector = delegate(ToLookup_Helper d) { return d.S; }; /* d => d.S */
 
-            Lookup<int, string> actual = Sequence.ToLookup(source, keySelector, elementSelector, new ToLookupComparer_Helper<int>());
+            Lookup<int, string> actual = Enumerable.ToLookup(source, keySelector, elementSelector, new ToLookupComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Count == 2, "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(actual.Count == 2, "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
 
             IEnumerator<string> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<string> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12130,7 +12130,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, s1) && enum1.MoveNext()
                 && object.ReferenceEquals(enum1.Current, s3) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, s2) && !enum2.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
         }
 
         /// <summary>
@@ -12157,9 +12157,9 @@ namespace Test
             IEnumerable<ToLookup_Helper> source = new ToLookup_Helper[] { d1, d2, d3 };
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
 
-            Lookup<int, ToLookup_Helper> actual = Sequence.ToLookup(source, keySelector);
+            Lookup<int, ToLookup_Helper> actual = Enumerable.ToLookup(source, keySelector);
 
-            Assert.IsTrue(actual.Count == 3, "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Count == 3, "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
 
             IEnumerator<ToLookup_Helper> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<ToLookup_Helper> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12169,7 +12169,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, d1) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, d2) && !enum2.MoveNext()
                 && object.ReferenceEquals(enum3.Current, d3) && !enum3.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
         }
 
         private void ToLookupTest2_2()
@@ -12185,9 +12185,9 @@ namespace Test
             IEnumerable<ToLookup_Helper> source = new ToLookup_Helper[] { d1, d2, d3 };
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
 
-            Lookup<int, ToLookup_Helper> actual = Sequence.ToLookup(source, keySelector);
+            Lookup<int, ToLookup_Helper> actual = Enumerable.ToLookup(source, keySelector);
 
-            Assert.IsTrue(actual.Count == 2, "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(actual.Count == 2, "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
 
             IEnumerator<ToLookup_Helper> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<ToLookup_Helper> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12196,7 +12196,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, d1) && enum1.MoveNext()
                 && object.ReferenceEquals(enum1.Current, d3) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, d2) && !enum2.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
         }
 
         private void ToLookupTest2_3()
@@ -12211,14 +12211,14 @@ namespace Test
             bool exception = false;
             try
             {
-                Lookup<string, ToLookup_Helper> actual = Sequence.ToLookup(source, keySelector);
+                Lookup<string, ToLookup_Helper> actual = Enumerable.ToLookup(source, keySelector);
             }
             catch (ArgumentNullException)
             {
                 exception = true;
             }
 
-            Assert.IsTrue(exception, "Sequence.ToLookup<T, K> did not return the expected value (test 3).");
+            Assert.IsTrue(exception, "Enumerable.ToLookup<T, K> did not return the expected value (test 3).");
         }
 
         /// <summary>
@@ -12244,9 +12244,9 @@ namespace Test
             IEnumerable<ToLookup_Helper> source = new ToLookup_Helper[] { d1, d2, d3 };
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
 
-            Lookup<int, ToLookup_Helper> actual = Sequence.ToLookup(source, keySelector, new ToLookupComparer_Helper<int>());
+            Lookup<int, ToLookup_Helper> actual = Enumerable.ToLookup(source, keySelector, new ToLookupComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Count == 3, "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+            Assert.IsTrue(actual.Count == 3, "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
 
             IEnumerator<ToLookup_Helper> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<ToLookup_Helper> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12256,7 +12256,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, d1) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, d2) && !enum2.MoveNext()
                 && object.ReferenceEquals(enum3.Current, d3) && !enum3.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 1).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 1).");
         }
 
         private void ToLookupTest3_2()
@@ -12272,9 +12272,9 @@ namespace Test
             IEnumerable<ToLookup_Helper> source = new ToLookup_Helper[] { d1, d2, d3 };
             Func<ToLookup_Helper, int> keySelector = delegate(ToLookup_Helper d) { return d.I; }; /* d => d.I */
 
-            Lookup<int, ToLookup_Helper> actual = Sequence.ToLookup(source, keySelector, new ToLookupComparer_Helper<int>());
+            Lookup<int, ToLookup_Helper> actual = Enumerable.ToLookup(source, keySelector, new ToLookupComparer_Helper<int>());
 
-            Assert.IsTrue(actual.Count == 2, "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+            Assert.IsTrue(actual.Count == 2, "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
 
             IEnumerator<ToLookup_Helper> enum1 = actual[1].GetEnumerator(); enum1.MoveNext();
             IEnumerator<ToLookup_Helper> enum2 = actual[2].GetEnumerator(); enum2.MoveNext();
@@ -12283,7 +12283,7 @@ namespace Test
                 object.ReferenceEquals(enum1.Current, d1) && enum1.MoveNext()
                 && object.ReferenceEquals(enum1.Current, d3) && !enum1.MoveNext()
                 && object.ReferenceEquals(enum2.Current, d2) && !enum2.MoveNext()
-                , "Sequence.ToLookup<T, K> did not return the expected value (test 2).");
+                , "Enumerable.ToLookup<T, K> did not return the expected value (test 2).");
         }
 
         private class ToLookup_Helper
@@ -12350,9 +12350,9 @@ namespace Test
         {
             IEnumerable<int> source = new int[] { 1, 2, 3, 4, 9 };
 
-            IEnumerable<int> actual = Sequence.ToSequence(source);
+            IEnumerable<int> actual = Enumerable.ToSequence(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, source), "Sequence.ToSequence<T> did not return the expected value.");
+            Assert.IsTrue(object.ReferenceEquals(actual, source), "Enumerable.ToSequence<T> did not return the expected value.");
         }
 
         #endregion
@@ -12379,7 +12379,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Union(first, null))
+                foreach (int i in Enumerable.Union(first, null))
                     ;
             }
             catch (ArgumentNullException)
@@ -12390,7 +12390,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Union(null, second))
+                foreach (int i in Enumerable.Union(null, second))
                     ;
             }
             catch (ArgumentNullException)
@@ -12398,10 +12398,10 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Union<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Union<T> did not return the expected value (exceptions).");
 
             IEnumerable<int> expected = new int[] { 1, 5, 2, 9, 3, 4, 7 };
-            IEnumerable<int> actual = Sequence.Union(first, second);
+            IEnumerable<int> actual = Enumerable.Union(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -12409,13 +12409,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Union<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 0, "Enumerable.Union<T> did not return the expected value (test 1).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Union<T> did not return the expected value (test 1).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Union<T> did not return the expected value (test 1).");
             }
         }
 
@@ -12425,7 +12425,7 @@ namespace Test
             IEnumerable<int> second = new int[] { };
 
             IEnumerable<int> expected = new int[] { 1, 5, 2, 9 };
-            IEnumerable<int> actual = Sequence.Union(first, second);
+            IEnumerable<int> actual = Enumerable.Union(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -12433,13 +12433,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Union<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Union<T> did not return the expected value (test 2).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Union<T> did not return the expected value (test 2).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Union<T> did not return the expected value (test 2).");
             }
         }
 
@@ -12449,7 +12449,7 @@ namespace Test
             IEnumerable<int> second = new int[] { 3, 4, 5, 1, 7 };
 
             IEnumerable<int> expected = new int[] { 3, 4, 5, 1, 7 };
-            IEnumerable<int> actual = Sequence.Union(first, second);
+            IEnumerable<int> actual = Enumerable.Union(first, second);
 
             long n = 0;
             foreach (int i in expected)
@@ -12457,13 +12457,13 @@ namespace Test
             foreach (int i in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Union<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Union<T> did not return the expected value (test 3).");
 
             IEnumerator<int> enumerator = actual.GetEnumerator();
             foreach (int i in actual)
             {
                 enumerator.MoveNext();
-                Assert.AreEqual(enumerator.Current, i, "Sequence.Union<T> did not return the expected value (test 3).");
+                Assert.AreEqual(enumerator.Current, i, "Enumerable.Union<T> did not return the expected value (test 3).");
             }
         }
 
@@ -12474,7 +12474,7 @@ namespace Test
             IEnumerable<string> second = new string[] { "Steve", "Bart", "Rob", "Steve", j1 };
 
             IEnumerable<string> expected = new string[] { "Bart", "John", "Bill", "Scott", "Steve", "Rob" };
-            IEnumerable<string> actual = Sequence.Union(first, second);
+            IEnumerable<string> actual = Enumerable.Union(first, second);
 
             long n = 0;
             foreach (string s in expected)
@@ -12482,13 +12482,13 @@ namespace Test
             foreach (string s in actual)
                 n--;
 
-            Assert.IsTrue(n == 0, "Sequence.Union<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 0, "Enumerable.Union<T> did not return the expected value (test 4).");
 
             IEnumerator<string> enumerator = actual.GetEnumerator();
             foreach (string s in actual)
             {
                 enumerator.MoveNext();
-                Assert.IsTrue(s.Equals(enumerator.Current), "Sequence.Union<T> did not return the expected value (test 4).");
+                Assert.IsTrue(s.Equals(enumerator.Current), "Enumerable.Union<T> did not return the expected value (test 4).");
             }
         }
 
@@ -12517,7 +12517,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Where(null, predicate))
+                foreach (int i in Enumerable.Where(null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -12528,7 +12528,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Where(source, (Func<int, bool>)null))
+                foreach (int i in Enumerable.Where(source, (Func<int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -12536,19 +12536,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Where<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Where<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Where<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 5, "Enumerable.Where<T> did not return the expected value (test 1).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == (j++) * 2, "Sequence.Where<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == (j++) * 2, "Enumerable.Where<T> did not return the expected value (test 1).");
         }
 
         private void WhereTest_2()
@@ -12556,13 +12556,13 @@ namespace Test
             IEnumerable<int> source = new int[] { 1, 1, 3, 7, 9, 11 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Where<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Where<T> did not return the expected value (test 2).");
         }
 
         private void WhereTest_3()
@@ -12570,13 +12570,13 @@ namespace Test
             IEnumerable<int> source = new int[] { };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Where<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Where<T> did not return the expected value (test 3).");
         }
 
         private void WhereTest_4()
@@ -12584,17 +12584,17 @@ namespace Test
             IEnumerable<int> source = new int[] { 0, 2, 4, 6, 8 };
             Func<int, bool> predicate = delegate(int i) { return i % 2 == 0; }; /* i => i % 2 == 0 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 5, "Sequence.Where<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 5, "Enumerable.Where<T> did not return the expected value (test 4).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == (j++) * 2, "Sequence.Where<T> did not return the expected value (test 4).");
+                Assert.IsTrue(i == (j++) * 2, "Enumerable.Where<T> did not return the expected value (test 4).");
         }
 
         private void WhereTest_5()
@@ -12606,17 +12606,17 @@ namespace Test
             Func<string, bool> predicate = delegate(string s) { return s.Length == 4; }; /* s => s.Length == 4; */
 
             string[] expected = new string[] { s1, s2, s1, s3 };
-            IEnumerable<string> actual = Sequence.Where(source, predicate);
+            IEnumerable<string> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.Where<T> did not return the expected value (test 5).");
+            Assert.IsTrue(n == 4, "Enumerable.Where<T> did not return the expected value (test 5).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Sequence.Where<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Enumerable.Where<T> did not return the expected value (test 5).");
         }
 
         /// <summary>
@@ -12640,7 +12640,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                foreach (int i in Sequence.Where(null, predicate))
+                foreach (int i in Enumerable.Where(null, predicate))
                     ;
             }
             catch (ArgumentNullException)
@@ -12651,7 +12651,7 @@ namespace Test
             bool exception2 = false;
             try
             {
-                foreach (int i in Sequence.Where(source, (Func<int, int, bool>)null))
+                foreach (int i in Enumerable.Where(source, (Func<int, int, bool>)null))
                     ;
             }
             catch (ArgumentNullException)
@@ -12659,19 +12659,19 @@ namespace Test
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Sequence.Where<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.Where<T> did not return the expected value (exceptions).");
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 4, "Sequence.Where<T> did not return the expected value (test 1).");
+            Assert.IsTrue(n == 4, "Enumerable.Where<T> did not return the expected value (test 1).");
 
             int j = 1;
             foreach (int i in actual)
-                Assert.IsTrue(i == (j++) * 2, "Sequence.Where<T> did not return the expected value (test 1).");
+                Assert.IsTrue(i == (j++) * 2, "Enumerable.Where<T> did not return the expected value (test 1).");
         }
 
         private void WhereTest1_2()
@@ -12679,13 +12679,13 @@ namespace Test
             IEnumerable<int> source = new int[] { 1, 1, 3, 7, 9, 11 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k > 5; }; /* ( i, k) => k > 5 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Where<T> did not return the expected value (test 2).");
+            Assert.IsTrue(n == 0, "Enumerable.Where<T> did not return the expected value (test 2).");
         }
 
         private void WhereTest1_3()
@@ -12693,13 +12693,13 @@ namespace Test
             IEnumerable<int> source = new int[] { };
             Func<int, int, bool> predicate = delegate(int i, int k) { return k >= 0; }; /* ( i, k) => k >= 0 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 0, "Sequence.Where<T> did not return the expected value (test 3).");
+            Assert.IsTrue(n == 0, "Enumerable.Where<T> did not return the expected value (test 3).");
         }
 
         private void WhereTest1_4()
@@ -12707,18 +12707,18 @@ namespace Test
             IEnumerable<int> source = new int[] { 0, 2, 4, 6, 8 };
             Func<int, int, bool> predicate = delegate(int i, int k) { return i % 2 == 0 && k % 2 == 1; }; /* ( i, k) => i % 2 == 0 && k % 2 == 1 */
 
-            IEnumerable<int> actual = Sequence.Where(source, predicate);
+            IEnumerable<int> actual = Enumerable.Where(source, predicate);
             int[] expected = new int[] { 2, 6 };
 
             long n = 0;
             foreach (int i in actual)
                 n++;
 
-            Assert.IsTrue(n == 2, "Sequence.Where<T> did not return the expected value (test 4).");
+            Assert.IsTrue(n == 2, "Enumerable.Where<T> did not return the expected value (test 4).");
 
             int j = 0;
             foreach (int i in actual)
-                Assert.IsTrue(i == expected[j++], "Sequence.Where<T> did not return the expected value (test 4).");
+                Assert.IsTrue(i == expected[j++], "Enumerable.Where<T> did not return the expected value (test 4).");
         }
 
         private void WhereTest1_5()
@@ -12730,17 +12730,17 @@ namespace Test
             Func<string, int, bool> predicate = delegate(string s, int k) { return s.Length == 4 && k < 4; }; /* ( s, k) => s.Length == 4 && k < 4 */
 
             string[] expected = new string[] { s1, s2, s1 };
-            IEnumerable<string> actual = Sequence.Where(source, predicate);
+            IEnumerable<string> actual = Enumerable.Where(source, predicate);
 
             long n = 0;
             foreach (string s in actual)
                 n++;
 
-            Assert.IsTrue(n == 3, "Sequence.Where<T> did not return the expected value (test 5).");
+            Assert.IsTrue(n == 3, "Enumerable.Where<T> did not return the expected value (test 5).");
 
             int j = 0;
             foreach (string s in actual)
-                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Sequence.Where<T> did not return the expected value (test 5).");
+                Assert.IsTrue(object.ReferenceEquals(s, expected[j++]), "Enumerable.Where<T> did not return the expected value (test 5).");
         }
 
         #endregion

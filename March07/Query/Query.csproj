@@ -7,8 +7,8 @@
     <ProjectGuid>{3AA9E784-6C20-456B-BBC1-27E8A49B21CB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Query</RootNamespace>
-    <AssemblyName>Query</AssemblyName>
+    <RootNamespace>BdsSoft.Linq</RootNamespace>
+    <AssemblyName>BdsSoft.Core</AssemblyName>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
@@ -24,7 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Query.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\BdsSoft.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,7 +37,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sequence.cs" />
+    <Compile Include="Enumerable.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

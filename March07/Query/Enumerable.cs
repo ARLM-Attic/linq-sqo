@@ -7,7 +7,7 @@ using System.Collections.Generic;
 /*=======================================================================
   Custom implementation of the LINQ Standard Query Operators.
 
-  Bart De Smet - June 06
+  Bart De Smet - March 07
 =======================================================================*/
 
 namespace BdsSoft

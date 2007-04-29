@@ -253,7 +253,7 @@ namespace BdsSoft
             /// <typeparam name="TCollection">Type of the collection to flatten items for.</typeparam>
             /// <param name="source">Sequence to perform the projection over.</param>
             /// <param name="collectionSelector">Selector function to generate collection sequences for the elements in the source Enumerable.</param>
-            /// <param name="resultSelector">Selector function to generate projection sequences for the elements obtained from the <paramref name="collectionSelector">collection selector</paramref>. The first argument of the selector function represents the element to process. The second argument represents the collection item retrieved via the <paramref name="collectionSelector">collection selector</param>.</param>
+            /// <param name="resultSelector">Selector function to generate projection sequences for the elements obtained from the <paramref name="collectionSelector">collection selector</paramref>. The first argument of the selector function represents the element to process. The second argument represents the collection item retrieved via the <paramref name="collectionSelector">collection selector</paramref>.</param>
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(

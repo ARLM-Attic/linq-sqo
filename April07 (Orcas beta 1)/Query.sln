@@ -1,15 +1,15 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 9.00
-# Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Query", "Query\Query.csproj", "{3AA9E784-6C20-456B-BBC1-27E8A49B21CB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{755DE3E2-2155-4648-8D71-C57954ADE321}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio Codename Orcas
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF555A2B-9D41-4CB7-B7F4-78846C750593}"
 	ProjectSection(SolutionItems) = preProject
 		localtestrun.testrunconfig = localtestrun.testrunconfig
 		Query.vsmdi = Query.vsmdi
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Query", "Query\Query.csproj", "{3AA9E784-6C20-456B-BBC1-27E8A49B21CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{755DE3E2-2155-4648-8D71-C57954ADE321}"
 EndProject
 Global
 	GlobalSection(TeamFoundationVersionControl) = preSolution

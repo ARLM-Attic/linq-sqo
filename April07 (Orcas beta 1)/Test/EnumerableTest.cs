@@ -3045,24 +3045,24 @@ namespace Test
 
         #endregion
 
-        #region 1.12.1 EqualAll
+        #region 1.12.1 SequenceEqual
         /// <summary>
-        ///A test for EqualAll&lt;&gt; (IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)
+        ///A test for SequenceEqual&lt;&gt; (IEnumerable&lt;T&gt;, IEnumerable&lt;T&gt;)
         ///</summary>
         [TestMethod()]
-        public void EqualAllTest()
+        public void SequenceEqualTest()
         {
-            EqualAllTest_1();
-            EqualAllTest_2();
-            EqualAllTest_3();
-            EqualAllTest_4();
-            EqualAllTest_5();
-            EqualAllTest_6();
-            EqualAllTest_7();
-            EqualAllTest_8();
+            SequenceEqualTest_1();
+            SequenceEqualTest_2();
+            SequenceEqualTest_3();
+            SequenceEqualTest_4();
+            SequenceEqualTest_5();
+            SequenceEqualTest_6();
+            SequenceEqualTest_7();
+            SequenceEqualTest_8();
         }
 
-        private void EqualAllTest_1()
+        private void SequenceEqualTest_1()
         {
             IEnumerable<int> first = new int[] { 1, 3, 2 };
             IEnumerable<int> second = new int[] { 1, 3, 2 };
@@ -3070,7 +3070,7 @@ namespace Test
             bool exception1 = false;
             try
             {
-                Enumerable.EqualAll<int>(null, second);
+                Enumerable.SequenceEqual<int>(null, second);
             }
             catch (ArgumentNullException)
             {
@@ -3080,96 +3080,96 @@ namespace Test
             bool exception2 = false;
             try
             {
-                Enumerable.EqualAll<int>(first, null);
+                Enumerable.SequenceEqual<int>(first, null);
             }
             catch (ArgumentNullException)
             {
                 exception2 = true;
             }
 
-            Assert.IsTrue(exception1 && exception2, "Enumerable.EqualAll<T> did not return the expected value (exceptions).");
+            Assert.IsTrue(exception1 && exception2, "Enumerable.SequenceEqual<T> did not return the expected value (exceptions).");
 
             bool expected = true;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 1).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 1).");
         }
 
-        private void EqualAllTest_2()
+        private void SequenceEqualTest_2()
         {
             IEnumerable<int> first = new int[] { 1, 3, 2 };
             IEnumerable<int> second = new int[] { 1, 2, 3 };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 2).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 2).");
         }
 
-        private void EqualAllTest_3()
+        private void SequenceEqualTest_3()
         {
             IEnumerable<int> first = new int[] { 1, 3, 2 };
             IEnumerable<int> second = new int[] { 1, 3 };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 3).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 3).");
         }
 
-        private void EqualAllTest_4()
+        private void SequenceEqualTest_4()
         {
             IEnumerable<int> first = new int[] { 1, 3, 2 };
             IEnumerable<int> second = new int[] { 7, 8 };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 4).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 4).");
         }
 
-        private void EqualAllTest_5()
+        private void SequenceEqualTest_5()
         {
             IEnumerable<int> first = new int[] { 1, 3 };
             IEnumerable<int> second = new int[] { 1, 3, 2 };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 5).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 5).");
         }
 
-        private void EqualAllTest_6()
+        private void SequenceEqualTest_6()
         {
             IEnumerable<int> first = new int[] { 7, 8 };
             IEnumerable<int> second = new int[] { 1, 3, 2 };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 6).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 6).");
         }
 
-        private void EqualAllTest_7()
+        private void SequenceEqualTest_7()
         {
             IEnumerable<string> first = new string[] { "Bart", "Steve", "Bill" };
             IEnumerable<string> second = new string[] { "Bart", "Steve", "Bill" };
 
             bool expected = true;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 7).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 7).");
         }
 
-        private void EqualAllTest_8()
+        private void SequenceEqualTest_8()
         {
             IEnumerable<string> first = new string[] { "Bart", "Steve", "Bill" };
             IEnumerable<string> second = new string[] { "Bart", "Bill", "Steve" };
 
             bool expected = false;
-            bool actual = Enumerable.EqualAll(first, second);
+            bool actual = Enumerable.SequenceEqual(first, second);
 
-            Assert.AreEqual(expected, actual, "Enumerable.EqualAll<T> did not return the expected value (test 8).");
+            Assert.AreEqual(expected, actual, "Enumerable.SequenceEqual<T> did not return the expected value (test 8).");
         }
 
         #endregion
@@ -7788,7 +7788,7 @@ namespace Test
             Assert.IsTrue(exception1 && exception2, "Enumerable.OrderBy<T, K> did not return the expected value (exceptions).");
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o4, o3, o1, o2 };
-            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy(source, keySelector);
+            IOrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy(source, keySelector);
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
@@ -7816,7 +7816,7 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o4, o3, o1, o2 };
-            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy<OrderBy_Helper, int>(source, keySelector, new OrderByComparer_Helper<int>());
+            IOrderedSequence<OrderBy_Helper> actual = Enumerable.OrderBy<OrderBy_Helper, int>(source, keySelector, new OrderByComparer_Helper<int>());
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
@@ -7844,7 +7844,7 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o2, o1, o3, o4 };
-            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector);
+            IOrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector);
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
@@ -7872,7 +7872,7 @@ namespace Test
             Func<OrderBy_Helper, int> keySelector = delegate(OrderBy_Helper o) { return o.K; }; /* o => o.K */
 
             OrderBy_Helper[] expected = new OrderBy_Helper[] { o2, o1, o3, o4 };
-            OrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector, new OrderByComparer_Helper<int>());
+            IOrderedSequence<OrderBy_Helper> actual = Enumerable.OrderByDescending(source, keySelector, new OrderByComparer_Helper<int>());
 
             long n = 0;
             foreach (OrderBy_Helper o in actual)
@@ -11207,7 +11207,7 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
+            IOrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
 
             bool exception1 = false;
             try
@@ -11231,13 +11231,13 @@ namespace Test
 
             Assert.IsTrue(exception1 && exception2, "Enumerable.ThenBy<T, K> did not return the expected value (exceptions).");
 
-            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2);
+            IOrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2);
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
                 Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3);
+            IOrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3);
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
@@ -11299,14 +11299,14 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
-            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenBy(o, keySelector2, new ThenByComparer_Helper<string>());
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
                 Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenBy<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenBy(actual1, keySelector3, new ThenByComparer_Helper<string>());
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
@@ -11368,14 +11368,14 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
-            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2);
+            IOrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1);
+            IOrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2);
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
                 Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3);
+            IOrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3);
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
@@ -11437,14 +11437,14 @@ namespace Test
             Func<ThenBy_Helper, string> keySelector2 = delegate(ThenBy_Helper t) { return t.Second; }; /* t => t.Second */
             Func<ThenBy_Helper, string> keySelector3 = delegate(ThenBy_Helper t) { return t.Third; }; /* t => t.Third */
 
-            OrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
-            OrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> o = Enumerable.OrderBy(source, keySelector1, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> actual1 = Enumerable.ThenByDescending(o, keySelector2, new ThenByComparer_Helper<string>());
 
             int j = 0;
             foreach (ThenBy_Helper h in actual1)
                 Assert.IsTrue(object.ReferenceEquals(h, expected1[j++]), "Enumerable.ThenByDescending<T, K> did not return the expected value (order 1).");
 
-            OrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3, new ThenByComparer_Helper<string>());
+            IOrderedSequence<ThenBy_Helper> actual2 = Enumerable.ThenByDescending(actual1, keySelector3, new ThenByComparer_Helper<string>());
 
             j = 0;
             foreach (ThenBy_Helper h in actual2)
@@ -12340,19 +12340,19 @@ namespace Test
 
         #endregion
 
-        #region 1.11.1 ToSequence
+        #region 1.11.1 AsEnumerable
 
         /// <summary>
-        ///A test for ToSequence&lt;&gt; (IEnumerable&lt;T&gt;)
+        ///A test for AsEnumerable&lt;&gt; (IEnumerable&lt;T&gt;)
         ///</summary>
         [TestMethod()]
-        public void ToSequenceTest()
+        public void AsEnumerableTest()
         {
             IEnumerable<int> source = new int[] { 1, 2, 3, 4, 9 };
 
-            IEnumerable<int> actual = Enumerable.ToSequence(source);
+            IEnumerable<int> actual = Enumerable.AsEnumerable(source);
 
-            Assert.IsTrue(object.ReferenceEquals(actual, source), "Enumerable.ToSequence<T> did not return the expected value.");
+            Assert.IsTrue(object.ReferenceEquals(actual, source), "Enumerable.AsEnumerable<T> did not return the expected value.");
         }
 
         #endregion

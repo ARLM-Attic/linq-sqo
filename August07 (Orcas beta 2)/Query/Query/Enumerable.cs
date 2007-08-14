@@ -1,4 +1,4 @@
-//#define CS30
+#define CS30
 
 using System;
 using System.Collections;

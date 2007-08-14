@@ -93,12 +93,12 @@ namespace BdsSoft
             /// <returns>Filtered Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Where<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -117,12 +117,12 @@ namespace BdsSoft
             /// <returns>Filtered Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Where<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -151,12 +151,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> Select<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, TResult> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TResult> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -175,12 +175,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> Select<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, TResult> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, TResult> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -204,12 +204,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> SelectMany<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, IEnumerable<TResult>> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, IEnumerable<TResult>> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -229,12 +229,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> SelectMany<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, IEnumerable<TResult>> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, IEnumerable<TResult>> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -257,12 +257,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, IEnumerable<TCollection>> collectionSelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, IEnumerable<TCollection>> collectionSelector,
                 Func<TSource, TCollection, TResult> resultSelector)
             {
                 if (source == null || collectionSelector == null || resultSelector == null)
@@ -285,12 +285,12 @@ namespace BdsSoft
             /// <returns>Sequence with the projected elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> SelectMany<TSource, TCollection, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, IEnumerable<TCollection>> collectionSelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, IEnumerable<TCollection>> collectionSelector,
                 Func<TSource, TCollection, TResult> resultSelector)
             {
                 if (source == null || collectionSelector == null || resultSelector == null)
@@ -319,12 +319,12 @@ namespace BdsSoft
             /// <returns>Sequence with the first <paramref name="count">count</paramref> elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>Take</c> and <c>Skip</c> operators are functional complements: For a given sequence <c>s</c>, the concatenation of <c>s.Take(n)</c> and <c>s.Skip(n)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> Take<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                int count)
+#else
+IEnumerable<TSource> source,
+#endif
+ int count)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -347,12 +347,12 @@ namespace BdsSoft
             /// <returns>Sequence with the remaining elements after skipping <paramref name="count">count</paramref> elements.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>Take</c> and <c>Skip</c> operators are functional complements: For a given sequence <c>s</c>, the concatenation of <c>s.Take(n)</c> and <c>s.Skip(n)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> Skip<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                int count)
+#else
+IEnumerable<TSource> source,
+#endif
+ int count)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -378,12 +378,12 @@ namespace BdsSoft
             /// <returns>Head of the source sequence, ending with the last element for which the <paramref name="predicate">predicate</paramref> function evaluates to true.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>TakeWhile</c> and <c>SkipWhile</c> operators are functional complements: For a given sequence <c>s</c> and a predicate function <c>p</c>, the concatenation of <c>s.TakeWhile(p)</c> and <c>s.SkipWhile(p)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> TakeWhile<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -404,12 +404,12 @@ namespace BdsSoft
             /// <returns>Head of the source sequence, ending with the last element for which the <paramref name="predicate">predicate</paramref> function evaluates to true.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>TakeWhile</c> and <c>SkipWhile</c> operators are functional complements: For a given sequence <c>s</c> and a predicate function <c>p</c>, the concatenation of <c>s.TakeWhile(p)</c> and <c>s.SkipWhile(p)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> TakeWhile<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -435,12 +435,12 @@ namespace BdsSoft
             /// <returns>Tail of the source sequence, starting with the first element for which the <paramref name="predicate">predicate</paramref> function evaluates to false.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>TakeWhile</c> and <c>SkipWhile</c> operators are functional complements: For a given sequence <c>s</c> and a predicate function <c>p</c>, the concatenation of <c>s.TakeWhile(p)</c> and <c>s.SkipWhile(p)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> SkipWhile<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -471,12 +471,12 @@ namespace BdsSoft
             /// <returns>Tail of the source sequence, starting with the first element for which the <paramref name="predicate">predicate</paramref> function evaluates to false.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>TakeWhile</c> and <c>SkipWhile</c> operators are functional complements: For a given sequence <c>s</c> and a predicate function <c>p</c>, the concatenation of <c>s.TakeWhile(p)</c> and <c>s.SkipWhile(p)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> SkipWhile<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, int, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -522,12 +522,12 @@ namespace BdsSoft
             /// <returns>Sequence with elements resulting from a join operation on the outer and inner sequence based on a specified key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TOuter">TOuter</typeparamref>&gt;. The <c>Join</c> operator preserves the order of the <paramref name="outer">outer</paramref> sequence elements, and for each outer element, the order of the matching <paramref name="inner">inner</paramref> sequence elements. In relational database terms, the <c>Join</c> operator implements an inner equijoin. Other join operations, such as left outer join and right outer join have no dedicated standard query operators, but are subsets of the capabilities of the <see cref="GroupJoin&lt;TOuter, TInner, TKey, TResult&gt;(IEnumerable&lt;TOuter&gt;, IEnumerable&lt;TInner&gt;, Func&lt;TOuter, TKey&gt;, Func&lt;TInner, TKey&gt;, Func&lt;TOuter, IEnumerable&lt;TInner&gt;, TResult&gt;)">GroupJoin</see> operator.</remarks>
             public static IEnumerable<TElement> Join<TOuter, TInner, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TOuter> outer,
-            #else
-                IEnumerable<TOuter> outer, 
-            #endif
-                IEnumerable<TInner> inner,
+#else
+IEnumerable<TOuter> outer,
+#endif
+ IEnumerable<TInner> inner,
                 Func<TOuter, TKey> outerKeySelector,
                 Func<TInner, TKey> innerKeySelector,
                 Func<TOuter, TInner, TElement> resultSelector)
@@ -551,12 +551,12 @@ namespace BdsSoft
             /// <returns>Sequence with elements resulting from a join operation on the outer and inner sequence based on a specified key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TOuter">TOuter</typeparamref>&gt;. The <c>Join</c> operator preserves the order of the <paramref name="outer">outer</paramref> sequence elements, and for each outer element, the order of the matching <paramref name="inner">inner</paramref> sequence elements. In relational database terms, the <c>Join</c> operator implements an inner equijoin. Other join operations, such as left outer join and right outer join have no dedicated standard query operators, but are subsets of the capabilities of the <see cref="GroupJoin&lt;TOuter, TInner, TKey, TResult&gt;(IEnumerable&lt;TOuter&gt;, IEnumerable&lt;TInner&gt;, Func&lt;TOuter, TKey&gt;, Func&lt;TInner, TKey&gt;, Func&lt;TOuter, IEnumerable&lt;TInner&gt;, TResult&gt;)">GroupJoin</see> operator.</remarks>
             public static IEnumerable<TElement> Join<TOuter, TInner, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TOuter> outer, 
-            #else
-                IEnumerable<TOuter> outer, 
-            #endif
-                IEnumerable<TInner> inner,
+#else
+IEnumerable<TOuter> outer,
+#endif
+ IEnumerable<TInner> inner,
                 Func<TOuter, TKey> outerKeySelector,
                 Func<TInner, TKey> innerKeySelector,
                 Func<TOuter, TInner, TElement> resultSelector,
@@ -591,12 +591,12 @@ namespace BdsSoft
             /// <returns>Sequence with elements resulting from a group join operation on the outer and inner sequence based on a specified key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TOuter">TOuter</typeparamref>&gt;. The <c>GroupJoin</c> operator preserves the order of the <paramref name="outer">outer</paramref> sequence elements, and for each outer element, the order of the matching <paramref name="inner">inner</paramref> sequence elements. The <c>GroupJoin</c> operator produces hierarchical results (outer elements paired with sequences of matching inner elements) and has no direct equivalent in traditional relational database terms.</remarks>
             public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TOuter> outer,
-            #else
-                IEnumerable<TOuter> outer, 
-            #endif
-                IEnumerable<TInner> inner,
+#else
+IEnumerable<TOuter> outer,
+#endif
+ IEnumerable<TInner> inner,
                 Func<TOuter, TKey> outerKeySelector,
                 Func<TInner, TKey> innerKeySelector,
                 Func<TOuter, IEnumerable<TInner>, TResult> resultSelector)
@@ -620,12 +620,12 @@ namespace BdsSoft
             /// <returns>Sequence with elements resulting from a group join operation on the outer and inner sequence based on a specified key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TOuter">TOuter</typeparamref>&gt;. The <c>GroupJoin</c> operator preserves the order of the <paramref name="outer">outer</paramref> sequence elements, and for each outer element, the order of the matching <paramref name="inner">inner</paramref> sequence elements. The <c>GroupJoin</c> operator produces hierarchical results (outer elements paired with sequences of matching inner elements) and has no direct equivalent in traditional relational database terms.</remarks>
             public static IEnumerable<TResult> GroupJoin<TOuter, TInner, TKey, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TOuter> outer, 
-            #else
-                IEnumerable<TOuter> outer, 
-            #endif
-                IEnumerable<TInner> inner,
+#else
+IEnumerable<TOuter> outer,
+#endif
+ IEnumerable<TInner> inner,
                 Func<TOuter, TKey> outerKeySelector,
                 Func<TInner, TKey> innerKeySelector,
                 Func<TOuter, IEnumerable<TInner>, TResult> resultSelector,
@@ -663,12 +663,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the first and second sequence in a consecutive order.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Concat<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first, 
-            #else
-                IEnumerable<TSource> first, 
-            #endif
-                IEnumerable<TSource> second)
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second)
             {
                 if (first == null || second == null)
                     throw new ArgumentNullException();
@@ -700,12 +700,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in ascending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>OrderBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>OrderBy</c> operator establishes a primary ordering, for subsequent orderings use the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> OrderBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -724,12 +724,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in ascending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>OrderBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>OrderBy</c> operator establishes a primary ordering, for subsequent orderings use the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> OrderBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source, 
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IComparer<TKey> comparer)
             {
                 return OrderByInternal(source, keySelector, comparer, false);
@@ -745,12 +745,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in descending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>OrderBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>OrderBy</c> operator establishes a primary ordering, for subsequent orderings use the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> OrderByDescending<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -769,12 +769,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in descending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>OrderBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>OrderBy</c> operator establishes a primary ordering, for subsequent orderings use the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> OrderByDescending<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source, 
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IComparer<TKey> comparer)
             {
                 if (source == null)
@@ -797,12 +797,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in ascending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>ThenBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>ThenBy</c> operator establishes an n-ary (n &gt; 1) ordering, after a primary ordering using the <c>OrderBy</c> family of operators and a series of higher order m-ary orderings (1 &lt; m &lt; n) using the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> ThenBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IOrderedSequence<TSource> source, 
-            #else
-                IOrderedSequence<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IOrderedSequence<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -821,12 +821,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in ascending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>ThenBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>ThenBy</c> operator establishes an n-ary (n &gt; 1) ordering, after a primary ordering using the <c>OrderBy</c> family of operators and a series of higher order m-ary orderings (1 &lt; m &lt; n) using the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> ThenBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IOrderedSequence<TSource> source, 
-            #else
-                IOrderedSequence<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IOrderedSequence<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IComparer<TKey> comparer)
             {
                 if (source == null)
@@ -845,12 +845,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in descending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>ThenBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>ThenBy</c> operator establishes an n-ary (n &gt; 1) ordering, after a primary ordering using the <c>OrderBy</c> family of operators and a series of higher order m-ary orderings (1 &lt; m &lt; n) using the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> ThenByDescending<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IOrderedSequence<TSource> source, 
-            #else
-                IOrderedSequence<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IOrderedSequence<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -869,12 +869,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in descending order according to the extracted key values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>ThenBy</c> operator performs an unstable sort; that is, if the key values of two elements are equal, the order of the elements might not be preserved. In contrast, a stable sort preserves the order of elements that have equal key values. The <c>ThenBy</c> operator establishes an n-ary (n &gt; 1) ordering, after a primary ordering using the <c>OrderBy</c> family of operators and a series of higher order m-ary orderings (1 &lt; m &lt; n) using the <c>ThenBy</c> family of operators.</remarks>
             public static IOrderedSequence<TSource> ThenByDescending<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IOrderedSequence<TSource> source, 
-            #else
-                IOrderedSequence<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IOrderedSequence<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IComparer<TKey> comparer)
             {
                 if (source == null)
@@ -925,12 +925,12 @@ namespace BdsSoft
             /// <returns>Sequence yielding the source sequence elements in reverse order.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Reverse<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -961,12 +961,12 @@ namespace BdsSoft
             /// <returns>Sequence of <see cref="IGrouping&lt;TKey, TSource&gt;">IGrouping</see>&lt;<typeparamref name="TKey">TKey</typeparamref>, <typeparamref name="TSource">TSource</typeparamref>&gt; elements each representing a sequence of elements with a particular key value.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 return GroupBy<TSource, TKey>(source, keySelector, EqualityComparer<TKey>.Default);
             }
@@ -982,12 +982,12 @@ namespace BdsSoft
             /// <returns>Sequence of <see cref="IGrouping&lt;TKey, TSource&gt;">IGrouping</see>&lt;<typeparamref name="TKey">TKey</typeparamref>, <typeparamref name="TSource">TSource</typeparamref>&gt; elements each representing a sequence of elements with a particular key value.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<IGrouping<TKey, TSource>> GroupBy<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IEqualityComparer<TKey> comparer)
             {
                 return GroupBy<TSource, TKey, TSource>(source, keySelector, delegate(TSource t) { return t; } /* e => e */, comparer);
@@ -1005,12 +1005,12 @@ namespace BdsSoft
             /// <returns>Sequence of <see cref="IGrouping&lt;TKey, TSource&gt;">IGrouping</see>&lt;<typeparamref name="TKey">TKey</typeparamref>, <typeparamref name="TElement">TElement</typeparamref>&gt; elements each representing a sequence of elements with a particular key value.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector)
             {
                 return GroupBy<TSource, TKey, TElement>(source, keySelector, elementSelector, EqualityComparer<TKey>.Default);
@@ -1029,12 +1029,12 @@ namespace BdsSoft
             /// <returns>Sequence of <see cref="IGrouping&lt;TKey, TSource&gt;">IGrouping</see>&lt;<typeparamref name="TKey">TKey</typeparamref>, <typeparamref name="TElement">TElement</typeparamref>&gt; elements each representing a sequence of elements with a particular key value.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<IGrouping<TKey, TElement>> GroupBy<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector,
                 IEqualityComparer<TKey> comparer)
             {
@@ -1057,12 +1057,12 @@ namespace BdsSoft
             /// <param name="resultSelector">A function to create a result value from each group.</param>
             /// <returns>An System.Collections.Generic.IEnumerable&lt;T&gt; that has a type argument of TResult and where each element represents a projection over a group and its key.</returns>
             public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TKey, IEnumerable<TSource>, TResult> resultSelector)
             {
                 return GroupBy<TSource, TKey, TResult>(source, keySelector, resultSelector, EqualityComparer<TKey>.Default);
@@ -1080,13 +1080,13 @@ namespace BdsSoft
             /// <param name="comparer">An System.Collections.Generic.IEqualityComparer&lt;T&gt; to compare keys with.</param>
             /// <returns>An System.Collections.Generic.IEnumerable&lt;T&gt; that has a type argument of TResult and where each element represents a projection over a group and its key.</returns>
             public static IEnumerable<TResult> GroupBy<TSource, TKey, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector, 
-                Func<TKey, IEnumerable<TSource>, TResult> resultSelector, 
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
+                Func<TKey, IEnumerable<TSource>, TResult> resultSelector,
                 IEqualityComparer<TKey> comparer)
             {
                 if (source == null || keySelector == null || resultSelector == null) //comparer may be null
@@ -1110,13 +1110,13 @@ namespace BdsSoft
             /// <param name="resultSelector">A function to create a result value from each group.</param>
             /// <returns>An System.Collections.Generic.IEnumerable&lt;T&gt; that has a type argument of TResult and where each element represents a projection over a group and its key.</returns>
             public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector, 
-                Func<TSource, TElement> elementSelector, 
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
+                Func<TSource, TElement> elementSelector,
                 Func<TKey, IEnumerable<TElement>, TResult> resultSelector)
             {
                 return GroupBy<TSource, TKey, TElement, TResult>(source, keySelector, elementSelector, resultSelector, EqualityComparer<TKey>.Default);
@@ -1136,14 +1136,14 @@ namespace BdsSoft
             /// <param name="comparer">An System.Collections.Generic.IEqualityComparer&lt;T&gt; to compare keys with.</param>
             /// <returns>An System.Collections.Generic.IEnumerable&lt;T&gt; that has a type argument of TResult and where each element represents a projection over a group and its key.</returns>
             public static IEnumerable<TResult> GroupBy<TSource, TKey, TElement, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector, 
-                Func<TSource, TElement> elementSelector, 
-                Func<TKey, IEnumerable<TElement>, TResult> resultSelector, 
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
+                Func<TSource, TElement> elementSelector,
+                Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
                 IEqualityComparer<TKey> comparer)
             {
                 if (source == null || keySelector == null || elementSelector == null || resultSelector == null) //comparer may be null
@@ -1173,7 +1173,7 @@ namespace BdsSoft
 #if CS30
 this IEnumerable<TSource> source
 #else
-                IEnumerable<TSource> source
+IEnumerable<TSource> source
 #endif
 )
             {
@@ -1189,12 +1189,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the distinct elements from the source sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Distinct<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                IEqualityComparer<TSource> comparer
+#else
+IEnumerable<TSource> source,
+#endif
+ IEqualityComparer<TSource> comparer
                 )
             {
                 if (source == null || comparer == null)
@@ -1224,12 +1224,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set union of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Union<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second)
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second)
             {
                 return Union<TSource>(first, second, EqualityComparer<TSource>.Default);
             }
@@ -1244,12 +1244,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set union of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Union<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second,
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second,
                 IEqualityComparer<TSource> comparer)
             {
                 if (first == null || second == null || comparer == null)
@@ -1287,12 +1287,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set intersection of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Intersect<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second)
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second)
             {
                 return Intersect<TSource>(first, second, EqualityComparer<TSource>.Default);
             }
@@ -1307,12 +1307,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set intersection of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Intersect<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second,
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second,
                 IEqualityComparer<TSource> comparer)
             {
                 if (first == null || second == null || comparer == null)
@@ -1350,12 +1350,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set difference of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Except<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second)
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second)
             {
                 return Except<TSource>(first, second, EqualityComparer<TSource>.Default);
             }
@@ -1370,12 +1370,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence yielding the set difference of the <paramref name="first">first</paramref> sequence and <paramref name="second">second</paramref> sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> Except<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second,
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second,
                 IEqualityComparer<TSource> comparer)
             {
                 if (first == null || second == null || comparer == null)
@@ -1416,12 +1416,12 @@ this IEnumerable<TSource> source
             /// <returns>The source sequence typed as IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> AsEnumerable<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 return source;
             }
@@ -1438,12 +1438,12 @@ this IEnumerable<TSource> source
             /// <returns>Array of type <typeparamref name="TSource">TSource</typeparamref>[] containing the elements of the source sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TSource[] ToArray<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1467,12 +1467,12 @@ this IEnumerable<TSource> source
             /// <returns>List of type List&lt;<typeparamref name="TSource">TSource</typeparamref>&gt; containing the elements of the source sequence in order of occurrence.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static List<TSource> ToList<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1498,12 +1498,12 @@ this IEnumerable<TSource> source
             /// <returns>A Dictionary&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TSource">TSource</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the source element, for every the source element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 return ToDictionary<TSource, TKey, TSource>(source, keySelector, delegate(TSource t) { return t; } /* t => t */, EqualityComparer<TKey>.Default);
             }
@@ -1519,12 +1519,12 @@ this IEnumerable<TSource> source
             /// <returns>A Dictionary&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TSource">TSource</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the source element, for every the source element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Dictionary<TKey, TSource> ToDictionary<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IEqualityComparer<TKey> comparer)
             {
                 return ToDictionary<TSource, TKey, TSource>(source, keySelector, delegate(TSource t) { return t; } /* t => t */, comparer);
@@ -1542,12 +1542,12 @@ this IEnumerable<TSource> source
             /// <returns>A Dictionary&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TElement">TElement</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the result of the <paramref name="elementSelector">elementSelector</paramref> function invocation, for every the source element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector)
             {
                 return ToDictionary<TSource, TKey, TElement>(source, keySelector, elementSelector, EqualityComparer<TKey>.Default);
@@ -1566,12 +1566,12 @@ this IEnumerable<TSource> source
             /// <returns>A Dictionary&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TElement">TElement</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the result of the <paramref name="elementSelector">elementSelector</paramref> function invocation, for every the source element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Dictionary<TKey, TElement> ToDictionary<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector,
                 IEqualityComparer<TKey> comparer)
             {
@@ -1606,12 +1606,12 @@ this IEnumerable<TSource> source
             /// <returns>A Lookup&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TSource">TSource</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the source elements matching the key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Lookup<TKey, TSource> ToLookup<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector)
             {
                 return ToLookup<TSource, TKey, TSource>(source, keySelector, delegate(TSource t) { return t; } /* t => t */, EqualityComparer<TKey>.Default);
             }
@@ -1627,12 +1627,12 @@ this IEnumerable<TSource> source
             /// <returns>A Lookup&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TSource">TSource</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the source elements matching the key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Lookup<TKey, TSource> ToLookup<TSource, TKey>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 IEqualityComparer<TKey> comparer)
             {
                 return ToLookup<TSource, TKey, TSource>(source, keySelector, delegate(TSource t) { return t; } /* t => t */, comparer);
@@ -1650,12 +1650,12 @@ this IEnumerable<TSource> source
             /// <returns>A Lookup&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TElement">TElement</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the results of the <paramref name="elementSelector">elementSelector</paramref> function invocations for every source element matching the key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Lookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector)
             {
                 return ToLookup<TSource, TKey, TElement>(source, keySelector, elementSelector, EqualityComparer<TKey>.Default);
@@ -1674,12 +1674,12 @@ this IEnumerable<TSource> source
             /// <returns>A Lookup&lt;<typeparamref name="TKey">TKey</typeparamref>,<typeparamref name="TElement">TElement</typeparamref>&gt; collection mapping a key value extracted by the <paramref name="keySelector">keySelector</paramref> function on the results of the <paramref name="elementSelector">elementSelector</paramref> function invocations for every source element matching the key.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static Lookup<TKey, TElement> ToLookup<TSource, TKey, TElement>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TKey> keySelector,
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TKey> keySelector,
                 Func<TSource, TElement> elementSelector,
                 IEqualityComparer<TKey> comparer)
             {
@@ -1715,12 +1715,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence with the elements from the source sequence that are of type <typeparamref name="TResult">TResult</typeparamref>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TResult">TResult</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> OfType<TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable source
-            #else
-                IEnumerable source
-            #endif
-                )
+#else
+IEnumerable source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1742,12 +1742,12 @@ this IEnumerable<TSource> source
             /// <returns>Sequence with the elements of the source sequence casted to type <typeparamref name="TResult">TResult</typeparamref>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TResult">TResult</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> Cast<TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable source
-            #else
-                IEnumerable source
-            #endif
-                )
+#else
+IEnumerable source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1773,12 +1773,12 @@ this IEnumerable<TSource> source
             /// <returns>True if both sequences are of the same length and all corresponding elements of both sequences are equal, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool SequenceEqual<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second)
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second)
             {
                 return SequenceEqual<TSource>(first, second, EqualityComparer<TSource>.Default);
             }
@@ -1793,12 +1793,12 @@ this IEnumerable<TSource> source
             /// <returns>True if both sequences are of the same length and all corresponding elements of both sequences are equal, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool SequenceEqual<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> first,
-            #else
-                IEnumerable<TSource> first,
-            #endif
-                IEnumerable<TSource> second,
+#else
+IEnumerable<TSource> first,
+#endif
+ IEnumerable<TSource> second,
                 IEqualityComparer<TSource> comparer)
             {
                 if (first == null || second == null || comparer == null)
@@ -1829,12 +1829,12 @@ this IEnumerable<TSource> source
             /// <returns>The first element from the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="FirstOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">FirstOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty.</remarks>
             public static TSource First<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1855,12 +1855,12 @@ this IEnumerable<TSource> source
             /// <returns>The first element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. An <c>InvalidOperationException</c> is thrown if no element matches the <paramref name="predicate">predicate</paramref> or if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="FirstOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)">FirstOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource First<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -1884,12 +1884,12 @@ this IEnumerable<TSource> source
             /// <returns>The first element from the source Enumerable. If the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="First&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">First</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty.</remarks>
             public static TSource FirstOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1910,12 +1910,12 @@ this IEnumerable<TSource> source
             /// <returns>The first element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. If no element matches the <paramref name="predicate">predicate</paramref> or if the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="First&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)">First</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource FirstOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -1939,12 +1939,12 @@ this IEnumerable<TSource> source
             /// <returns>The last element from the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="LastOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">LastOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty.</remarks>
             public static TSource Last<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -1970,12 +1970,12 @@ this IEnumerable<TSource> source
             /// <returns>The last element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. An <c>InvalidOperationException</c> is thrown if no element matches the <paramref name="predicate">predicate</paramref> or if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="LastOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)">LastOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource Last<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2009,12 +2009,12 @@ this IEnumerable<TSource> source
             /// <returns>The last element from the source Enumerable. If the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="Last&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">Last</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty.</remarks>
             public static TSource LastOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2040,12 +2040,12 @@ this IEnumerable<TSource> source
             /// <returns>The last element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. If no element matches the <paramref name="predicate">predicate</paramref> or if the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="Last&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">Last</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource LastOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2079,12 +2079,12 @@ this IEnumerable<TSource> source
             /// <returns>The single element from the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty or if the source sequence contains more than one element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="SingleOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">SingleOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty.</remarks>
             public static TSource Single<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2111,12 +2111,12 @@ this IEnumerable<TSource> source
             /// <returns>The single element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. An <c>InvalidOperationException</c> is thrown if no element matches the <paramref name="predicate">predicate</paramref>, if more than one element matching the <paramref name="predicate">predicate</paramref> is found, or if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="SingleOrDefault&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)">SingleOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource Single<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2153,12 +2153,12 @@ this IEnumerable<TSource> source
             /// <returns>The single element from the source Enumerable. If the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned. An <c>InvalidOperationException</c> is thrown if the source sequence contains more than one element.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="Single&lt;TSource&gt;(IEnumerable&lt;TSource&gt;)">Single</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty.</remarks>
             public static TSource SingleOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2185,12 +2185,12 @@ this IEnumerable<TSource> source
             /// <returns>The single element from the source sequence, matching the <paramref name="predicate">predicate</paramref>. If no element matches the <paramref name="predicate">predicate</paramref> or if the source sequence is empty, <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> is returned. An <c>InvalidOperationException</c> is thrown if more than one element matching the <paramref name="predicate">predicate</paramref> is found.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="Single&lt;TSource&gt;(IEnumerable&lt;TSource&gt;, Func&lt;TSource, bool&gt;)">Single</see> to throw an <c>ArgumentNullException</c> in case the sequence is empty or no matching element is found.</remarks>
             public static TSource SingleOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2228,12 +2228,12 @@ this IEnumerable<TSource> source
             /// <returns>The element on the position indicated by <paramref name="index">index</paramref> in the Enumerable. An <c>ArgumentOutOfRangeException</c> is thrown if the index is less than zero or greater than or equal to the number of elements in the Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="ElementAtOrDefault">ElementAtOrDefault</see> to return <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c> in case the <paramref name="index">index</paramref> is less than zero or greater than or equal to the number of elements in the Enumerable.</remarks>
             public static TSource ElementAt<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                int index)
+#else
+IEnumerable<TSource> source,
+#endif
+ int index)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2264,12 +2264,12 @@ this IEnumerable<TSource> source
             /// <param name="index">Index of the element to retrieve from the Enumerable.</param>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. Use <see cref="ElementAt">ElementAt</see> to throw an <c>ArgumentOutOfRangeException</c> in case the <paramref name="index">index</paramref> is less than zero or greater than or equal to the number of elements in the Enumerable.</remarks>
             public static TSource ElementAtOrDefault<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                int index)
+#else
+IEnumerable<TSource> source,
+#endif
+ int index)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2306,12 +2306,12 @@ this IEnumerable<TSource> source
             /// <returns>A sequence identical to the source sequence in case it's not empty, otherwise a singleton sequence yielding <c>default(<typeparamref name="TSource">TSource</typeparamref>)</c>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> DefaultIfEmpty<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 return DefaultIfEmpty<TSource>(source, default(TSource));
             }
@@ -2325,12 +2325,12 @@ this IEnumerable<TSource> source
             /// <returns>A sequence identical to the source sequence in case it's not empty, otherwise a singleton sequence yielding <paramref name="defaultValue">defaultValue</paramref>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TSource> DefaultIfEmpty<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                TSource defaultValue)
+#else
+IEnumerable<TSource> source,
+#endif
+ TSource defaultValue)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2361,7 +2361,7 @@ this IEnumerable<TSource> source
             /// <returns>A sequence with <paramref name="count">count</paramref> sequential integers starting with the value <paramref name="start">start</paramref>.</returns>
             public static IEnumerable<int> Range(int start, int count)
             {
-                if (count < 0 || (long) start + count - 1 > int.MaxValue)
+                if (count < 0 || (long)start + count - 1 > int.MaxValue)
                     throw new ArgumentOutOfRangeException();
 
                 for (int i = start; i <= start + count - 1; i++)
@@ -2418,12 +2418,12 @@ this IEnumerable<TSource> source
             /// <returns>True if the sequence contains any elements, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool Any<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2440,12 +2440,12 @@ this IEnumerable<TSource> source
             /// <returns>True if the sequence contains any elements matching the <paramref name="predicate">predicate</paramref>, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool Any<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2470,12 +2470,12 @@ this IEnumerable<TSource> source
             /// <returns>True if all elements in the sequence match the <paramref name="predicate">predicate</paramref>, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool All<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2500,12 +2500,12 @@ this IEnumerable<TSource> source
             /// <returns>True if the <paramref name="value">value</paramref> was found, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool Contains<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                TSource value)
+#else
+IEnumerable<TSource> source,
+#endif
+ TSource value)
             {
                 return Contains<TSource>(source, value, EqualityComparer<TSource>.Default);
             }
@@ -2520,12 +2520,12 @@ this IEnumerable<TSource> source
             /// <returns>True if the <paramref name="value">value</paramref> was found, false otherwise.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static bool Contains<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                TSource value,
+#else
+IEnumerable<TSource> source,
+#endif
+ TSource value,
                 IEqualityComparer<TSource> comparer)
             {
                 if (source == null || comparer == null)
@@ -2558,12 +2558,12 @@ this IEnumerable<TSource> source
             /// <returns>The number of elements in the Enumerable. An <c>OverflowException</c> is thrown is the count exceeds <c>int.MaxValue</c>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int Count<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2591,12 +2591,12 @@ this IEnumerable<TSource> source
             /// <returns>The number of elements in the sequence that match the <paramref name="predicate">predicate</paramref>. An <c>OverflowException</c> is thrown is the count exceeds <c>int.MaxValue</c>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int Count<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2621,12 +2621,12 @@ this IEnumerable<TSource> source
             /// <returns>The number of elements in the Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long LongCount<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2647,12 +2647,12 @@ this IEnumerable<TSource> source
             /// <returns>The number of elements in the sequence that match the <paramref name="predicate">predicate</paramref>.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long LongCount<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, bool> predicate)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, bool> predicate)
             {
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
@@ -2678,12 +2678,12 @@ this IEnumerable<TSource> source
             /// <returns>The integer sum of the sequence, 0 if the sequence is empty. If the sum is too large to represent as an <c>int</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int&gt;.</remarks>
             public static int Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<int> source
-            #else
-                IEnumerable<int> source
-            #endif
-                )
+#else
+IEnumerable<int> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2707,12 +2707,12 @@ this IEnumerable<TSource> source
             /// <returns>The integer sum of the <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as an <c>int</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -2738,12 +2738,12 @@ this IEnumerable<TSource> source
             /// <returns>The integer sum of the sequence excluding null values, 0 if the sequence is empty. If the sum is too large to represent as an <c>int</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int?&gt;.</remarks>
             public static int? Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<int?> source
-            #else
-                IEnumerable<int?> source
-            #endif
-                )
+#else
+IEnumerable<int?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2768,12 +2768,12 @@ this IEnumerable<TSource> source
             /// <returns>The integer sum of the non-null <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as an <c>int</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int? Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -2803,12 +2803,12 @@ this IEnumerable<TSource> source
             /// <returns>The long sum of the sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>long</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long&gt;.</remarks>
             public static long Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<long> source
-            #else
-                IEnumerable<long> source
-            #endif
-                )
+#else
+IEnumerable<long> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2832,12 +2832,12 @@ this IEnumerable<TSource> source
             /// <returns>The long sum of the <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>long</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -2863,12 +2863,12 @@ this IEnumerable<TSource> source
             /// <returns>The long sum of the sequence excluding null values, 0 if the sequence is empty. If the sum is too large to represent as a <c>long</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long?&gt;.</remarks>
             public static long? Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<long?> source
-            #else
-                IEnumerable<long?> source
-            #endif
-                )
+#else
+IEnumerable<long?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2893,12 +2893,12 @@ this IEnumerable<TSource> source
             /// <returns>The long sum of the non-null <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>long</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long? Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -2928,12 +2928,12 @@ this IEnumerable<TSource> source
             /// <returns>The double sum of the sequence, 0.0 if the sequence is empty. If the sum is too large to represent as a <c>double</c>, a positive or negative infinity is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double&gt;.</remarks>
             public static double Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<double> source
-            #else
-                IEnumerable<double> source
-            #endif
-                )
+#else
+IEnumerable<double> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -2954,12 +2954,12 @@ this IEnumerable<TSource> source
             /// <returns>The double sum of the <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0.0 if the sequence is empty. If the sum is too large to represent as a <c>double</c>, a positive or negative infinity is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -2982,12 +2982,12 @@ this IEnumerable<TSource> source
             /// <returns>The double sum of the sequence excluding null values, 0.0 if the sequence is empty. If the sum is too large to represent as a <c>double</c>, a positive or negative infinity is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double?&gt;.</remarks>
             public static double? Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<double?> source
-            #else
-                IEnumerable<double?> source
-            #endif
-                )
+#else
+IEnumerable<double?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3009,12 +3009,12 @@ this IEnumerable<TSource> source
             /// <returns>The double sum of the non-null <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0.0 if the sequence is empty. If the sum is too large to represent as a <c>double</c>, a positive or negative infinity is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3041,12 +3041,12 @@ this IEnumerable<TSource> source
             /// <returns>The decimal sum of the sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>decimal</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal&gt;.</remarks>
             public static decimal Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<decimal> source
-            #else
-                IEnumerable<decimal> source
-            #endif
-                )
+#else
+IEnumerable<decimal> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3070,12 +3070,12 @@ this IEnumerable<TSource> source
             /// <returns>The decimal sum of the <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>decimal</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static decimal Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, decimal> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, decimal> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3101,12 +3101,12 @@ this IEnumerable<TSource> source
             /// <returns>The decimal sum of the sequence excluding null values, 0 if the sequence is empty. If the sum is too large to represent as a <c>decimal</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal?&gt;.</remarks>
             public static decimal? Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<decimal?> source
-            #else
-                IEnumerable<decimal?> source
-            #endif
-                )
+#else
+IEnumerable<decimal?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3131,12 +3131,12 @@ this IEnumerable<TSource> source
             /// <returns>The decimal sum of the non-null <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>decimal</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static decimal? Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, decimal?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, decimal?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3166,12 +3166,12 @@ this IEnumerable<TSource> source
             /// <returns>The floating comma sum of the sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>float</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float&gt;.</remarks>
             public static float Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<float> source
-            #else
-                IEnumerable<float> source
-            #endif
-                )
+#else
+IEnumerable<float> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3195,12 +3195,12 @@ this IEnumerable<TSource> source
             /// <returns>The floating comma sum of the <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>float</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3226,12 +3226,12 @@ this IEnumerable<TSource> source
             /// <returns>The floating comma sum of the sequence excluding null values, 0 if the sequence is empty. If the sum is too large to represent as a <c>float</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float?&gt;.</remarks>
             public static float? Sum(
-            #if CS30
+#if CS30
                 this IEnumerable<float?> source
-            #else
-                IEnumerable<float?> source
-            #endif
-                )
+#else
+IEnumerable<float?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3256,12 +3256,12 @@ this IEnumerable<TSource> source
             /// <returns>The floating comma sum of the non-null <paramref name="selector">selector</paramref> function evaluations for each element in the source sequence, 0 if the sequence is empty. If the sum is too large to represent as a <c>float</c>, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float? Sum<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3296,12 +3296,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum value encountered while enumerating the source Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TSource Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3353,12 +3353,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TResult Min<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TResult> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TResult> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3411,12 +3411,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int&gt;.</remarks>
             public static int Min(
-            #if CS30
+#if CS30
                 this IEnumerable<int> source
-            #else
-                IEnumerable<int> source
-            #endif
-                )
+#else
+IEnumerable<int> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3442,12 +3442,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3475,12 +3475,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long&gt;.</remarks>
             public static long Min(
-            #if CS30
+#if CS30
                 this IEnumerable<long> source
-            #else
-                IEnumerable<long> source
-            #endif
-                )
+#else
+IEnumerable<long> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3506,12 +3506,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3539,12 +3539,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double&gt;.</remarks>
             public static double Min(
-            #if CS30
+#if CS30
                 this IEnumerable<double> source
-            #else
-                IEnumerable<double> source
-            #endif
-                )
+#else
+IEnumerable<double> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3570,12 +3570,12 @@ this IEnumerable<TSource> source
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3606,7 +3606,7 @@ this IEnumerable<TSource> source
 #if CS30
 this IEnumerable<decimal> source
 #else
-                IEnumerable<decimal> source
+IEnumerable<decimal> source
 #endif
 )
             {
@@ -3637,7 +3637,7 @@ this IEnumerable<decimal> source
 #if CS30
 this IEnumerable<TSource> source,
 #else
-                IEnumerable<TSource> source,
+IEnumerable<TSource> source,
 #endif
  Func<TSource, decimal> selector)
             {
@@ -3667,12 +3667,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float&gt;.</remarks>
             public static float Min(
-            #if CS30
+#if CS30
                 this IEnumerable<float> source
-            #else
-                IEnumerable<float> source
-            #endif
-                )
+#else
+IEnumerable<float> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3698,12 +3698,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3731,12 +3731,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int?&gt;.</remarks>
             public static int? Min(
-            #if CS30
+#if CS30
                 this IEnumerable<int?> source
-            #else
-                IEnumerable<int?> source
-            #endif
-                )
+#else
+IEnumerable<int?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3766,12 +3766,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int? Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3803,12 +3803,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long?&gt;.</remarks>
             public static long? Min(
-            #if CS30
+#if CS30
                 this IEnumerable<long?> source
-            #else
-                IEnumerable<long?> source
-            #endif
-                )
+#else
+IEnumerable<long?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3838,12 +3838,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long? Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3875,12 +3875,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double?&gt;.</remarks>
             public static double? Min(
-            #if CS30
+#if CS30
                 this IEnumerable<double?> source
-            #else
-                IEnumerable<double?> source
-            #endif
-                )
+#else
+IEnumerable<double?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -3910,12 +3910,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -3950,7 +3950,7 @@ this IEnumerable<TSource> source,
 #if CS30
 this IEnumerable<decimal?> source
 #else
-                IEnumerable<decimal?> source
+IEnumerable<decimal?> source
 #endif
 )
             {
@@ -3985,7 +3985,7 @@ this IEnumerable<decimal?> source
 #if CS30
 this IEnumerable<TSource> source,
 #else
-                IEnumerable<TSource> source,
+IEnumerable<TSource> source,
 #endif
  Func<TSource, decimal?> selector)
             {
@@ -4019,12 +4019,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal?&gt;.</remarks>
             public static float? Min(
-            #if CS30
+#if CS30
                 this IEnumerable<float?> source
-            #else
-                IEnumerable<float?> source
-            #endif
-                )
+#else
+IEnumerable<float?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4054,12 +4054,12 @@ this IEnumerable<TSource> source,
             /// <returns>The minimum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float? Min<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4096,12 +4096,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TSource Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source
-            #else
-                IEnumerable<TSource> source
-            #endif
-                )
+#else
+IEnumerable<TSource> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4153,12 +4153,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TResult Max<TSource, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TResult> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TResult> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4211,12 +4211,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int&gt;.</remarks>
             public static int Max(
-            #if CS30
+#if CS30
                 this IEnumerable<int> source
-            #else
-                IEnumerable<int> source
-            #endif
-                )
+#else
+IEnumerable<int> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4242,12 +4242,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4275,12 +4275,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long&gt;.</remarks>
             public static long Max(
-            #if CS30
+#if CS30
                 this IEnumerable<long> source
-            #else
-                IEnumerable<long> source
-            #endif
-                )
+#else
+IEnumerable<long> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4306,12 +4306,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4339,12 +4339,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double&gt;.</remarks>
             public static double Max(
-            #if CS30
+#if CS30
                 this IEnumerable<double> source
-            #else
-                IEnumerable<double> source
-            #endif
-                )
+#else
+IEnumerable<double> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4370,12 +4370,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4403,12 +4403,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal&gt;.</remarks>
             public static decimal Max(
-            #if CS30
+#if CS30
                 this IEnumerable<decimal> source
-            #else
-                IEnumerable<decimal> source
-            #endif
-                )
+#else
+IEnumerable<decimal> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4434,12 +4434,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static decimal Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, decimal> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, decimal> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4467,12 +4467,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float&gt;.</remarks>
             public static float Max(
-            #if CS30
+#if CS30
                 this IEnumerable<float> source
-            #else
-                IEnumerable<float> source
-            #endif
-                )
+#else
+IEnumerable<float> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4498,12 +4498,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4531,12 +4531,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int?&gt;.</remarks>
             public static int? Max(
-            #if CS30
+#if CS30
                 this IEnumerable<int?> source
-            #else
-                IEnumerable<int?> source
-            #endif
-                )
+#else
+IEnumerable<int?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4566,12 +4566,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static int? Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4603,12 +4603,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long?&gt;.</remarks>
             public static long? Max(
-            #if CS30
+#if CS30
                 this IEnumerable<long?> source
-            #else
-                IEnumerable<long?> source
-            #endif
-                )
+#else
+IEnumerable<long?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4638,12 +4638,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static long? Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4675,12 +4675,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double?&gt;.</remarks>
             public static double? Max(
-            #if CS30
+#if CS30
                 this IEnumerable<double?> source
-            #else
-                IEnumerable<double?> source
-            #endif
-                )
+#else
+IEnumerable<double?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4710,12 +4710,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4750,7 +4750,7 @@ this IEnumerable<TSource> source,
 #if CS30
 this IEnumerable<decimal?> source
 #else
-                IEnumerable<decimal?> source
+IEnumerable<decimal?> source
 #endif
 )
             {
@@ -4785,7 +4785,7 @@ this IEnumerable<decimal?> source
 #if CS30
 this IEnumerable<TSource> source,
 #else
-                IEnumerable<TSource> source,
+IEnumerable<TSource> source,
 #endif
  Func<TSource, decimal?> selector)
             {
@@ -4819,12 +4819,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal?&gt;.</remarks>
             public static float? Max(
-            #if CS30
+#if CS30
                 this IEnumerable<float?> source
-            #else
-                IEnumerable<float?> source
-            #endif
-                )
+#else
+IEnumerable<float?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4854,12 +4854,12 @@ this IEnumerable<TSource> source,
             /// <returns>The maximum <paramref name="selector">selector</paramref> result value encountered while enumerating the source Enumerable. A null value is returned if the source sequence is empty or if the source sequence only contains null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float? Max<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4895,12 +4895,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int&gt;.</remarks>
             public static double Average(
-            #if CS30
+#if CS30
                 this IEnumerable<int> source
-            #else
-                IEnumerable<int> source
-            #endif
-                )
+#else
+IEnumerable<int> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -4931,12 +4931,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -4969,12 +4969,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long&gt;.</remarks>
             public static double Average(
-            #if CS30
+#if CS30
                 this IEnumerable<long> source
-            #else
-                IEnumerable<long> source
-            #endif
-                )
+#else
+IEnumerable<long> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5005,12 +5005,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5043,12 +5043,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double&gt;.</remarks>
             public static double Average(
-            #if CS30
+#if CS30
                 this IEnumerable<double> source
-            #else
-                IEnumerable<double> source
-            #endif
-                )
+#else
+IEnumerable<double> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5076,12 +5076,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5111,12 +5111,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source Enumerable.  If the sequence is empty, an <c>ArgumentNullException</c> is thrown.If the sum of the elements is too large to represent in a decimal, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal&gt;.</remarks>
             public static decimal Average(
-            #if CS30
+#if CS30
                 this IEnumerable<decimal> source
-            #else
-                IEnumerable<decimal> source
-            #endif
-                )
+#else
+IEnumerable<decimal> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5147,12 +5147,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the result values is too large to represent in a decimal, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static decimal Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, decimal> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, decimal> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5185,12 +5185,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float&gt;.</remarks>
             public static float Average(
-            #if CS30
+#if CS30
                 this IEnumerable<float> source
-            #else
-                IEnumerable<float> source
-            #endif
-                )
+#else
+IEnumerable<float> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5221,12 +5221,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty, an <c>ArgumentNullException</c> is thrown. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5259,12 +5259,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source sequence excluding null values, null if the sequence is empty or contains only null values. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;int?&gt;.</remarks>
             public static double? Average(
-            #if CS30
+#if CS30
                 this IEnumerable<int?> source
-            #else
-                IEnumerable<int?> source
-            #endif
-                )
+#else
+IEnumerable<int?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5298,12 +5298,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the non-null <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty or if the <paramref name="selector">selector</paramref> only returned null values, null is returned. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, int?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, int?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5340,12 +5340,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source sequence excluding null values, null if the sequence is empty or contains only null values. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;long?&gt;.</remarks>
             public static double? Average(
-            #if CS30
+#if CS30
                 this IEnumerable<long?> source
-            #else
-                IEnumerable<long?> source
-            #endif
-                )
+#else
+IEnumerable<long?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5379,12 +5379,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the non-null <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty or if the <paramref name="selector">selector</paramref> only returned null values, null is returned. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, long?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, long?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5421,12 +5421,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source sequence excluding null values, null if the sequence is empty or contains only null values.</returns>
             /// <remarks>Extension method for IEnumerable&lt;double?&gt;.</remarks>
             public static double? Average(
-            #if CS30
+#if CS30
                 this IEnumerable<double?> source
-            #else
-                IEnumerable<double?> source
-            #endif
-                )
+#else
+IEnumerable<double?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5457,12 +5457,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the non-null <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty or if the <paramref name="selector">selector</paramref> only returned null values, null is returned.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static double? Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, double?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, double?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5496,12 +5496,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source sequence excluding null values, null if the sequence is empty or contains only null values. If the sum of the elements is too large to represent in a decimal, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;decimal?&gt;.</remarks>
             public static decimal? Average(
-            #if CS30
+#if CS30
                 this IEnumerable<decimal?> source
-            #else
-                IEnumerable<decimal?> source
-            #endif
-                )
+#else
+IEnumerable<decimal?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5532,12 +5532,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the non-null <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty or if the <paramref name="selector">selector</paramref> only returned null values, null is returned. If the sum of the result values is too large to represent in a decimal, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static decimal? Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, decimal?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, decimal?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5571,12 +5571,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the source sequence excluding null values, null if the sequence is empty or contains only null values. If the sum of the elements is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;float?&gt;.</remarks>
             public static double? Average(
-            #if CS30
+#if CS30
                 this IEnumerable<float?> source
-            #else
-                IEnumerable<float?> source
-            #endif
-                )
+#else
+IEnumerable<float?> source
+#endif
+)
             {
                 if (source == null)
                     throw new ArgumentNullException();
@@ -5610,12 +5610,12 @@ this IEnumerable<TSource> source,
             /// <returns>The average of the non-null <paramref name="selector">selector</paramref> result values encountered while enumerating the source Enumerable. If the sequence is empty or if the <paramref name="selector">selector</paramref> only returned null values, null is returned. If the sum of the result values is too large to represent in a long, an <c>OverflowException</c> is thrown.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static float? Average<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, float?> selector)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, float?> selector)
             {
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
@@ -5656,12 +5656,12 @@ this IEnumerable<TSource> source,
             /// <returns>The aggregated value of the source sequence obtained by calling the <paramref name="func">aggregation function</paramref> repeatedly for each element in the sequence, starting with the first element as a seed value and using an internal accumulator. An <c>InvalidOperationException</c> is thrown if the source sequence is empty.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TSource Aggregate<TSource>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                Func<TSource, TSource, TSource> func)
+#else
+IEnumerable<TSource> source,
+#endif
+ Func<TSource, TSource, TSource> func)
             {
                 if (source == null || func == null)
                     throw new ArgumentNullException();
@@ -5690,12 +5690,12 @@ this IEnumerable<TSource> source,
             /// <returns>The aggregated value of the source sequence obtained by calling the <paramref name="func">aggregation function</paramref> repeatedly for each element in the sequence, starting with the specified <paramref name="seed">seed</paramref> value and using an internal accumulator.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TAccumulate Aggregate<TSource, TAccumulate>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                TAccumulate seed,
+#else
+IEnumerable<TSource> source,
+#endif
+ TAccumulate seed,
                 Func<TAccumulate, TSource, TAccumulate> func)
             {
                 if (source == null || func == null)
@@ -5721,12 +5721,12 @@ this IEnumerable<TSource> source,
             /// <returns>The aggregated value of the source sequence obtained by calling the <paramref name="func">aggregation function</paramref> repeatedly for each element in the sequence, starting with the specified <paramref name="seed">seed</paramref> value and using an internal accumulator.</returns>
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static TResult Aggregate<TSource, TAccumulate, TResult>(
-            #if CS30
+#if CS30
                 this IEnumerable<TSource> source,
-            #else
-                IEnumerable<TSource> source,
-            #endif
-                TAccumulate seed,
+#else
+IEnumerable<TSource> source,
+#endif
+ TAccumulate seed,
                 Func<TAccumulate, TSource, TAccumulate> func,
                 Func<TAccumulate, TResult> resultSelector)
             {
@@ -6119,6 +6119,39 @@ this IEnumerable<TSource> source,
                     throw new ArgumentException();
             }
         }
+
+#if !CS30
+        /// <summary>
+        /// Naive HashSet&lt;T&gt; implementation for use in .NET 2.0.
+        /// </summary>
+        /// <typeparam name="T">Element type.</typeparam>
+        /// <remarks>
+        /// This class won't perform as good as the System.Collections.Generic.HashSet&lt;T&gt; class that ships in the .NET Framework 3.5.
+        /// One could also replace the use of HashSet&lt;T&gt; with Set&lt;T&gt; from Wintellect PowerCollections at http://www.wintellect.com/PowerCollections.aspx.
+        /// </remarks>
+        internal class HashSet<T> : Dictionary<T, object>
+        {
+            public HashSet()
+                : base()
+            {
+            }
+
+            public HashSet(IEqualityComparer<T> comparer)
+                : base(comparer)
+            {
+            }
+
+            public void Add(T item)
+            {
+                base.Add(item, null);
+            }
+
+            public bool Contains(T item)
+            {
+                return base.ContainsKey(item);
+            }
+        }
+#endif
 
         #endregion
     }

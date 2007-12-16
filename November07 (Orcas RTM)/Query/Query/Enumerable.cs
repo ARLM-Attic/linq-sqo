@@ -103,6 +103,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _Where(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _Where<TSource>(
+                IEnumerable<TSource> source, 
+                Func<TSource, bool> predicate)
+            {
                 foreach (TSource item in source)
                     if (predicate(item))
                         yield return item;
@@ -127,6 +134,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _Where(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _Where<TSource>(
+                IEnumerable<TSource> source, 
+                Func<TSource, int, bool> predicate)
+            {
                 int i = 0;
                 foreach (TSource item in source)
                     if (predicate(item, i++))
@@ -152,7 +166,7 @@ IEnumerable<TSource> source,
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;.</remarks>
             public static IEnumerable<TResult> Select<TSource, TResult>(
 #if CS30
-                this IEnumerable<TSource> source, 
+this IEnumerable<TSource> source,
 #else
 IEnumerable<TSource> source,
 #endif
@@ -161,6 +175,11 @@ IEnumerable<TSource> source,
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
 
+                return _Select(source, selector);
+            }
+
+            private static IEnumerable<TResult> _Select<TSource, TResult>(IEnumerable<TSource> source, Func<TSource, TResult> selector)
+            {
                 foreach (TSource item in source)
                     yield return selector(item);
             }
@@ -185,6 +204,13 @@ IEnumerable<TSource> source,
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
 
+                return _Select(source, selector);
+            }
+
+            private static IEnumerable<TResult> _Select<TSource, TResult>(
+                IEnumerable<TSource> source, 
+                Func<TSource, int, TResult> selector)
+            {
                 int i = 0;
                 foreach (TSource item in source)
                     yield return selector(item, i++);
@@ -214,6 +240,13 @@ IEnumerable<TSource> source,
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
 
+                return _SelectMany(source, selector);
+            }
+
+            private static IEnumerable<TResult> _SelectMany<TSource, TResult>(
+                IEnumerable<TSource> source, 
+                Func<TSource, IEnumerable<TResult>> selector)
+            {
                 foreach (TSource item in source)
                     foreach (TResult child in selector(item))
                         yield return child;
@@ -239,6 +272,13 @@ IEnumerable<TSource> source,
                 if (source == null || selector == null)
                     throw new ArgumentNullException();
 
+                return _SelectMany(source, selector);
+            }
+
+            private static IEnumerable<TResult> _SelectMany<TSource, TResult>(
+                IEnumerable<TSource> source, 
+                Func<TSource, int, IEnumerable<TResult>> selector)
+            {
                 int i = 0;
                 foreach (TSource item in source)
                     foreach (TResult child in selector(item, i++))
@@ -268,6 +308,14 @@ IEnumerable<TSource> source,
                 if (source == null || collectionSelector == null || resultSelector == null)
                     throw new ArgumentNullException();
 
+                return _SelectMany(source, collectionSelector, resultSelector);
+            }
+
+            private static IEnumerable<TResult> _SelectMany<TSource, TCollection, TResult>(
+                IEnumerable<TSource> source,
+                Func<TSource, IEnumerable<TCollection>> collectionSelector,
+                Func<TSource, TCollection, TResult> resultSelector)
+            {
                 foreach (TSource item in source)
                     foreach (TCollection coll in collectionSelector(item))
                         yield return resultSelector(item, coll);
@@ -296,6 +344,14 @@ IEnumerable<TSource> source,
                 if (source == null || collectionSelector == null || resultSelector == null)
                     throw new ArgumentNullException();
 
+                return _SelectMany(source, collectionSelector, resultSelector);
+            }
+
+            private static IEnumerable<TResult> _SelectMany<TSource, TCollection, TResult>(
+                IEnumerable<TSource> source,
+                Func<TSource, int, IEnumerable<TCollection>> collectionSelector,
+                Func<TSource, TCollection, TResult> resultSelector)
+            {
                 int i = 0;
                 foreach (TSource item in source)
                     foreach (TCollection coll in collectionSelector(item, i++))
@@ -320,7 +376,7 @@ IEnumerable<TSource> source,
             /// <remarks>Extension method for IEnumerable&lt;<typeparamref name="TSource">TSource</typeparamref>&gt;. The <c>Take</c> and <c>Skip</c> operators are functional complements: For a given sequence <c>s</c>, the concatenation of <c>s.Take(n)</c> and <c>s.Skip(n)</c> yields the same sequence as <c>s</c>.</remarks>
             public static IEnumerable<TSource> Take<TSource>(
 #if CS30
-                this IEnumerable<TSource> source, 
+this IEnumerable<TSource> source,
 #else
 IEnumerable<TSource> source,
 #endif
@@ -329,6 +385,13 @@ IEnumerable<TSource> source,
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _Take(source, count);
+            }
+
+            private static IEnumerable<TSource> _Take<TSource>(
+                IEnumerable<TSource> source,
+                int count)
+            {
                 IEnumerator<TSource> enumerator = source.GetEnumerator();
                 for (int i = 0; i < count && enumerator.MoveNext(); i++)
                     yield return enumerator.Current;
@@ -357,6 +420,13 @@ IEnumerable<TSource> source,
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _Skip(source, count);
+            }
+
+            private static IEnumerable<TSource> _Skip<TSource>(
+                IEnumerable<TSource> source,
+                int count)
+            {
                 IEnumerator<TSource> enumerator = source.GetEnumerator();
                 for (int i = 0; i < count && enumerator.MoveNext(); i++)
                     ;
@@ -388,6 +458,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _TakeWhile(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _TakeWhile<TSource>(
+                IEnumerable<TSource> source,
+                Func<TSource, bool> predicate)
+            {
                 foreach (TSource item in source)
                     if (predicate(item))
                         yield return item;
@@ -414,6 +491,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _TakeWhile(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _TakeWhile<TSource>(
+                IEnumerable<TSource> source,
+                Func<TSource, int, bool> predicate)
+            {
                 int i = 0;
                 foreach (TSource item in source)
                     if (predicate(item, i++))
@@ -445,6 +529,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _SkipWhile(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _SkipWhile<TSource>(
+                IEnumerable<TSource> source,
+                Func<TSource, bool> predicate)
+            {
                 IEnumerator<TSource> enumerator = source.GetEnumerator();
                 if (enumerator.MoveNext())
                 {
@@ -481,6 +572,13 @@ IEnumerable<TSource> source,
                 if (source == null || predicate == null)
                     throw new ArgumentNullException();
 
+                return _SkipWhile(source, predicate);
+            }
+
+            private static IEnumerable<TSource> _SkipWhile<TSource>(
+                IEnumerable<TSource> source,
+                Func<TSource, int, bool> predicate)
+            {
                 IEnumerator<TSource> enumerator = source.GetEnumerator();
                 if (enumerator.MoveNext())
                 {
@@ -565,6 +663,17 @@ IEnumerable<TOuter> outer,
                 if (outer == null || inner == null || outerKeySelector == null || innerKeySelector == null || resultSelector == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _Join(outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer);
+            }
+
+            private static IEnumerable<TElement> _Join<TOuter, TInner, TKey, TElement>(
+                IEnumerable<TOuter> outer,
+                IEnumerable<TInner> inner,
+                Func<TOuter, TKey> outerKeySelector,
+                Func<TInner, TKey> innerKeySelector,
+                Func<TOuter, TInner, TElement> resultSelector,
+                IEqualityComparer<TKey> comparer)
+            {
                 Lookup<TKey, TInner> innerLookup = ToLookup(inner, innerKeySelector, comparer);
 
                 foreach (TOuter o in outer)
@@ -634,6 +743,17 @@ IEnumerable<TOuter> outer,
                 if (outer == null || inner == null || outerKeySelector == null || innerKeySelector == null || resultSelector == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _GroupJoin(outer, inner, outerKeySelector, innerKeySelector, resultSelector, comparer);
+            }
+
+            private static IEnumerable<TResult> _GroupJoin<TOuter, TInner, TKey, TResult>(
+                IEnumerable<TOuter> outer,
+                IEnumerable<TInner> inner,
+                Func<TOuter, TKey> outerKeySelector,
+                Func<TInner, TKey> innerKeySelector,
+                Func<TOuter, IEnumerable<TInner>, TResult> resultSelector,
+                IEqualityComparer<TKey> comparer)
+            {
                 Lookup<TKey, TInner> innerLookup = ToLookup(inner, innerKeySelector, comparer);
 
                 foreach (TOuter o in outer)
@@ -673,6 +793,11 @@ IEnumerable<TSource> first,
                 if (first == null || second == null)
                     throw new ArgumentNullException();
 
+                return _Concat(first, second);
+            }
+
+            private static IEnumerable<TSource> _Concat<TSource>(IEnumerable<TSource> first, IEnumerable<TSource> second)
+            {
                 foreach (TSource item in first)
                     yield return item;
 
@@ -935,6 +1060,11 @@ IEnumerable<TSource> source
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _Reverse(source);
+            }
+
+            private static IEnumerable<TSource> _Reverse<TSource>(IEnumerable<TSource> source)
+            {
                 List<TSource> lst = new List<TSource>();
                 foreach (TSource item in source)
                     lst.Add(item);
@@ -1041,6 +1171,15 @@ IEnumerable<TSource> source,
                 if (source == null || keySelector == null || elementSelector == null) //comparer may be null
                     throw new ArgumentNullException();
 
+                return _GroupBy(source, keySelector, elementSelector, comparer);
+            }
+
+            private static IEnumerable<IGrouping<TKey, TElement>> _GroupBy<TSource, TKey, TElement>(
+                IEnumerable<TSource> source,
+                Func<TSource, TKey> keySelector,
+                Func<TSource, TElement> elementSelector,
+                IEqualityComparer<TKey> comparer)
+            {
                 Lookup<TKey, TElement> lookup = ToLookup(source, keySelector, elementSelector, comparer);
                 foreach (TKey key in lookup.keys)
                     yield return lookup.dictionary[key];
@@ -1092,6 +1231,15 @@ IEnumerable<TSource> source,
                 if (source == null || keySelector == null || resultSelector == null) //comparer may be null
                     throw new ArgumentNullException();
 
+                return _GroupBy(source, keySelector, resultSelector, comparer);
+            }
+
+            private static IEnumerable<TResult> _GroupBy<TSource, TKey, TResult>(
+                IEnumerable<TSource> source,
+                Func<TSource, TKey> keySelector,
+                Func<TKey, IEnumerable<TSource>, TResult> resultSelector,
+                IEqualityComparer<TKey> comparer)
+            {
                 Lookup<TKey, TSource> lookup = ToLookup(source, keySelector, comparer);
                 foreach (TKey key in lookup.keys)
                     yield return resultSelector(key, lookup[key]);
@@ -1149,6 +1297,16 @@ IEnumerable<TSource> source,
                 if (source == null || keySelector == null || elementSelector == null || resultSelector == null) //comparer may be null
                     throw new ArgumentNullException();
 
+                return _GroupBy(source, keySelector, elementSelector, resultSelector, comparer);
+            }
+
+            private static IEnumerable<TResult> _GroupBy<TSource, TKey, TElement, TResult>(
+                IEnumerable<TSource> source,
+                Func<TSource, TKey> keySelector,
+                Func<TSource, TElement> elementSelector,
+                Func<TKey, IEnumerable<TElement>, TResult> resultSelector,
+                IEqualityComparer<TKey> comparer)
+            {
                 Lookup<TKey, TElement> lookup = ToLookup(source, keySelector, elementSelector, comparer);
                 foreach (TKey key in lookup.keys)
                     yield return resultSelector(key, lookup[key]);
@@ -1200,6 +1358,13 @@ IEnumerable<TSource> source,
                 if (source == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _Distinct(source, comparer);
+            }
+
+            private static IEnumerable<TSource> _Distinct<TSource>(
+                IEnumerable<TSource> source,
+                IEqualityComparer<TSource> comparer)
+            {
                 HashSet<TSource> set = new HashSet<TSource>(comparer);
                 foreach (TSource item in source)
                 {
@@ -1255,6 +1420,14 @@ IEnumerable<TSource> first,
                 if (first == null || second == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _Union(first, second, comparer);
+            }
+
+            private static IEnumerable<TSource> _Union<TSource>(
+                IEnumerable<TSource> first,
+                IEnumerable<TSource> second,
+                IEqualityComparer<TSource> comparer)
+            {
                 HashSet<TSource> set = new HashSet<TSource>(comparer);
                 foreach (TSource item in first)
                 {
@@ -1318,6 +1491,14 @@ IEnumerable<TSource> first,
                 if (first == null || second == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _Intersect(first, second, comparer);
+            }
+
+            private static IEnumerable<TSource> _Intersect<TSource>(
+                IEnumerable<TSource> first,
+                IEnumerable<TSource> second,
+                IEqualityComparer<TSource> comparer)
+            {
                 Dictionary<TSource, bool> tbl = new Dictionary<TSource, bool>(comparer);
                 List<TSource> lst = new List<TSource>();
 
@@ -1381,6 +1562,14 @@ IEnumerable<TSource> first,
                 if (first == null || second == null || comparer == null)
                     throw new ArgumentNullException();
 
+                return _Except(first, second, comparer);
+            }
+
+            private static IEnumerable<TSource> _Except<TSource>(
+                IEnumerable<TSource> first,
+                IEnumerable<TSource> second,
+                IEqualityComparer<TSource> comparer)
+            {
                 Dictionary<TSource, bool> tbl = new Dictionary<TSource, bool>(comparer);
                 List<TSource> lst = new List<TSource>();
 
@@ -1725,6 +1914,11 @@ IEnumerable source
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _OfType<TResult>(source);
+            }
+
+            private static IEnumerable<TResult> _OfType<TResult>(IEnumerable source)
+            {
                 foreach (object e in source)
                     if (e is TResult)
                         yield return (TResult)e;
@@ -1752,6 +1946,11 @@ IEnumerable source
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _Cast<TResult>(source);
+            }
+
+            private static IEnumerable<TResult> _Cast<TResult>(IEnumerable source)
+            {
                 foreach (object e in source)
                     yield return (TResult)e;
             }
@@ -2335,6 +2534,13 @@ IEnumerable<TSource> source,
                 if (source == null)
                     throw new ArgumentNullException();
 
+                return _DefaultIfEmpty(source, defaultValue);
+            }
+
+            private static IEnumerable<TSource> _DefaultIfEmpty<TSource>(
+                IEnumerable<TSource> source,
+                TSource defaultValue)
+            {
                 IEnumerator<TSource> enumerator = source.GetEnumerator();
                 if (!enumerator.MoveNext())
                     yield return defaultValue;
@@ -2364,6 +2570,11 @@ IEnumerable<TSource> source,
                 if (count < 0 || (long)start + count - 1 > int.MaxValue)
                     throw new ArgumentOutOfRangeException();
 
+                return _Range(start, count);
+            }
+
+            private static IEnumerable<int> _Range(int start, int count)
+            {
                 for (int i = start; i <= start + count - 1; i++)
                     yield return i;
             }
@@ -2384,6 +2595,11 @@ IEnumerable<TSource> source,
                 if (count < 0)
                     throw new ArgumentOutOfRangeException();
 
+                return _Repeat(element, count);
+            }
+
+            private static IEnumerable<TResult> _Repeat<TResult>(TResult element, int count)
+            {
                 for (int i = 0; i < count; i++)
                     yield return element;
             }

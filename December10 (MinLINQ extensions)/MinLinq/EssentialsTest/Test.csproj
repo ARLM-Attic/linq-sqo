@@ -68,14 +68,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Aggregates.cs" />
-    <Compile Include="Cheaters.cs" />
-    <Compile Include="Combinators.cs" />
-    <Compile Include="Constructors.cs" />
-    <Compile Include="Conversions.cs" />
+    <Compile Include="FEnumerable.Aggregates.cs" />
+    <Compile Include="FEnumerable.Cheaters.cs" />
+    <Compile Include="FEnumerable.Combinators.cs" />
+    <Compile Include="FEnumerable.Constructors.cs" />
+    <Compile Include="FEnumerable.Conversions.cs" />
     <Compile Include="Option.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Essentials.cs" />
+    <Compile Include="FEnumerable.Essentials.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MinLinq\MinLinq.csproj">
